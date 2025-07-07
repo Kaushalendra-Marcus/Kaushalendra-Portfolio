@@ -70,25 +70,23 @@ const Contact = () => {
 
         const subject = "Opportunity to Discuss a Role at [Your Company]";
         const body = `
-      Name: ${formData.name}
-      Email: ${formData.email}
-      Message: ${formData.message}
+    Name: ${formData.name}
+    Email: ${formData.email}
+    Message: ${formData.message}
     `;
 
-        window.open(
-            `https://mail.google.com/mail/?view=cm&fs=1&to=yadavkausha4a5@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
-            '_blank'
-        );
+        window.location.href = `mailto:yadavkausha4a5@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
+
 
     return (
         <section id="contact" className="relative bg-transparent py-20 px-5 md:px-10 lg:px-20 overflow-hidden">
             <div className="opacity-60">
-        <GradientSpheres
-          sphere1Class="gradient-sphere sphere-1"
-          sphere2Class="gradient-sphere sphere-2"
-        />
-      </div>
+                <GradientSpheres
+                    sphere1Class="gradient-sphere sphere-1"
+                    sphere2Class="gradient-sphere sphere-2"
+                />
+            </div>
             <div className="max-w-7xl mx-auto">
                 <TitleHeader
                     title="Contact Me"
