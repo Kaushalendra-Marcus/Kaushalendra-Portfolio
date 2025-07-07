@@ -71,6 +71,7 @@ const Hero = () => {
       ease: "sine.inOut",
       delay: 1.5
     });
+    
 
   }, []);
 
@@ -92,7 +93,7 @@ const Hero = () => {
           <LaptopModel
             scale={window.innerWidth < 768 ? 1 : 1.5}
             position={[0, -0.6, 0]}
-            rotation={[0.1, 2, 0]}
+            rotation={[0.1, 2.34, 0]}
           />
           <OrbitControls
             ref={controlsRef}
