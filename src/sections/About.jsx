@@ -102,7 +102,7 @@ const About = () => {
                                     {/* Resume CTA */}
                                     <div className="mt-8">
                                         <a
-                                            href="/kaushalendra-singh-resume.pdf"
+                                            href="/images/Kaushalendra_Singh_CV.pdf"
                                             download
                                             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors"
                                         >

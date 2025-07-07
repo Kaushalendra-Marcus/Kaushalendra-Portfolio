@@ -19,12 +19,12 @@ const Footer = () => {
             {icon.name === "Email" ? (
               <button
                 onClick={handleEmailClick}
-                className="cursor-pointer hover:-translate-y-5 transition-all duration-700 group bg-transparent border-none p-0"
+                className="cursor-pointer hover:-translate-y-5 transition-all duration-700 group"
               >
                 <img
                   src={icon.icon}
                   alt={icon.name}
-                  className="md:size-10 size-8 filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="md:size-10 size-8 filter grayscale hover:grayscale-0"
                   style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </button>
@@ -33,12 +33,12 @@ const Footer = () => {
                 href={icon.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cursor-pointer hover:-translate-y-5 transition-all duration-700 group"
+                className="cursor-pointer  duration-700 group"
               >
                 <img
                   src={icon.icon}
                   alt={icon.name}
-                  className="md:size-10 size-8 filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="md:size-10 size-8 filter grayscale hover:grayscale-0 "
                   style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </a>

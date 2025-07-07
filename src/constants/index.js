@@ -101,7 +101,7 @@ const slides = [
     title: "Pay-Sphere",
     img: "/images/paysphere.jpg",
     github: "https://github.com/Kaushalendra-Marcus/Techathon_2",
-    live: null // No live link for this one
+    live: null
   }
 ];
 
