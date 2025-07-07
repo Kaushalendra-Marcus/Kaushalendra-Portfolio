@@ -5,6 +5,7 @@ import Contact from './sections/Contact'
 import Hero from './sections/Hero'
 import Projects from './sections/Projects'
 import TechStack from './sections/TechStack'
+import { Analytics } from "@vercel/analytics/next"
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
       <Projects />
       <Contact />
       <Footer />
+      <Analytics />
     </>
   )
 }
