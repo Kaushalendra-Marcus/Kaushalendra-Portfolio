@@ -100,7 +100,7 @@ const About = () => {
                                     </div>
 
                                     {/* Resume CTA */}
-                                    <div className="mt-8">
+                                    <div className="mt-8" id="resume">
                                         <a
                                             href="/images/Kaushalendra_Singh_CV.pdf"
                                             download

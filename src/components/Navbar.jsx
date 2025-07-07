@@ -27,21 +27,25 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
           <div className="font-bold text-2xl tracking-wide">
             <a href="#home" className="flex items-center">
-              <img 
-                src="images/Kaushalendra.png" 
+              <img
+                src="images/Kaushalendra.png"
                 alt="Logo"
                 width={40}
                 height={40}
                 className='rounded-full w-10 h-10 object-cover border-2 border-gray-600'
               />
-             
+
             </a>
           </div>
           <div className="hidden md:flex gap-8">
-            {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+            {['Home', 'About', 'Skills', 'Projects', 'Contact', 'Resume'].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                href={
+                  item === "Resume"
+                    ? "#resume"
+                    : `#${item.toLowerCase().replace(' ', '-')}`
+                }
                 className="font-medium hover:text-blue-400 transition-colors"
               >
                 {item}
@@ -81,14 +85,14 @@ const Navbar = () => {
           className="fixed inset-0 z-40 bg-gradient-to-br from-black via-gray-900 to-gray-800 bg-opacity-95 flex flex-col items-center justify-center md:hidden text-white"
         >
           <div className="absolute top-4 left-4 flex items-center">
-            <img 
-              src="images/Kaushalendra.png" 
+            <img
+              src="images/Kaushalendra.png"
               alt="Logo"
               width={40}
               height={40}
               className='rounded-full w-10 h-10 object-cover border-2 border-gray-600'
             />
-            
+
           </div>
           <button
             className="absolute top-6 right-6 cursor-pointer"
@@ -100,10 +104,14 @@ const Navbar = () => {
             </svg>
           </button>
           <div className="flex flex-col gap-10 text-center text-2xl font-semibold">
-            {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+            {['Home', 'About', 'Skills', 'Projects', 'Contact', 'Resume'].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                href={
+                  item === "Resume"
+                    ? "#resume"
+                    : `#${item.toLowerCase().replace(' ', '-')}`
+                }
                 className="hover:text-blue-400 transition-colors px-4 py-2 rounded-lg hover:bg-gray-800"
                 onClick={() => setIsMenuOpen(false)}
               >
