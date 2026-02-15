@@ -11,10 +11,19 @@ export default function Projects() {
 
   return (
     <>
-      <section id="projects" className="mb-20 pb-12 border-b border-white/10">
+      <section 
+        id="projects" 
+        className="mb-20 pb-12 border-b border-white/10"
+        aria-label="Featured Projects"
+      >
         <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
           Featured Projects
         </h2>
+        
+        {/* Screen reader announcement for project count */}
+        <p className="sr-only" role="status">
+          Showing {projects.length} featured projects. Click on any project card to view details.
+        </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {projects.map((project, index) => (

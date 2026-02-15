@@ -103,11 +103,6 @@ export default function ScrollLine() {
           {hoverPercent}%
         </div>
       )}
-
-      {/* Zig message – subtle and playful */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-6 text-xs text-gray-500 whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity">
-        ⚡ like zig sometimes
-      </div>
     </div>
   );
 }
