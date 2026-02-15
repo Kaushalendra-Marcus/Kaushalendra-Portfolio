@@ -1,188 +1,146 @@
-# Modern Portfolio - Kaushalendra Singh
+Modern Portfolio - Kaushalendra Singh
+A modern, component‑based portfolio website with smooth animations, interactive project modals, and a sleek scroll line. Built with Next.js 15, TypeScript, and Tailwind CSS v4.
 
-A modern, component-based portfolio website with smooth animations and interactive project modals.
+https://public/kaushal.jpeg
 
-## Features
+Features
+Component‑Based Architecture – Clean, modular code for easy maintenance
 
-✨ **Component-Based Architecture** - Clean, modular code structure
-🎨 **Modern Design** - Dark theme with gradient accents and glassmorphism
-🎭 **Smooth Animations** - Fade-in effects and scroll-based animations
-📱 **Responsive** - Works beautifully on all devices
-🔄 **Interactive Project Cards** - Click to view detailed project information in modals
-📍 **Animated Scroll Line** - Visual scroll progress indicator
-🎯 **Social Icons** - Beautiful icons for social links
-📅 **Cal.com Integration** - Easy scheduling with Cal.com button
+Modern Dark Design – Gradient accents, glassmorphism, and grid backgrounds
 
-## Tech Stack
+Smooth Animations – Fade‑in effects, scroll‑triggered animations, and a pulsing scroll line
 
-- **Framework**: Next.js 15.1.4
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Icons**: React Icons
-- **Deployment**: Vercel
+Responsive Layout – Perfectly adapted for mobile, tablet, and desktop
 
-## Project Structure
+Interactive Project Cards – Click any project to open a detailed modal with live demo and GitHub links
 
-```
+Animated Scroll Line – A progress bar on the left with section markers, hover percentage, and a playful "like zig sometimes" message
+
+Resume Download – One‑click access to your PDF resume
+
+Social Icons – Beautiful hover‑expand icons for X, LinkedIn, GitHub, Email, and more
+
+Cal.com Integration – Schedule calls directly from the hero section
+
+Tech Stack
+Framework: Next.js 15.1.4
+
+Language: TypeScript
+
+Styling: Tailwind CSS v4 + CSS animations
+
+Icons: React Icons (Fa6)
+
+Animations: Framer Motion (for scroll line)
+
+Deployment: Vercel (recommended)
+
+Project Structure
+text
 portfolio/
 ├── public/
-│   └── kaushal.png           # Your profile image
+│   ├── kaushal.jpeg          # Your profile image
+│   └── Kaushal_resume.pdf    # Your downloadable resume
 ├── src/
 │   ├── app/
-│   │   ├── globals.css       # Global styles and animations
-│   │   ├── layout.tsx        # Root layout
-│   │   └── page.tsx          # Main page component
+│   │   ├── globals.css       # Global styles, animations, and Tailwind imports
+│   │   ├── layout.tsx        # Root layout with metadata and fonts
+│   │   └── page.tsx          # Main page assembling all sections
 │   ├── components/
-│   │   ├── Hero.tsx          # Header with image and social links
-│   │   ├── TechStack.tsx     # Technology stack display
-│   │   ├── Experience.tsx    # Work experience section
-│   │   ├── Projects.tsx      # Projects grid with modal
-│   │   ├── ProjectCard.tsx   # Individual project card
-│   │   ├── ProjectModal.tsx  # Project details modal
+│   │   ├── Hero.tsx          # Header with image, name, and social links
+│   │   ├── TechStack.tsx     # Technology stack badges
+│   │   ├── Experience.tsx    # Work experience timeline
+│   │   ├── Projects.tsx      # Grid of project cards + modal integration
+│   │   ├── ProjectCard.tsx   # Individual project preview card
+│   │   ├── ProjectModal.tsx  # Full‑screen modal with details
 │   │   ├── BuildingFromZero.tsx
 │   │   ├── CurrentlyExploring.tsx
 │   │   ├── Education.tsx
-│   │   ├── Skills.tsx
-│   │   ├── Footer.tsx
-│   │   └── ScrollLine.tsx    # Animated scroll indicator
+│   │   ├── Skills.tsx        # Categorized technical skills
+│   │   ├── Footer.tsx        # Social icons (only icons with hover text)
+│   │   └── ScrollLine.tsx    # Animated scroll indicator + markers
 │   ├── data/
-│   │   ├── projects.ts       # Project data
-│   │   ├── experience.ts     # Experience data
-│   │   └── skills.ts         # Skills data
+│   │   ├── projects.ts       # Array of project objects
+│   │   ├── experience.ts     # Work history
+│   │   └── skills.ts         # Skills by category + flat tech stack
 │   └── types/
-│       └── index.ts          # TypeScript type definitions
+│       └── index.ts          # TypeScript interfaces (Project, Experience, Skill)
 ├── package.json
 ├── tsconfig.json
-└── next.config.js
-```
+├── next.config.js
+├── postcss.config.js         # Tailwind v4 PostCSS config
+└── README.md                 # You are here!
+Getting Started
+Prerequisites
+Node.js 18+ and npm/yarn installed
 
-## Getting Started
+Installation
+Clone or copy this repository into your project folder.
 
-### Prerequisites
+Add your assets:
 
-- Node.js 18+ installed
-- npm or yarn package manager
+Place your profile image at public/kaushal.jpeg (recommended size: 512×512px or larger).
 
-### Installation
+Place your resume PDF at public/Kaushal_resume.pdf (or update the filename in Hero.tsx).
 
-1. Copy all files to your project directory
+Install dependencies:
 
-2. **IMPORTANT**: Add your profile image
-   - Place your profile image as `public/kaushal.png`
-   - Recommended size: 512x512px or larger
-   - Format: PNG with transparent background
-
-3. Install dependencies:
-```bash
+bash
 npm install
-```
+Run the development server:
 
-4. Run the development server:
-```bash
+bash
 npm run dev
-```
+Open http://localhost:3000 in your browser – you should see your portfolio live!
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+Customization
+Personal Information
+Hero.tsx – Update social links, Cal.com URL, phone number, and the resume filename if needed.
 
-## Customization
+data/experience.ts – Add/edit your work experiences and achievements.
 
-### Update Personal Information
+data/projects.ts – Modify project details: titles, descriptions, technologies, GitHub/live links, and optional gradient classes.
 
-1. **Hero Section** (`src/components/Hero.tsx`):
-   - Update social media links
-   - Modify Cal.com link
-   - Change phone number
+data/skills.ts – Change your skill categories and items.
 
-2. **Projects** (`src/data/projects.ts`):
-   - Add/remove projects
-   - Update GitHub and live links
-   - Modify technologies and descriptions
+Styling
+globals.css – Contains custom animations (fadeInUp, scaleIn), scrollbar styling, and the grid background. You can tweak colors, animation durations, etc.
 
-3. **Experience** (`src/data/experience.ts`):
-   - Update work experience
-   - Modify company links and achievements
+Tailwind – Most styling is done with utility classes directly in components. To extend the theme, modify tailwind.config.ts (if you keep it) or use CSS variables in globals.css with the @theme block.
 
-4. **Skills** (`src/data/skills.ts`):
-   - Customize your tech stack
-   - Update skill categories
+Scroll Line Enhancements
+The scroll line (ScrollLine.tsx) automatically detects all <section id="..."> elements and creates clickable markers.
 
-### Styling
+Add id attributes to any new sections you create to have them appear on the line.
 
-- Colors and gradients can be modified in individual components
-- Global animations are in `src/app/globals.css`
-- Tailwind configuration can be extended in `tailwind.config.ts`
+The "like zig sometimes" message at the bottom can be changed or removed easily.
 
-## Key Features Explained
-
-### Animated Scroll Line
-- Fixed position line on the left side (desktop only)
-- Shows scroll progress with a glowing dot
-- Smooth animations using CSS transitions
-
-### Project Modals
-- Click any project card to view details
-- Shows full project description
-- Includes GitHub and live demo links
-- Responsive modal design
-
-### Gradient Cards
-- Projects with gradients have `gradient` property in data
-- Automatically applies gradient background
-- Grid pattern overlay for visual interest
-
-### Staggered Animations
-- Components fade in sequentially
-- Creates smooth, professional entrance effects
-- Adjustable timing in component styles
-
-## Building for Production
-
-```bash
+Building for Production
+bash
 npm run build
 npm start
-```
+Deployment (Vercel)
+The easiest way to deploy:
 
-## Deployment
+Push your code to a GitHub repository.
 
-### Vercel (Recommended)
+Import the project on Vercel.
 
-1. Push your code to GitHub
-2. Import project in Vercel
-3. Deploy automatically
+Vercel will automatically detect Next.js and set up the build.
 
-### Manual Deployment
+Your site is live in seconds!
 
-```bash
-npm run build
-```
+Performance & Accessibility
+Lighthouse Score – Consistently 90+ (fast loads, optimized images, semantic HTML).
 
-Upload the `.next` folder and `public` directory to your hosting provider.
+Keyboard Navigation – All interactive elements are focusable and operable.
 
-## Browser Support
+ARIA Labels – Used where appropriate for screen readers.
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+High Contrast – Dark background with light text ensures readability.
 
-## Performance
+License
+This project is open source and available under the MIT License. Feel free to use it as a template for your own portfolio!
 
-- Lighthouse Score: 90+
-- Fast page loads with Next.js SSR
-- Optimized images with Next.js Image component
-- CSS animations for smooth 60fps performance
-
-## Accessibility
-
-- Semantic HTML structure
-- Proper ARIA labels
-- Keyboard navigation support
-- High contrast color scheme
-
-## License
-
-MIT License - Feel free to use this portfolio template for your own projects!
-
-## Credits
-
-Built with ❤️ by Kaushalendra Singh
+Acknowledgements
+Built with ❤️ by Kaushalendra Singh. Icons by React Icons. Inspired by modern developer portfolios and the beauty of clean code.
