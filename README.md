@@ -11,7 +11,7 @@ A modern, performant portfolio website built with Next.js 15, TypeScript, and Ta
 - **Resume Download** – One-click PDF access
 - **Analytics** – Vercel Analytics integrated
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 15
 - **Language**: TypeScript
