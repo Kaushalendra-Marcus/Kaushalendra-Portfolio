@@ -8,6 +8,7 @@ import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Footer from "@/components/Footer";
 import ScrollLine from "@/components/ScrollLine";
+import OpenSourceContributions from "@/components/OpenSourceContributions";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Hero />
         <TechStack />
         <Experience />
+        <OpenSourceContributions />
         <Projects />
         <BuildingFromZero />
         <Education />
