@@ -18,6 +18,7 @@ export const projects: Project[] = [
     github: "https://github.com/Kaushalendra-Marcus/AI-Business-Intelligence",
     live: "https://buildifylabs.in",
     gradient: "from-blue-600 to-cyan-600",
+    image: "/projects/buildify-labs.png",
   },
   {
     id: "postly",
@@ -34,7 +35,8 @@ export const projects: Project[] = [
     ],
     technologies: ["Next.js", "Clerk", "MongoDB", "TypeScript", "Tailwind"],
     github: "https://github.com/Kaushalendra-Marcus/Postly",
-    live: "https://postly-lake.vercel.app"
+    live: "https://postly-lake.vercel.app",
+    image: "/projects/postly-image.png",
   },
   {
     id: "myattendance",
@@ -52,6 +54,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "MongoDB", "PWA", "TypeScript", "Chart.js"],
     github: "https://github.com/Kaushalendra-Marcus/attendance-tracker",
     live: "https://myattendance-eta.vercel.app",
+    image: "/projects/myattendance.png",
   },
   {
     id: "grs-worker",
@@ -78,6 +81,7 @@ export const projects: Project[] = [
     github: "https://github.com/Kaushalendra-Marcus/grsp",
     live: "https://grsworker.com",
     gradient: "from-emerald-600 to-teal-600",
+    image: "/projects/grs-worker.png",
   },
   {
     id: "cosmodetect",
@@ -96,6 +100,7 @@ export const projects: Project[] = [
     github: "https://github.com/Kaushalendra-Marcus/SpaceSafe",
     live: "https://object-detection-project-iz9g.onrender.com/docs",
     gradient: "from-violet-600 to-indigo-600",
+    image: "/projects/cosmodetect.png",
   },
   {
     id: "twitter-bot",
@@ -112,24 +117,35 @@ export const projects: Project[] = [
     ],
     technologies: ["Python", "AI/ML", "Twitter API", "OpenAI", "MongoDB"],
     github: "https://github.com/Kaushalendra-Marcus/TwitterBotAI",
-    live: "https://twitter-bot-ai-off.vercel.app",
+    live: "https://tweetbotai.vercel.app/",
+    image: "/projects/twitterbot.png",
   },
   {
-    id: "see2say",
-    title: "See2Say",
-    subtitle: "AI Vision to Speech for Visually Impaired",
+    id: "ai-context-engine",
+    title: "AI Context Engine",
+    subtitle: "Context-Aware Backend Intelligence System",
     description:
-      "Accessibility platform converting visual content to audio narration using Computer Vision and Generative AI.",
+      "RAG-based system that retrieves relevant project context and generates structured technical insights using LLMs.",
     detailedDescription: [
-      "Built accessibility-first platform to assist visually impaired users with scene understanding.",
-      "Integrated Computer Vision models for object detection, scene recognition, and text extraction.",
-      "Implemented text-to-speech synthesis for natural audio narration of visual content.",
-      "Used Generative AI to create descriptive, contextual explanations of complex scenes.",
-      "Designed intuitive interface with voice commands and haptic feedback for navigation.",
+      "Built a context-aware backend system that analyzes codebases, docs, and system data to generate actionable insights.",
+      "Implemented RAG pipeline using LangChain with semantic search over Pinecone vector database.",
+      "Used HuggingFace embeddings for accurate similarity search and contextual understanding.",
+      "Designed modular architecture with ingestion and query pipelines for scalability.",
+      "Generated structured outputs (summary, dependencies, risks) using Pydantic schemas.",
+      "Improved developer productivity by eliminating manual code exploration and documentation search.",
     ],
-    technologies: ["CV", "AI", "Accessibility", "Python", "Next.js"],
-    github: "https://github.com/Kaushalendra-Marcus/see2say",
-    live: "https://see2say.vercel.app"
+    technologies: [
+      "Python",
+      "LangChain",
+      "HuggingFace",
+      "Pinecone",
+      "Pydantic",
+      "RAG"
+    ],
+    github: "https://github.com/Kaushalendra-Marcus/ai-context-engine",
+    live: "", // optional (add later if you deploy)
+    gradient: "from-indigo-600 to-purple-600",
+    image: "/projects/ai-context-engine.png",
   },
   {
     id: "cokkie-chat",
@@ -148,6 +164,7 @@ export const projects: Project[] = [
     technologies: ["MERN", "Socket.IO", "Real-time", "JWT", "MongoDB"],
     github: "https://github.com/Kaushalendra-Marcus/chat-application",
     live: "https://cokkie-chat.onrender.com",
-    gradient: "from-orange-600 to-red-600"
+    gradient: "from-orange-600 to-red-600",
+    image: "/projects/cokkiechat.png",
   },
 ];

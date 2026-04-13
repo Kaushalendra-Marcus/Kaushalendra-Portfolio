@@ -11,27 +11,27 @@ export default function Projects() {
 
   return (
     <>
-      <section 
-        id="projects" 
+      <section
+        id="projects"
         className="mb-20 pb-12 border-b border-white/10"
         aria-label="Featured Projects"
       >
-        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-          Featured Projects
-        </h2>
-        
-        {/* Screen reader announcement for project count */}
+        <div className="flex items-baseline justify-between mb-8">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+            Featured Projects
+          </h2>
+          <span className="text-xs text-gray-600 font-mono">{projects.length} projects</span>
+        </div>
+
         <p className="sr-only" role="status">
           Showing {projects.length} featured projects. Click on any project card to view details.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-              }}
+              style={{ animation: `fadeInUp 0.55s ease-out ${index * 0.08}s both` }}
             >
               <ProjectCard
                 project={project}

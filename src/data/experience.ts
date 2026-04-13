@@ -5,11 +5,11 @@ export const experiences: Experience[] = [
     company: "FaxLab AI",
     role: "Frontend Developer Intern",
     website: "https://www.faxlab.in/",
-    period: "Dec 2025 – Present",
+    period: "Feb 2026 – Mar 2026",
     achievements: [
-      "Developed UI for AI course platform using Next.js, TypeScript, Tailwind; improved engagement for 500K+ learners.",
-      "Implemented course catalog, auth flows, dashboards; boosted page load by 30% via SSR and code splitting.",
-      "Integrated REST APIs for course data and progress tracking.",
+      "Developed UI for AI course platform using Next.js, TypeScript, Tailwind; improved engagement for 50K+ learners.",
+      "Implemented course catalog, auth flows, dashboards; replaced hardcoded data with Graphy's API, boosting page load by 30% via SSR and code splitting.",
+      "Integrated Graphy's REST APIs for real‑time course data and learner progress tracking.",
     ],
   },
   {

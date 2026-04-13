@@ -2,68 +2,87 @@ import { experiences } from "@/data/experience";
 
 export default function Experience() {
   return (
-    <section 
-      id="experience" 
+    <section
+      id="experience"
       className="mb-20 pb-12 border-b border-white/10"
       aria-label="Professional Experience"
     >
-      <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+      <h2 className="text-3xl font-bold mb-10 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
         Experience
       </h2>
 
-      {/* Screen reader announcement */}
       <p className="sr-only" role="status">
         {experiences.length} positions listed chronologically.
       </p>
 
-      <div className="space-y-12">
+      <div className="space-y-10">
         {experiences.map((exp, index) => (
           <div
             key={exp.company}
-            className="relative pl-8 border-l-2 border-white/10"
-            style={{
-              animation: `fadeInUp 0.6s ease-out ${index * 0.2}s both`,
-            }}
+            className="relative grid grid-cols-[20px_1fr] gap-5"
+            style={{ animation: `fadeInUp 0.6s ease-out ${index * 0.15}s both` }}
             itemScope
             itemType="https://schema.org/OrganizationRole"
           >
-            {/* Timeline dot */}
-            <div 
-              className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
-              aria-hidden="true"
-            />
+            {/* ── Timeline column ── */}
+            <div className="flex flex-col items-center pt-1.5 gap-0">
+              {/* glowing dot */}
+              <div className="w-3 h-3 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400
+                shadow-[0_0_10px_rgba(59,130,246,0.55)] flex-shrink-0 z-10" />
+              {/* connector line */}
+              {index < experiences.length - 1 && (
+                <div className="w-px flex-1 mt-2 bg-gradient-to-b from-white/10 to-transparent" />
+              )}
+            </div>
 
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-              <div>
-                <h3 className="text-xl font-semibold">
+            {/* ── Content ── */}
+            <div className="pb-2 min-w-0">
+              {/* header */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-x-2 gap-y-0.5">
                   <a
                     href={exp.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors"
-                    aria-label={`${exp.company} website (opens in new tab)`}
+                    className="text-base font-semibold text-white hover:text-cyan-300 transition-colors"
+                    itemProp="name"
                   >
-                    <span itemProp="name">{exp.company}</span>
+                    {exp.company}
                   </a>
-                </h3>
-                <p className="text-gray-400" itemProp="role">{exp.role}</p>
-              </div>
-              <span className="text-gray-500 text-sm mt-1 sm:mt-0" itemProp="startDate">
-                {exp.period}
-              </span>
-            </div>
+                  <span className="hidden sm:block text-white/20 text-sm">·</span>
+                  <span className="text-sm text-gray-500" itemProp="roleName">
+                    {exp.role}
+                  </span>
+                </div>
 
-            <ul className="space-y-2 mt-4" aria-label={`Key achievements at ${exp.company}`}>
-              {exp.achievements.map((achievement, i) => (
-                <li key={i} className="flex items-start gap-3 text-gray-300">
-                  <span className="text-cyan-400 mt-1.5 flex-shrink-0" aria-hidden="true">▹</span>
-                  <span 
-                    dangerouslySetInnerHTML={{ __html: achievement }} 
-                    itemProp="description"
-                  />
-                </li>
-              ))}
-            </ul>
+                {/* period badge */}
+                <span
+                  className="text-[11px] font-mono text-gray-600 bg-white/[0.04] border border-white/[0.07]
+                    px-2.5 py-1 rounded-lg w-fit flex-shrink-0"
+                  itemProp="startDate"
+                >
+                  {exp.period}
+                </span>
+              </div>
+
+              {/* achievements */}
+              <ul
+                className="space-y-2"
+                aria-label={`Key achievements at ${exp.company}`}
+              >
+                {exp.achievements.map((achievement, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-500 leading-relaxed">
+                    <span className="text-cyan-500/50 flex-shrink-0 mt-1 text-xs" aria-hidden="true">
+                      ▹
+                    </span>
+                    <span
+                      dangerouslySetInnerHTML={{ __html: achievement }}
+                      itemProp="description"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>

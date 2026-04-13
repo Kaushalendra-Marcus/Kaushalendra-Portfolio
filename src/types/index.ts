@@ -9,6 +9,7 @@ export interface Project {
   live: string;
   gradient?: string;
   status?: string;
+  image?: string;
 }
 
 export interface Experience {
