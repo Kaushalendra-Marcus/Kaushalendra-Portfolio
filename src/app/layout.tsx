@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Kaushalendra Singh – AI Backend Engineer | Agentic Systems | LLM Pipelines",
+      "Kaushalendra Singh - AI Backend Engineer | Agentic Systems | LLM Pipelines",
     template: "%s | Kaushalendra Singh",
   },
 
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "Kaushalendra Singh – AI Backend Engineer | Agentic Systems",
+      "Kaushalendra Singh - AI Backend Engineer | Agentic Systems",
     description:
       "Building intelligent AI systems using RAG pipelines, LangGraph, and scalable backend architectures.",
     url: "https://kaushalendra-portfolio.vercel.app",

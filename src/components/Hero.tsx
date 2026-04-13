@@ -102,14 +102,14 @@ export default function Hero() {
               Kaushalendra Singh
             </h1>
 
-            {/* 🔥 UPDATED ROLE */}
+            {/*UPDATED ROLE */}
             <p className="text-base md:text-lg text-gray-300 font-medium mb-2">
-              AI Backend Engineer • Agentic Systems • LLM Pipelines
+              Full Stack Engineer • AI Backend • LLM & Agentic Systems
             </p>
 
-            {/* 🔥 UPDATED TAGLINE */}
+            {/*TAGLINE */}
             <p className="text-sm text-gray-500 mb-6 max-w-lg leading-relaxed">
-              Building intelligent systems that reason, retrieve, and act - from RAG pipelines and AI agents to scalable backend architectures.
+              Building full-stack applications and intelligent AI systems — from scalable backend architectures to RAG pipelines and agentic workflows.
             </p>
           </div>
 

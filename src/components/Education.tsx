@@ -11,10 +11,10 @@ export default function Education() {
           Harcourt Butler Technical University
         </h3>
         <p className="text-gray-400 mt-1">
-          B.Tech Mechanical Engineering • 2023 – 2027
+           Bachelor of Technology • 2023 – 2027
         </p>
         <p className="text-gray-500 text-sm mt-2">
-          Relevant: DSA, OS, DBMS, Web Dev
+          Relevant: DSA, OS, LLD, DBMS, Web Dev
         </p>
       </div>
     </section>
