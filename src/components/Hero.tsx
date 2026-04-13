@@ -109,7 +109,7 @@ export default function Hero() {
 
             {/*TAGLINE */}
             <p className="text-sm text-gray-500 mb-6 max-w-lg leading-relaxed">
-              Building full-stack applications and intelligent AI systems — from scalable backend architectures to RAG pipelines and agentic workflows.
+              Building full-stack applications and intelligent AI systems - from scalable backend architectures to RAG pipelines and agentic workflows.
             </p>
           </div>
 

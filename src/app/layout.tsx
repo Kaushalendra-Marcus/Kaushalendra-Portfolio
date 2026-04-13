@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Kaushalendra Singh - AI Backend Engineer | Agentic Systems | LLM Pipelines",
+      "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
     template: "%s | Kaushalendra Singh",
   },
 
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "Kaushalendra Singh - AI Backend Engineer | Agentic Systems",
+      "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
     description:
       "Building intelligent AI systems using RAG pipelines, LangGraph, and scalable backend architectures.",
     url: "https://kaushalendra-portfolio.vercel.app",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Kaushalendra Singh – AI Backend Engineer",
+      "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
     description:
       "Agentic AI, RAG pipelines, and scalable backend systems.",
     creator: "@Kaushal__marcus",
