@@ -1,0 +1,190 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="25%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#1d3a6e" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="82%" cy="55%" r="42%">
+      <stop offset="0%" stop-color="#1a3a5c" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="textgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+    <filter id="softglow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="panelglow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04" stroke="#60a5fa" stroke-width="1">
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="150" y1="0" x2="150" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="450" y1="0" x2="450" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="750" y1="0" x2="750" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1050" y1="0" x2="1050" y2="630"/>
+  </g>
+
+  <!-- ═══ SOCIAL ACTIVITY PANEL (Right Side) ═══ -->
+  <g transform="translate(700, 80)">
+    <!-- Panel Background -->
+    <rect width="440" height="490" rx="28" fill="#111827" fill-opacity="0.8" stroke="#1e3a6e" stroke-width="1.5" filter="url(#panelglow)"/>
+    
+    <!-- Window Controls -->
+    <circle cx="28" cy="24" r="6" fill="#ef4444" opacity="0.6"/>
+    <circle cx="48" cy="24" r="6" fill="#eab308" opacity="0.6"/>
+    <circle cx="68" cy="24" r="6" fill="#22c55e" opacity="0.6"/>
+
+    <!-- Header -->
+    <text x="220" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#60a5fa" text-anchor="middle" letter-spacing="0.5">Activity Feed</text>
+
+    <!-- Divider -->
+    <line x1="24" y1="50" x2="416" y2="50" stroke="#1e3a6e" stroke-width="1" opacity="0.6"/>
+
+    <!-- Activity 1: Like -->
+    <g transform="translate(30, 80)">
+      <circle cx="20" cy="20" r="16" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="20" y="25" font-size="12" font-weight="700" fill="#60a5fa" text-anchor="middle" font-family="sans-serif">V</text>
+      <text x="48" y="18" font-size="13" font-weight="600" fill="#e2e8f0" font-family="sans-serif">VIPRANSHU</text>
+      <text x="48" y="33" font-size="12" fill="#94a3b8" font-family="sans-serif">liked your post</text>
+      <!-- Heart Button -->
+      <path d="M360 12 C360 8 364 6 367 9 C370 6 374 8 374 12 C374 17 367 22 367 22 C367 22 360 17 360 12" fill="#f43f5e"/>
+      <text x="385" y="20" font-size="11" fill="#475569" font-family="sans-serif">2m</text>
+    </g>
+
+    <!-- Activity 2: Share -->
+    <g transform="translate(30, 150)">
+      <circle cx="20" cy="20" r="16" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+      <text x="20" y="25" font-size="12" font-weight="700" fill="#06b6d4" text-anchor="middle" font-family="sans-serif">A</text>
+      <text x="48" y="18" font-size="13" font-weight="600" fill="#e2e8f0" font-family="sans-serif">Arjun</text>
+      <text x="48" y="33" font-size="12" fill="#94a3b8" font-family="sans-serif">shared your post</text>
+      <!-- Share Button -->
+      <circle cx="363" cy="14" r="4" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <circle cx="375" cy="8" r="4" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <circle cx="380" cy="22" r="4" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <line x1="366" y1="15" x2="372" y2="10" stroke="#3b82f6" stroke-width="1.5"/>
+      <line x1="377" y1="20" x2="378" y2="18" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="395" y="20" font-size="11" fill="#475569" font-family="sans-serif">5m</text>
+    </g>
+
+    <!-- Activity 3: Chat -->
+    <g transform="translate(30, 220)">
+      <circle cx="20" cy="20" r="16" fill="#1e293b" stroke="#22d3ee" stroke-width="1.5"/>
+      <text x="20" y="25" font-size="12" font-weight="700" fill="#22d3ee" text-anchor="middle" font-family="sans-serif">S</text>
+      <text x="48" y="18" font-size="13" font-weight="600" fill="#e2e8f0" font-family="sans-serif">Meenu</text>
+      <text x="48" y="33" font-size="12" fill="#94a3b8" font-family="sans-serif">sent a message</text>
+      <!-- Chat Button -->
+      <rect x="352" y="8" width="20" height="14" rx="4" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <path d="M360 22 L356 28 L364 22" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="385" y="20" font-size="11" fill="#475569" font-family="sans-serif">10m</text>
+    </g>
+
+    <!-- Activity 4: Post -->
+    <g transform="translate(30, 290)">
+      <circle cx="20" cy="20" r="16" fill="#1e293b" stroke="#60a5fa" stroke-width="1.5"/>
+      <text x="20" y="25" font-size="10" font-weight="700" fill="#60a5fa" text-anchor="middle" font-family="sans-serif">KS</text>
+      <text x="48" y="18" font-size="13" font-weight="600" fill="#e2e8f0" font-family="sans-serif">Kaushalendra Singh</text>
+      <text x="48" y="33" font-size="12" fill="#94a3b8" font-family="sans-serif">created a new post</text>
+      <!-- Post Button (Plus) -->
+      <circle cx="362" cy="14" r="8" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <line x1="362" y1="10" x2="362" y2="18" stroke="#3b82f6" stroke-width="1.5"/>
+      <line x1="358" y1="14" x2="366" y2="14" stroke="#3b82f6" stroke-width="1.5"/>
+      <text x="385" y="20" font-size="11" fill="#475569" font-family="sans-serif">15m</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="24" y1="360" x2="416" y2="360" stroke="#1e3a6e" stroke-width="1" opacity="0.6"/>
+
+    <!-- Create Post Box -->
+    <g transform="translate(24, 390)">
+      <rect x="0" y="0" width="392" height="52" rx="26" fill="#0f172a" stroke="#1e3a6e" stroke-width="1.5"/>
+      <text x="24" y="31" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#475569">Share your latest build...</text>
+      <rect x="292" y="11" width="80" height="30" rx="15" fill="#2563eb"/>
+      <text x="332" y="31" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="0.2">Post</text>
+    </g>
+  </g>
+
+  <!-- ═══ LOGO BOX (Left Side) ═══ -->
+  <rect x="80" y="178" width="76" height="76" rx="18" fill="#1e293b"/>
+  <rect x="80" y="178" width="76" height="76" rx="18" fill="none" stroke="#334155" stroke-width="1.2"/>
+
+  <!-- Postly Logo -->
+  <g transform="translate(87, 185) scale(0.122)">
+    <rect width="512" height="512" rx="110" fill="#1e293b"/>
+    <g transform="translate(96,76)">
+      <path
+        d="M80 0 H210 Q300 0 300 90 Q300 180 210 180 H140 V330 Q140 360 110 360 Q80 360 80 330 Z"
+        fill="url(#textgrad)"
+        filter="url(#softglow)"
+      />
+      <path
+        d="M150 60 H210 Q250 60 250 100 Q250 140 210 140 H150 Z"
+        fill="#1e293b"
+      />
+      <g transform="translate(170,70)">
+        <path d="M0 25 L60 0 L45 55 L30 38 L10 45 Z" fill="white"/>
+        <path d="M30 38 L45 55 L22 44 Z" fill="#cbd5f5"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="172" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#f1f5f9" letter-spacing="-0.5">Postly</text>
+  <text x="172" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13.5" fill="#475569" letter-spacing="0.1">Social Platform  ·  Share  ·  Connect  ·  Grow</text>
+
+  <!-- Thin divider -->
+  <rect x="80" y="274" width="530" height="1" fill="#1e3a5f" opacity="0.8"/>
+
+  <!-- Main headline -->
+  <text x="80" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="55" font-weight="800" fill="#f1f5f9" letter-spacing="-1.5">Share your thoughts</text>
+  <text x="80" y="418" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="55" font-weight="800" fill="url(#textgrad)" letter-spacing="-1.5">connect with the world</text>
+
+  <!-- Sub -->
+  <text x="80" y="472" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="19" fill="#94a3b8">Posts · Communities · Realtime Interaction · Clean UI</text>
+
+  <!-- Badges -->
+  <rect x="80" y="504" width="138" height="34" rx="17" fill="#0f1f3d"/>
+  <rect x="80" y="504" width="138" height="34" rx="17" fill="none" stroke="#1e3a6e" stroke-width="1"/>
+  <text x="149" y="526" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#60a5fa" text-anchor="middle" font-weight="600">Real-time Posts</text>
+
+  <rect x="232" y="504" width="110" height="34" rx="17" fill="#0f1f3d"/>
+  <rect x="232" y="504" width="110" height="34" rx="17" fill="none" stroke="#1e3a6e" stroke-width="1"/>
+  <text x="287" y="526" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#60a5fa" text-anchor="middle" font-weight="600">Communities</text>
+
+  <rect x="356" y="504" width="110" height="34" rx="17" fill="#0f1f3d"/>
+  <rect x="356" y="504" width="110" height="34" rx="17" fill="none" stroke="#1e3a6e" stroke-width="1"/>
+  <text x="411" y="526" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#60a5fa" text-anchor="middle" font-weight="600">Open Source</text>
+
+  <rect x="480" y="504" width="114" height="34" rx="17" fill="#0f1f3d"/>
+  <rect x="480" y="504" width="114" height="34" rx="17" fill="none" stroke="#1e3a6e" stroke-width="1"/>
+  <text x="537" y="526" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#60a5fa" text-anchor="middle" font-weight="600">Free Forever</text>
+
+  <!-- ═══ AUTHOR NAME ═══ -->
+  <text x="1120" y="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" fill="#334155" text-anchor="end" letter-spacing="0.2">by Kaushalendra Singh</text>
+</svg>

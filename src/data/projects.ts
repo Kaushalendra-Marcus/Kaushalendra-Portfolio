@@ -79,7 +79,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "Clerk", "MongoDB", "TypeScript", "Tailwind"],
     github: "https://github.com/Kaushalendra-Marcus/Postly",
     live: "https://postly-lake.vercel.app",
-    image: "/projects/postly-image.png",
+    image: "/projects/postly-image.svg",
   },
   {
     id: "myattendance",
