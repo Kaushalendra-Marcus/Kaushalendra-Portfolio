@@ -71,7 +71,7 @@ export const metadata: Metadata = {
       "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
     description:
       "Building intelligent AI systems using RAG pipelines, LangGraph, and scalable backend architectures.",
-    url: "https://kaushalendra-portfolio.vercel.app",
+    url: "https://kaushalendra.me/",
     siteName: "Kaushalendra Portfolio",
     images: [
       {
@@ -108,7 +108,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://kaushalendra-portfolio.vercel.app",
+    canonical: "https://kaushalendra.me/",
   },
 };
 
@@ -117,8 +117,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Kaushalendra Singh",
-  url: "https://kaushalendra-portfolio.vercel.app",
-  image: "https://kaushalendra-portfolio.vercel.app/kaushalendra-singh.png",
+  url: "https://kaushalendra.me/",
+  image: "https://kaushalendra.me//kaushalendra-singh.png",
 
   jobTitle: "AI Backend Engineer",
 
