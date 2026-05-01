@@ -21,6 +21,25 @@ export const projects: Project[] = [
     image: "/projects/buildify-labs.png",
   },
   {
+    id: "repograph-ai",
+    title: "RepoGraph AI",
+    subtitle: "VS Code Extension",
+    description:
+      "Free VS Code extension that maps any codebase into an interactive dependency graph with AI-powered file summaries and live codebase Q&A.",
+    detailedDescription: [
+      "Built a VS Code extension that scans workspaces and maps every file relationship into an interactive force-directed dependency graph.",
+      "Integrated 5 AI providers — Groq, Ollama, Gemini, Anthropic, and OpenAI — with support for custom model names and zero telemetry.",
+      "Implemented a multi-turn Q&A agent with full graph, summary, and file context so questions build on each other naturally.",
+      "Designed smart filtering to auto-skip node_modules, dist, build outputs, and generated code across 20+ languages.",
+      "Built with full privacy in mind — no backend, no account required, API keys stored in VS Code SecretStorage via OS keychain.",
+    ],
+    technologies: ["TypeScript", "VS Code API", "Groq", "Ollama", "Gemini", "Anthropic", "OpenAI"],
+    github: "https://github.com/Kaushalendra-Marcus/RepoGraph-AI",
+    live: "https://repograph.kaushalendra.me",
+    gradient: "from-violet-600 to-indigo-600",
+    image: "/projects/repograph-ai.svg",
+  },
+  {
     id: "postly",
     title: "Postly",
     subtitle: "Modern Social Media Platform",
