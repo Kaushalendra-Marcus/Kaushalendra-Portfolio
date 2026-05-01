@@ -26,7 +26,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kaushalendra-portfolio.vercel.app"),
+  metadataBase: new URL("https://kaushalendra.me/"),
 
   title: {
     default:
