@@ -4,17 +4,41 @@ export const projects: Project[] = [
   {
     id: "buildify-labs",
     title: "Buildify Labs",
-    subtitle: "AI Business Intelligence",
+    subtitle: "Agentic AI Business Intelligence System",
+
     description:
-      "Conversational analytics platform turning natural language into dynamic UI components with real-time rendering.",
+      "Agentic AI-powered analytics platform that converts natural language into SQL, orchestrates multi-step reasoning with LangGraph and DeepAgents, and delivers structured insights with dynamic visualizations.",
+
     detailedDescription: [
-      "Conversational analytics platform that transforms natural language queries into dynamic UI components including metric cards, charts, and comparisons.",
-      "Implemented mock AI backend that returns structured JSON for real-time React component rendering.",
-      "Utilized Zustand for efficient state management of sessions and query context filtering.",
-      "Built responsive interface with Next.js 14+ featuring server-side rendering and optimized performance.",
-      "Designed intuitive dashboard with natural language processing for business intelligence insights.",
+      "Designed an agentic AI system using LangGraph and DeepAgents to orchestrate multi-step workflows: query understanding → SQL generation → sanitization → execution → analysis → structured output.",
+
+      "Built modular AI agents (SQL generator, analysis engine, visual selector, insight generator) coordinated through stateful execution graphs.",
+
+      "Integrated MCP (Model Context Protocol) for structured tool interaction, enabling controlled access to SQL execution, data analysis, and external context sources.",
+
+      "Implemented a secure data layer with SQL sanitization, schema-constrained query generation, and execution guards to prevent unsafe operations.",
+
+      "Developed strict JSON-based output pipelines using Pydantic for reliable frontend rendering of charts, KPI cards, anomalies, and insights.",
+
+      "Added production-grade backend controls including authentication, rate limiting, plan-based access, and file validation.",
+
+      "Built a dynamic Next.js frontend that renders AI-generated UI components in real-time based on structured responses.",
     ],
-    technologies: ["Next.js", "Tambo AI", "Zustand", "TypeScript", "Tailwind"],
+
+    technologies: [
+      "Next.js",
+      "FastAPI",
+      "PostgreSQL",
+      "Groq (LLM)",
+      "LangGraph",
+      "DeepAgents",
+      "MCP",
+      "LangChain",
+      "Zustand",
+      "TypeScript",
+      "Tailwind",
+    ],
+
     github: "https://github.com/Kaushalendra-Marcus/AI-Business-Intelligence",
     live: "https://buildifylabs.in",
     gradient: "from-blue-600 to-cyan-600",

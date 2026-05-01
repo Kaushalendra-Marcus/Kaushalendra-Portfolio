@@ -112,7 +112,7 @@ export const metadata: Metadata = {
   },
 };
 
-// 🔥 UPDATED JSON-LD (VERY IMPORTANT)
+// UPDATED JSON-LD (VERY IMPORTANT)
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
