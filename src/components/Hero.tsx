@@ -33,7 +33,7 @@ export default function Hero() {
     },
     {
       name: "Resume",
-      href: "/Kaushalendr_Singh.pdf",
+      href: "/Kaushalendra_Singh.pdf",
       icon: <FaFilePdf />,
       hover: "hover:text-cyan-400 hover:border-cyan-400/30",
     },
