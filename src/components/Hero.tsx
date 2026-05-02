@@ -33,7 +33,7 @@ export default function Hero() {
     },
     {
       name: "Resume",
-      href: "/Kaushalendra_Singh.pdf",
+      href: "https://drive.google.com/file/d/19JNv-gUIrCsL7buwEvcI76zZRKYSAoVS/view",
       icon: <FaFilePdf />,
       hover: "hover:text-cyan-400 hover:border-cyan-400/30",
     },
