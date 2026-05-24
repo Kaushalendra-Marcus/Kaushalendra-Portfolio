@@ -1,154 +1,124 @@
 "use client";
 
 import Image from "next/image";
-import {
-  FaLinkedin,
-  FaEnvelope,
-  FaCalendar,
-  FaGithub,
-  FaFilePdf,
-} from "react-icons/fa6";
+import { FaLinkedin, FaEnvelope, FaGithub, FaFilePdf } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Hero() {
-  const socials = [
-    {
-      name: "X",
-      href: "https://x.com/Kaushal__marcus",
-      icon: <FaXTwitter />,
-      hover: "hover:text-gray-200 hover:border-white/20",
-    },
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/",
-      icon: <FaLinkedin />,
-      hover: "hover:text-blue-400 hover:border-blue-400/30",
-    },
-    {
-      name: "GitHub",
-      href: "https://github.com/Kaushalendra-Marcus",
-      icon: <FaGithub />,
-      hover: "hover:text-purple-400 hover:border-purple-400/30",
-    },
-    {
-      name: "Resume",
-      href: "https://drive.google.com/file/d/19JNv-gUIrCsL7buwEvcI76zZRKYSAoVS/view",
-      icon: <FaFilePdf />,
-      hover: "hover:text-cyan-400 hover:border-cyan-400/30",
-    },
-    {
-      name: "Email",
-      href: "mailto:yadavkausha4a5@gmail.com",
-      icon: <FaEnvelope />,
-      hover: "hover:text-cyan-400 hover:border-cyan-400/30",
-    },
-  ];
-
   return (
-    <section id="hero" className="mb-20 pb-12 border-b border-white/10 pt-2">
+    <section id="hero" className="mb-24 pb-16 border-b border-white/[0.06]">
       <style>{`
-        @keyframes heroIn {
-          from { opacity: 0; transform: translateY(18px); }
+        @keyframes heroFade {
+          from { opacity: 0; transform: translateY(14px); }
           to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes glowPulse {
-          0%, 100% { opacity: 0.35; transform: scale(1); }
-          50%       { opacity: 0.65; transform: scale(1.06); }
         }
         @keyframes blink {
           0%, 100% { opacity: 1; }
-          50%       { opacity: 0.3; }
+          50%       { opacity: 0; }
         }
-        .h1 { animation: heroIn 0.6s ease-out 0.05s both; }
-        .h2 { animation: heroIn 0.6s ease-out 0.18s both; }
-        .h3 { animation: heroIn 0.6s ease-out 0.30s both; }
+        .h-a { animation: heroFade 0.5s ease-out 0.0s both; }
+        .h-b { animation: heroFade 0.5s ease-out 0.1s both; }
+        .h-c { animation: heroFade 0.5s ease-out 0.2s both; }
+        .h-d { animation: heroFade 0.5s ease-out 0.32s both; }
       `}</style>
 
-      <div className="flex flex-col md:flex-row items-start gap-8 mb-6">
+      {/* Top row: name + photo */}
+      <div className="flex items-start justify-between gap-6 mb-8 h-a">
+        <div>
+          {/* Small label above name */}
+          <p className="text-[11px] tracking-[0.15em] uppercase text-white/20 mb-3 font-medium">
+            Portfolio — 2025
+          </p>
+          <h1 className="text-[2.6rem] md:text-6xl font-bold tracking-tight text-white leading-[1.05]">
+            Kaushalendra<br />Singh
+          </h1>
+        </div>
 
-        {/* Profile */}
-        <div className="relative pt-1 h1 flex-shrink-0">
-          <div
-            className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-blue-600/25 to-cyan-500/20 blur-2xl"
-            style={{ animation: "glowPulse 3.5s ease-in-out infinite" }}
-          />
-          <div className="relative w-32 h-36 rounded-3xl overflow-hidden border border-white/15 shadow-xl shadow-black/60">
+        {/* Photo - no glow, no border-radius overload, clean */}
+        <div className="relative flex-shrink-0 h-b">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden
+            border border-white/[0.08]">
             <Image
               src="/kaushal.jpeg"
               alt="Kaushalendra Singh"
-              width={138}
-              height={144}
-              className="object-cover"
+              width={96}
+              height={96}
+              className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
               priority
             />
           </div>
-
-          {/* Availability */}
-          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2.5 py-1 bg-green-500/10 border border-green-500/25 rounded-full text-[11px] text-green-400 backdrop-blur-sm">
+          {/* Available dot */}
+          <div className="absolute -bottom-1 -right-1 flex items-center gap-1 px-2 py-0.5
+            bg-[#0d1f12] border border-green-900/60 rounded-full">
             <span
-              className="w-1.5 h-1.5 rounded-full bg-green-400"
-              style={{ animation: "blink 2.2s ease-in-out infinite" }}
+              className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"
+              style={{ animation: "blink 2s step-end infinite" }}
             />
-            Available
+            <span className="text-[10px] text-green-400/80 font-medium">open</span>
           </div>
         </div>
+      </div>
 
-        {/* Content */}
-        <div className="flex-1 min-w-0">
+      {/* Role line */}
+      <div className="h-c mb-6">
+        <p className="text-sm text-white/40 font-mono">
+          Full Stack Engineer &nbsp;/&nbsp; AI Backend &nbsp;/&nbsp; LLM Systems
+        </p>
+      </div>
 
-          <div className="h2">
-            <h1 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
-              Kaushalendra Singh
-            </h1>
+      {/* Bio - written like a human, not a LinkedIn summary */}
+      <div className="h-d mb-8 max-w-lg">
+        <p className="text-[15px] text-white/55 leading-[1.75]">
+          I&apos;m a CS undergrad at HBTU who spends most of my time building
+          AI-native systems - things like RAG pipelines, multi-agent workflows,
+          and the backends that keep them from falling apart under real load.
+          Currently interning and shipping.
+        </p>
+      </div>
 
-            {/*UPDATED ROLE */}
-            <p className="text-base md:text-lg text-gray-300 font-medium mb-2">
-              Full Stack Engineer • AI Backend • LLM & Agentic Systems
-            </p>
+      {/* Links - plain text style, no pill buttons */}
+      <div className="h-d flex flex-wrap items-center gap-x-6 gap-y-3">
+        {[
+          { label: "GitHub",   href: "https://github.com/Kaushalendra-Marcus",                           icon: <FaGithub className="text-sm" /> },
+          { label: "LinkedIn", href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/",        icon: <FaLinkedin className="text-sm" /> },
+          { label: "X",        href: "https://x.com/Kaushal__marcus",                                   icon: <FaXTwitter className="text-sm" /> },
+          { label: "Email",    href: "mailto:yadavkausha4a5@gmail.com",                                  icon: <FaEnvelope className="text-sm" /> },
+        ].map(({ label, href, icon }) => (
+          <a
+            key={label}
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="flex items-center gap-1.5 text-sm text-white/30
+              hover:text-white/80 transition-colors duration-200 link-underline"
+          >
+            {icon}
+            {label}
+          </a>
+        ))}
 
-            {/*TAGLINE */}
-            <p className="text-sm text-gray-500 mb-6 max-w-lg leading-relaxed">
-              I build AI-native apps — RAG pipelines, agentic workflows,
-              and the production backends that make them reliable at scale.
-            </p>
-          </div>
+        <span className="text-white/10 text-sm hidden sm:block">|</span>
 
-          {/* Socials */}
-          <div className="flex flex-wrap gap-2.5 h3">
-            {socials.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`group flex items-center gap-2 px-3.5 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl
-                  transition-all duration-300 text-gray-500 hover:bg-white/[0.07] ${item.hover}`}
-              >
-                <span className="text-base group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </span>
-                <span className="max-w-0 overflow-hidden group-hover:max-w-[80px] transition-all duration-300 text-xs font-medium">
-                  {item.name}
-                </span>
-              </a>
-            ))}
+        <a
+          href="/Kaushalendr_Singh.pdf"
+          download="Kaushalendra_Singh_Resume.pdf"
+          className="flex items-center gap-1.5 text-sm text-white/40
+            hover:text-white transition-colors duration-200"
+        >
+          <FaFilePdf className="text-sm" />
+          Resume
+        </a>
 
-            {/* CTA */}
-            <a
-              href="https://cal.com/kaushalendra/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600
-                hover:from-blue-500 hover:to-cyan-500 rounded-xl transition-all duration-300
-                text-white text-sm font-semibold shadow-lg hover:-translate-y-0.5"
-            >
-              <FaCalendar />
-              Schedule a call
-            </a>
-
-
-          </div>
-        </div>
+        <a
+          href="https://cal.com/kaushalendra/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-medium text-white bg-white/[0.07] hover:bg-white/[0.12]
+            border border-white/[0.10] rounded-lg px-4 py-1.5
+            transition-all duration-200"
+        >
+          Schedule a call
+        </a>
       </div>
     </section>
   );

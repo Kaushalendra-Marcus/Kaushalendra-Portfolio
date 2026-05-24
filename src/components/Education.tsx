@@ -1,44 +1,26 @@
 export default function Education() {
-  const highlights = [
-    "Relevant coursework: Data Structures & Algorithms, Operating Systems, DBMS, LLD, Web Development",
-    "Built AI-native projects (RAG pipelines, agentic systems) as independent study alongside academics",
-    "Active participant in college hackathons and open-source contribution drives",
-  ];
-
   return (
-    <section id="education" className="mb-20 pb-12 border-b border-white/10">
-      <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-        Education
-      </h2>
+    <section id="education" className="mb-24 pb-16 border-b border-white/[0.06]">
+      <p className="section-label">Education</p>
 
-      <div className="relative grid grid-cols-[20px_1fr] gap-5">
-        {/* Timeline dot */}
-        <div className="flex flex-col items-center pt-1.5">
-          <div className="w-3 h-3 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_0_10px_rgba(59,130,246,0.55)] flex-shrink-0 z-10" />
+      <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 md:gap-8">
+        <div>
+          <p className="text-[11px] text-white/20 font-mono mb-1">2023 - 2027</p>
+          <p className="text-sm text-white/50">HBTU Kanpur</p>
         </div>
-
-        <div className="pb-2">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-            <div>
-              <h3 className="text-base font-semibold text-white">
-                Harcourt Butler Technical University
-              </h3>
-              <p className="text-sm text-gray-500 mt-0.5">
-                Bachelor of Technology — Computer Science & Engineering
-              </p>
-            </div>
-            <span className="text-[11px] font-mono text-gray-600 bg-white/[0.04] border border-white/[0.07] px-2.5 py-1 rounded-lg w-fit flex-shrink-0">
-              2023 – 2027
-            </span>
-          </div>
-
-          {/* Highlights */}
+        <div>
+          <p className="text-sm font-medium text-white/80 mb-3">
+            B.Tech - Computer Science
+          </p>
           <ul className="space-y-2">
-            {highlights.map((h, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-gray-500 leading-relaxed">
-                <span className="text-cyan-500/50 flex-shrink-0 mt-1 text-xs" aria-hidden="true">▹</span>
-                <span>{h}</span>
+            {[
+              "Coursework: Data Structures, Operating Systems, DBMS, Computer Networks, System Design",
+              "Built AI projects independently alongside academics - RAG systems, agentic workflows, full-stack apps",
+              "Participated in hackathons and open-source contribution drives",
+            ].map((item, i) => (
+              <li key={i} className="text-sm text-white/35 leading-relaxed pl-3 relative
+                before:absolute before:left-0 before:top-[9px] before:w-1 before:h-px before:bg-white/15">
+                {item}
               </li>
             ))}
           </ul>

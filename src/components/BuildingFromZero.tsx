@@ -2,17 +2,17 @@ export default function BuildingFromZero() {
   return (
     <section className="mb-20 pb-12 border-b border-white/10">
       <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-        Building From Zero
+        How I Work
       </h2>
-      <p className="text-gray-300 leading-relaxed text-lg mb-4">
-        I own the full stack — from schema design and AI pipeline architecture to the UI that
-        ships to real users. Every project in this portfolio was built alone, from an empty
-        directory, without boilerplate or starter templates.
+      <p className="text-gray-300 leading-relaxed text-base mb-4">
+        In today&apos;s world, writing code is the easy part. What matters is understanding
+        how systems fit together - knowing when to reach for an abstraction, when to question
+        a pattern, and how to make good decisions under ambiguity.
       </p>
-      <p className="text-gray-500 leading-relaxed text-base">
-        That means I&apos;ve debugged RAG hallucinations at 2am, rewritten authentication flows
-        mid-sprint, and optimised database queries until p95 latency dropped below 100ms.
-        I care about systems that actually work in production, not just in demos.
+      <p className="text-gray-500 leading-relaxed text-sm">
+        I focus on reading codebases quickly, understanding system design tradeoffs, and
+        shipping things that hold up under real usage. I care less about reinventing wheels
+        and more about knowing exactly which wheel to use, and why.
       </p>
     </section>
   );
