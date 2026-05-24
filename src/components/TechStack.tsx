@@ -19,8 +19,8 @@ export default function TechStack() {
         My Stack
       </h2>
 
-      {/* FIX: give real height container */}
-      <div className="relative h-[120px] flex flex-col justify-center overflow-hidden">
+      {/* Give enough vertical room for both rows without clipping */}
+      <div className="relative min-h-[140px] flex flex-col justify-center overflow-hidden gap-0">
 
         {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-black/80 to-transparent z-10 pointer-events-none" />

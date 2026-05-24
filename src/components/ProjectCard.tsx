@@ -108,7 +108,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           </span>
         </div>
 
-        <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed mb-3">
+        <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-3">
           {project.description}
         </p>
 
@@ -117,15 +117,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           {project.technologies.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="px-2 py-0.5 bg-white/[0.04] border border-white/[0.07]
-                rounded-md text-[10px] text-white/35"
+              className="px-2 py-0.5 bg-white/[0.05] border border-white/[0.10]
+              rounded-md text-[10px] text-white/50"
             >
               {tech}
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="px-2 py-0.5 bg-white/[0.03] border border-white/[0.05]
-              rounded-md text-[10px] text-white/20">
+            <span className="px-2 py-0.5 bg-white/[0.03] border border-white/[0.06]
+              rounded-md text-[10px] text-white/30">
               +{project.technologies.length - 4}
             </span>
           )}

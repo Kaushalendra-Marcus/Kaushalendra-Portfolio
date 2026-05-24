@@ -4,7 +4,6 @@ import Image from "next/image";
 import {
   FaLinkedin,
   FaEnvelope,
-  FaPhone,
   FaCalendar,
   FaGithub,
   FaFilePdf,
@@ -46,7 +45,7 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="mb-20 pb-12 border-b border-white/10">
+    <section id="hero" className="mb-20 pb-12 border-b border-white/10 pt-2">
       <style>{`
         @keyframes heroIn {
           from { opacity: 0; transform: translateY(18px); }
@@ -109,7 +108,8 @@ export default function Hero() {
 
             {/*TAGLINE */}
             <p className="text-sm text-gray-500 mb-6 max-w-lg leading-relaxed">
-              Building full-stack applications and intelligent AI systems - from scalable backend architectures to RAG pipelines and agentic workflows.
+              I build AI-native apps — RAG pipelines, agentic workflows,
+              and the production backends that make them reliable at scale.
             </p>
           </div>
 
@@ -146,11 +146,7 @@ export default function Hero() {
               Schedule a call
             </a>
 
-            {/* Phone */}
-            <div className="flex items-center gap-2 px-3.5 py-2 bg-white/[0.03] border border-white/[0.06] rounded-xl text-gray-600">
-              <FaPhone className="text-xs" />
-              <span className="text-xs">+91 6398519072</span>
-            </div>
+
           </div>
         </div>
       </div>

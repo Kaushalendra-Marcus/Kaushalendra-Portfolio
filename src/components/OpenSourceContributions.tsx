@@ -65,10 +65,7 @@ export default function OpenSourceContributions() {
                     <span className="text-cyan-500/50 flex-shrink-0 mt-1 text-xs" aria-hidden="true">
                       ▹
                     </span>
-                    <span
-                      dangerouslySetInnerHTML={{ __html: achievement }}
-                      itemProp="description"
-                    />
+                    <span itemProp="description">{achievement}</span>
                   </li>
                 ))}
               </ul>
