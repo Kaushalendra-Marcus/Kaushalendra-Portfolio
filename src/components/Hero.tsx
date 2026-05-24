@@ -25,36 +25,40 @@ export default function Hero() {
       {/* Top row: name + photo */}
       <div className="flex items-start justify-between gap-6 mb-8 h-a">
         <div>
-          {/* Small label above name */}
-          <p className="text-[11px] tracking-[0.15em] uppercase text-white/20 mb-3 font-medium">
-            Portfolio — 2025
-          </p>
           <h1 className="text-[2.6rem] md:text-6xl font-bold tracking-tight text-white leading-[1.05]">
-            Kaushalendra<br />Singh
+            Kaushalendra
+            <br />
+            Singh
           </h1>
         </div>
 
         {/* Photo - no glow, no border-radius overload, clean */}
         <div className="relative flex-shrink-0 h-b">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden
-            border border-white/[0.08]">
+          <div
+            className="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden
+            border border-white/[0.08]"
+          >
             <Image
               src="/kaushal.jpeg"
               alt="Kaushalendra Singh"
               width={96}
               height={96}
-              className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+              className="object-cover w-full h-full grayscale-0 hover:grayscale transition-all duration-500"
               priority
             />
           </div>
           {/* Available dot */}
-          <div className="absolute -bottom-1 -right-1 flex items-center gap-1 px-2 py-0.5
-            bg-[#0d1f12] border border-green-900/60 rounded-full">
+          <div
+            className="absolute -bottom-1 -right-1 flex items-center gap-1 px-2 py-0.5
+            bg-[#0d1f12] border border-green-900/60 rounded-full"
+          >
             <span
               className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"
               style={{ animation: "blink 2s step-end infinite" }}
             />
-            <span className="text-[10px] text-green-400/80 font-medium">open</span>
+            <span className="text-[10px] text-green-400/80 font-medium">
+              open
+            </span>
           </div>
         </div>
       </div>
@@ -69,20 +73,36 @@ export default function Hero() {
       {/* Bio - written like a human, not a LinkedIn summary */}
       <div className="h-d mb-8 max-w-lg">
         <p className="text-[15px] text-white/55 leading-[1.75]">
-          I&apos;m a CS undergrad at HBTU who spends most of my time building
-          AI-native systems - things like RAG pipelines, multi-agent workflows,
-          and the backends that keep them from falling apart under real load.
-          Currently interning and shipping.
+          I build AI-native products and backend systems focused on LLM
+          workflows, real-time infrastructure, and scalable APIs. Recently
+          worked on AI learning platforms, multi-step agent pipelines, and
+          production systems used by thousands of users.
         </p>
       </div>
 
       {/* Links - plain text style, no pill buttons */}
       <div className="h-d flex flex-wrap items-center gap-x-6 gap-y-3">
         {[
-          { label: "GitHub",   href: "https://github.com/Kaushalendra-Marcus",                           icon: <FaGithub className="text-sm" /> },
-          { label: "LinkedIn", href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/",        icon: <FaLinkedin className="text-sm" /> },
-          { label: "X",        href: "https://x.com/Kaushal__marcus",                                   icon: <FaXTwitter className="text-sm" /> },
-          { label: "Email",    href: "mailto:yadavkausha4a5@gmail.com",                                  icon: <FaEnvelope className="text-sm" /> },
+          {
+            label: "GitHub",
+            href: "https://github.com/Kaushalendra-Marcus",
+            icon: <FaGithub className="text-sm" />,
+          },
+          {
+            label: "LinkedIn",
+            href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/",
+            icon: <FaLinkedin className="text-sm" />,
+          },
+          {
+            label: "X",
+            href: "https://x.com/Kaushal__marcus",
+            icon: <FaXTwitter className="text-sm" />,
+          },
+          {
+            label: "Email",
+            href: "mailto:yadavkausha4a5@gmail.com",
+            icon: <FaEnvelope className="text-sm" />,
+          },
         ].map(({ label, href, icon }) => (
           <a
             key={label}

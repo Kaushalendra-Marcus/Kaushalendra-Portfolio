@@ -9,9 +9,6 @@ export default function Education() {
           <p className="text-sm text-white/50">HBTU Kanpur</p>
         </div>
         <div>
-          <p className="text-sm font-medium text-white/80 mb-3">
-            B.Tech - Computer Science
-          </p>
           <ul className="space-y-2">
             {[
               "Coursework: Data Structures, Operating Systems, DBMS, Computer Networks, System Design",
