@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import TechStack from "@/components/TechStack";
 import Experience from "@/components/Experience";
 import OpenSourceContributions from "@/components/OpenSourceContributions";
+import GitHubStats from "@/components/GitHubStats";
 import Projects from "@/components/Projects";
 import BuildingFromZero from "@/components/BuildingFromZero";
 import Skills from "@/components/Skills";
@@ -22,6 +23,7 @@ export default function Home() {
         <TechStack />
         <Experience />
         <OpenSourceContributions />
+        <GitHubStats />
         <Projects />
         <BuildingFromZero />
         <Skills />
