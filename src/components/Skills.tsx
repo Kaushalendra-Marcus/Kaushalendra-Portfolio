@@ -9,17 +9,18 @@ export default function Skills() {
     >
       <p className="section-label">Skills</p>
 
-      <div className="space-y-5">
+      <div className="space-y-4">
         {skills.map((group, index) => (
           <div
             key={group.category}
-            className="grid grid-cols-[100px_1fr] md:grid-cols-[140px_1fr] gap-4 items-baseline"
+            className="flex flex-col sm:flex-row sm:gap-8 gap-1"
             style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.06}s both` }}
           >
-            <p className="text-[11px] text-white/20 uppercase tracking-[0.1em] font-medium pt-0.5">
+            <p className="text-[11px] text-white/20 uppercase tracking-[0.1em] font-medium
+              sm:w-44 flex-shrink-0 pt-0.5">
               {group.category}
             </p>
-            <p className="text-sm text-white/45 leading-relaxed">
+            <p className="text-sm text-white/40 leading-relaxed flex-1 min-w-0">
               {group.items.join(", ")}
             </p>
           </div>
