@@ -25,9 +25,6 @@ export default function Hero() {
       {/* Top row: name + photo */}
       <div className="flex items-start justify-between gap-4 mb-8 h-a">
         <div className="min-w-0">
-          <p className="text-[11px] tracking-[0.15em] uppercase text-white/20 mb-3 font-medium">
-            Portfolio - 2026
-          </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05]">
             Kaushalendra<br />Singh
           </h1>

@@ -14,8 +14,11 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    // ─── SETUP: Go to https://formspree.io → New Form → copy the ID → replace below ───
+    // e.g. if your form URL is https://formspree.io/f/abcdefgh, use "abcdefgh"
+    const FORMSPREE_ID = "YOUR_FORM_ID";
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(form),

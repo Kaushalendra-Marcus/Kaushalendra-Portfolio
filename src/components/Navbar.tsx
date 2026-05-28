@@ -75,6 +75,19 @@ export default function Navbar() {
           })}
         </nav>
 
+        {/* Keyboard shortcut hint */}
+        <button
+          onClick={() => {
+            const ev = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
+            window.dispatchEvent(ev);
+          }}
+          className="hidden lg:flex items-center gap-1.5 text-[10px] text-white/15
+            font-mono hover:text-white/35 transition-colors"
+        >
+          <kbd className="bg-white/[0.04] border border-white/[0.08] rounded px-1 py-0.5">/</kbd>
+          <span>search</span>
+        </button>
+
         {/* CTA */}
         <a
           href="https://cal.com/kaushalendra/30min"
