@@ -7,53 +7,7 @@ const GITHUB_USER = "Kaushalendra-Marcus";
 const STREAK_URL = `https://streak-stats.demolab.com/?user=${GITHUB_USER}&hide_border=true&background=0d0d0d&ring=22d3ee&fire=3b82f6&currStreakLabel=9ca3af&sideLabels=9ca3af&dates=6b7280&currStreakNum=ffffff&sideNums=e5e7eb`;
 const VIEWS_URL  = `https://komarev.com/ghpvc/?username=${GITHUB_USER}&color=22d3ee&style=flat&label=profile+views`;
 
-// ─── Stats card — built manually from GitHub REST API ───────────────────────
-function StatCard() {
-  const [stats, setStats] = useState<{
-    repos: number; stars: number; followers: number;
-  } | null>(null);
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${GITHUB_USER}`)
-      .then(r => r.json())
-      .then(u => {
-        // Also fetch repos to sum stars
-        fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`)
-          .then(r => r.json())
-          .then((repos: { stargazers_count: number }[]) => {
-            const stars = Array.isArray(repos)
-              ? repos.reduce((s, r) => s + (r.stargazers_count || 0), 0)
-              : 0;
-            setStats({ repos: u.public_repos, stars, followers: u.followers });
-          });
-      })
-      .catch(() => setStats({ repos: 53, stars: 9, followers: 18 }));
-  }, []);
-
-  const items = stats
-    ? [
-        { label: "Public Repos",      value: stats.repos },
-        { label: "Total Stars",        value: stats.stars },
-        { label: "Followers",          value: stats.followers },
-        { label: "Total Commits",      value: "976+" },
-      ]
-    : null;
-
-  return (
-    <div className="grid grid-cols-2 gap-3 py-1">
-      {items
-        ? items.map(({ label, value }) => (
-            <div key={label} className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-4 text-center">
-              <p className="text-2xl font-bold text-white">{value}</p>
-              <p className="text-[11px] text-gray-600 mt-1">{label}</p>
-            </div>
-          ))
-        : Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="bg-white/[0.04] rounded-xl p-4 h-16 animate-pulse" />
-          ))}
-    </div>
-  );
-}
 
 // ─── Contribution heatmap — GitHub contributions API via a CORS proxy ───────
 type Week = { contributionDays: { contributionCount: number; date: string }[] };
@@ -229,12 +183,8 @@ export default function GitHubStats() {
 
       {/* Stats + Streak */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-5 hover:border-white/10 transition-all duration-300">
-          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-600 mb-4">Stats</p>
-          <StatCard />
-        </div>
         <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-5 hover:border-white/10 transition-all duration-300 overflow-hidden">
-          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-600 mb-4">Streak</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-600 mb-4">Stats</p>
           <img src={STREAK_URL} alt="GitHub streak" className="w-full" loading="lazy" />
         </div>
       </div>
