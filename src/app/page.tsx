@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import StatsBar from "@/components/StatsBar";
 import Experience from "@/components/Experience";
 import TechStack from "@/components/TechStack";
 import Projects from "@/components/Projects";
@@ -23,12 +22,11 @@ export default function Home() {
       <CommandPalette />
       <main className="w-full max-w-5xl mx-auto px-6 lg:px-12 py-20 pt-28 relative z-10">
         <Hero />
-        <StatsBar />
-        <Experience />
+        <GitHubStats />
         <TechStack />
         <Projects />
+        <Experience />
         <OpenSourceContributions />
-        <GitHubStats />
         <Writing />
         <Skills />
         <Education />
