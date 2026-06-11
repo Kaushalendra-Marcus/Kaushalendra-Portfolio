@@ -6,7 +6,6 @@ export default function Loader({ onDone }: { onDone: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [nameVisible, setNameVisible] = useState(false);
   const [tagVisible, setTagVisible] = useState(false);
-  const [enterVisible, setEnterVisible] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -28,14 +27,13 @@ export default function Loader({ onDone }: { onDone: () => void }) {
     const CX = () => W() / 2;
     const CY = () => H() / 2;
 
-    const chipW = () => Math.min(160, W() * 0.3);
-    const chipH = () => Math.min(110, H() * 0.22);
+    const chipW = () => Math.min(160, W() * 0.28);
+    const chipH = () => Math.min(100, H() * 0.2);
 
-    // 3 lines per side, evenly spaced inside chip height
-    // Each line goes straight horizontal from chip edge outward
     const LINE_COUNT = 3;
     const COLORS_LEFT  = ["#aa44ff", "#00d4ff", "#ffcc00"];
     const COLORS_RIGHT = ["#00d4ff", "#00ff88", "#ff3366"];
+    const LINE_LEN = () => Math.min(160, W() * 0.18);
 
     type Particle = { x: number; y: number; vx: number; color: string; alpha: number };
     let particles: Particle[] = [];
@@ -45,15 +43,8 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       return CY() - chipH() / 2 + spacing * (i + 1);
     }
 
-    function getLineEndX(side: -1 | 1) {
-      const lineLen = Math.min(W() * 0.22, 180);
-      return CX() + side * (chipW() / 2 + lineLen);
-    }
-
-    // per-line draw progress
-    const progress: number[] = new Array(LINE_COUNT * 2).fill(0);
-    const STAGGER = 220; // ms between each line
-    const DUR = 500;
+    const STAGGER = 200;
+    const DUR = 480;
 
     function getP(idx: number, elapsed: number) {
       return Math.max(0, Math.min(1, (elapsed - idx * STAGGER) / DUR));
@@ -68,7 +59,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
     ) {
       const y = getLineY(lineIdx);
       const startX = CX() + side * (chipW() / 2);
-      const endX = getLineEndX(side);
+      const endX = startX + side * LINE_LEN();
       const drawnX = startX + (endX - startX) * p;
 
       // ghost
@@ -83,7 +74,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
 
       if (p <= 0) return;
 
-      // lit segment
+      // drawn segment
       ctx.save();
       ctx.strokeStyle = "#252525";
       ctx.lineWidth = 0.8;
@@ -93,7 +84,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       ctx.stroke();
       ctx.restore();
 
-      // dot at head of drawing line
+      // traveling dot
       if (p < 0.99) {
         ctx.save();
         ctx.beginPath();
@@ -105,10 +96,10 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         ctx.restore();
       }
 
-      // endpoint glow bar when fully drawn
+      // endpoint glow bar
       if (p >= 0.99) {
         const flicker = 0.65 + 0.35 * Math.sin(now / 370 + lineIdx * 1.7);
-        const barLen = Math.min(22, W() * 0.04);
+        const barLen = Math.min(20, W() * 0.03);
         ctx.save();
         ctx.globalAlpha = flicker;
         ctx.strokeStyle = color;
@@ -121,7 +112,6 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         ctx.stroke();
         ctx.restore();
 
-        // dot at connector
         ctx.save();
         ctx.beginPath();
         ctx.arc(endX, y, 1.8, 0, Math.PI * 2);
@@ -132,15 +122,8 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         ctx.fill();
         ctx.restore();
 
-        // occasional particle
         if (Math.random() < 0.025) {
-          particles.push({
-            x: endX,
-            y,
-            vx: side * (1.0 + Math.random() * 0.8),
-            color,
-            alpha: 0.9,
-          });
+          particles.push({ x: endX, y, vx: side * (1.0 + Math.random() * 0.8), color, alpha: 0.9 });
         }
       }
     }
@@ -176,9 +159,8 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       ctx.stroke();
       ctx.restore();
 
-      // top & bottom pin rows
-      const pinCount = 5;
-      const pinW = 5, pinH = 4;
+      // top & bottom pins
+      const pinCount = 5, pinW = 5, pinH = 4;
       const gap = (w - 24) / (pinCount - 1);
       [y - pinH - 1, y + h + 1].forEach((py) => {
         for (let i = 0; i < pinCount; i++) {
@@ -194,10 +176,10 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         }
       });
 
-      // side pin dots matching line positions
+      // side pins aligned to lines
       for (let i = 0; i < LINE_COUNT; i++) {
         const ly = getLineY(i);
-        [-1, 1].forEach((side) => {
+        ([-1, 1] as const).forEach((side) => {
           const px = side === -1 ? x - 5 : x + w + 1;
           ctx.save();
           ctx.beginPath();
@@ -233,23 +215,27 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       ctx.fill();
       ctx.restore();
 
-      // label
+      // chip label
       ctx.save();
-      ctx.fillStyle = "rgba(255,255,255,0.15)";
+      ctx.fillStyle = "rgba(255,255,255,0.12)";
       ctx.font = "500 9px monospace";
       ctx.textAlign = "center";
-      ctx.fillText("PORTFOLIO", CX(), CY() - 6);
-      ctx.fillStyle = "rgba(255,255,255,0.06)";
-      ctx.font = "8px monospace";
-      ctx.fillText("CPU v2.0", CX(), CY() + 8);
+      ctx.fillText("PORTFOLIO", CX(), CY() + 4);
       ctx.restore();
     }
 
     let uiPhase = 0;
+    let doneCalled = false;
+
     function tickUI(elapsed: number) {
-      if (uiPhase === 0 && elapsed > 300)  { setNameVisible(true);  uiPhase = 1; }
-      if (uiPhase === 1 && elapsed > 1000) { setTagVisible(true);   uiPhase = 2; }
-      if (uiPhase === 2 && elapsed > 2400) { setEnterVisible(true); uiPhase = 3; }
+      // all 6 lines finish by ~(5 * 200 + 480) = 1480ms
+      // name at 1600, tag at 2400, auto-enter at 3400
+      if (uiPhase === 0 && elapsed > 1600) { setNameVisible(true); uiPhase = 1; }
+      if (uiPhase === 1 && elapsed > 2400) { setTagVisible(true);  uiPhase = 2; }
+      if (uiPhase === 2 && elapsed > 3600 && !doneCalled) {
+        doneCalled = true;
+        onDone();
+      }
     }
 
     function loop() {
@@ -257,11 +243,9 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       const now = Date.now();
       const elapsed = now - startTime;
 
-      // Left lines (side = -1), stagger 0,1,2
       for (let i = 0; i < LINE_COUNT; i++) {
         drawOneLine(-1, i, getP(i, elapsed), COLORS_LEFT[i], now);
       }
-      // Right lines (side = 1), stagger 3,4,5 — slightly offset so they don't all pop at once
       for (let i = 0; i < LINE_COUNT; i++) {
         drawOneLine(1, i, getP(i + LINE_COUNT, elapsed), COLORS_RIGHT[i], now);
       }
@@ -278,7 +262,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [onDone]);
 
   return (
     <div
@@ -287,12 +271,10 @@ export default function Loader({ onDone }: { onDone: () => void }) {
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
 
-      <div
-        className="relative z-10 flex flex-col items-center pointer-events-none select-none"
-        style={{ marginTop: "130px" }}
-      >
+      {/* text sits BELOW the chip — no overlap */}
+      <div className="relative z-10 flex flex-col items-center pointer-events-none select-none mt-48">
         <p
-          className="font-mono text-white uppercase tracking-[10px] sm:tracking-[14px] text-sm sm:text-base transition-opacity duration-[1200ms]"
+          className="font-mono text-white uppercase tracking-[10px] sm:tracking-[14px] text-sm sm:text-base transition-opacity duration-[1000ms]"
           style={{ opacity: nameVisible ? 1 : 0 }}
         >
           Kaushalendra
@@ -304,28 +286,6 @@ export default function Loader({ onDone }: { onDone: () => void }) {
           builds things that ship.
         </p>
       </div>
-
-      <button
-        onClick={onDone}
-        className="relative z-10 mt-6 font-mono text-[9px] tracking-[5px] uppercase px-7 py-2 cursor-pointer transition-all duration-500"
-        style={{
-          opacity: enterVisible ? 1 : 0,
-          border: "0.5px solid rgba(255,255,255,0.12)",
-          color: "rgba(255,255,255,0.28)",
-          background: "transparent",
-          pointerEvents: enterVisible ? "auto" : "none",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)";
-          e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
-          e.currentTarget.style.color = "rgba(255,255,255,0.28)";
-        }}
-      >
-        enter ↗
-      </button>
     </div>
   );
 }
