@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
@@ -13,8 +16,15 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import ScrollLine from "@/components/ScrollLine";
 import CommandPalette from "@/components/CommandPalette";
+import Loader from "@/components/Loader";
 
 export default function Home() {
+  const [loaded, setLoaded] = useState(false);
+
+  if (!loaded) {
+    return <Loader onDone={() => setLoaded(true)} />;
+  }
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
