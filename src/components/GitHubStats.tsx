@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 const GITHUB_USER = "Kaushalendra-Marcus";
 
-const STREAK_URL = `https://streak-stats.demolab.com/?user=${GITHUB_USER}&hide_border=true&background=0d0d0d&ring=22d3ee&fire=3b82f6&currStreakLabel=9ca3af&sideLabels=9ca3af&dates=6b7280&currStreakNum=ffffff&sideNums=e5e7eb`;
 const VIEWS_URL  = `https://komarev.com/ghpvc/?username=${GITHUB_USER}&color=22d3ee&style=flat&label=profile+views`;
 
 
@@ -179,14 +178,6 @@ export default function GitHubStats() {
       <div className="flex items-baseline justify-between mb-8">
         <p className="section-label" style={{ marginBottom: 0 }}>GitHub</p>
         <img src={VIEWS_URL} alt="Profile views" className="h-5 opacity-60" loading="lazy" />
-      </div>
-
-      {/* Stats + Streak */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-5 hover:border-white/10 transition-all duration-300 overflow-hidden">
-          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-600 mb-4">Stats</p>
-          <img src={STREAK_URL} alt="GitHub streak" className="w-full" loading="lazy" />
-        </div>
       </div>
 
       {/* Heatmap */}

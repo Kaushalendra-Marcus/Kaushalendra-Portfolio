@@ -39,7 +39,7 @@ function ContributionItem({
               {contribution.project}
             </a>
           </div>
-          <p className="text-[11px] text-white/20 font-mono mt-1.5 pl-8">
+          <p className="text-[11px] text-white/40 font-mono mt-1.5 pl-8">
             {contribution.role}
           </p>
         </div>
@@ -49,11 +49,11 @@ function ContributionItem({
           <button
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
-            className="flex items-center gap-1.5 text-[11px] text-white/25 hover:text-white/50
+            className="flex items-center gap-1.5 text-[11px] text-white/40 hover:text-white/65
               font-mono transition-colors duration-200 -ml-3 px-3 py-1"
           >
             <span
-              className="inline-block text-white/30 transition-transform duration-300"
+              className="inline-block text-white/45 transition-transform duration-300"
               style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
             >
               ›
@@ -73,7 +73,7 @@ function ContributionItem({
               {contribution.achievements.map((item, i) => (
                 <li
                   key={i}
-                  className="text-sm text-white/35 leading-relaxed pl-3 relative
+                  className="text-sm text-white/45 leading-relaxed pl-3 relative
                     before:absolute before:left-0 before:top-[9px]
                     before:w-1 before:h-px before:bg-white/15"
                 >

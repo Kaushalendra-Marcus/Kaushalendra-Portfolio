@@ -281,7 +281,7 @@ export default function Loader({ onDone }: { onDone: () => void }) {
         </p>
         <p
           className="font-mono text-[9px] sm:text-[10px] tracking-[4px] uppercase mt-3 transition-opacity duration-[1000ms]"
-          style={{ opacity: tagVisible ? 1 : 0, color: "rgba(255,255,255,0.2)" }}
+          style={{ opacity: tagVisible ? 1 : 0, color: "rgba(255,255,255,0.4)" }}
         >
           builds things that ship.
         </p>

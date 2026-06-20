@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* Logo */}
         <button
           onClick={() => scrollTo("#hero")}
-          className="text-xs font-mono text-white/30 hover:text-white/70 transition-colors tracking-widest uppercase"
+          className="text-xs font-mono text-white/40 hover:text-white/75 transition-colors tracking-widest uppercase"
         >
           KS
         </button>
@@ -66,7 +66,7 @@ export default function Navbar() {
                 key={href}
                 onClick={() => scrollTo(href)}
                 className={`text-xs transition-colors duration-200 ${
-                  isActive ? "text-white/80" : "text-white/25 hover:text-white/55"
+                  isActive ? "text-white/85" : "text-white/40 hover:text-white/65"
                 }`}
               >
                 {label}
@@ -81,8 +81,8 @@ export default function Navbar() {
             const ev = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
             window.dispatchEvent(ev);
           }}
-          className="hidden lg:flex items-center gap-1.5 text-[10px] text-white/15
-            font-mono hover:text-white/35 transition-colors"
+          className="hidden lg:flex items-center gap-1.5 text-[10px] text-white/30
+            font-mono hover:text-white/55 transition-colors"
         >
           <kbd className="bg-white/[0.04] border border-white/[0.08] rounded px-1 py-0.5">/</kbd>
           <span>search</span>
@@ -120,7 +120,7 @@ export default function Navbar() {
               <button
                 key={href}
                 onClick={() => scrollTo(href)}
-                className="text-left py-2 text-sm text-white/35 hover:text-white/70 transition-colors"
+                className="text-left py-2 text-sm text-white/45 hover:text-white/80 transition-colors"
               >
                 {label}
               </button>

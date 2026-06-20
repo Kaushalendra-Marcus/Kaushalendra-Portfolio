@@ -57,7 +57,7 @@ export default function Hero() {
 
       {/* Role line */}
       <div className="h-c mb-5">
-        <p className="text-xs sm:text-sm text-white/35 font-mono">
+        <p className="text-xs sm:text-sm text-white/45 font-mono">
           Full Stack &nbsp;/&nbsp; AI Backend &nbsp;/&nbsp; LLM Systems
         </p>
       </div>
@@ -85,7 +85,7 @@ export default function Hero() {
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="flex items-center gap-1.5 text-sm text-white/25
+            className="flex items-center gap-1.5 text-sm text-white/40
               hover:text-white/70 transition-colors duration-200 link-underline"
           >
             {icon}
@@ -98,7 +98,7 @@ export default function Hero() {
         <a
           href="/Kaushalendr_Singh.pdf"
           download="Kaushalendra_Singh_Resume.pdf"
-          className="flex items-center gap-1.5 text-sm text-white/35
+          className="flex items-center gap-1.5 text-sm text-white/45
             hover:text-white/70 transition-colors duration-200"
         >
           <FaFilePdf className="text-sm" />

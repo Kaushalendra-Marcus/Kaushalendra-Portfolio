@@ -19,7 +19,7 @@ function ExperienceItem({
       <div className="flex flex-col sm:flex-row sm:gap-8">
         {/* Left meta */}
         <div className="flex-shrink-0 sm:w-44 mb-3 sm:mb-0 sm:pt-0.5">
-          <p className="text-[11px] text-white/20 font-mono mb-1.5">{exp.period}</p>
+          <p className="text-[11px] text-white/40 font-mono mb-1.5">{exp.period}</p>
 
           <div className="flex items-center gap-2">
             {exp.logo && (
@@ -44,7 +44,7 @@ function ExperienceItem({
           </div>
 
           {exp.note && (
-            <p className="text-[10px] text-white/15 font-mono mt-1.5 pl-8">
+            <p className="text-[10px] text-white/35 font-mono mt-1.5 pl-8">
               {exp.note}
             </p>
           )}
@@ -57,11 +57,11 @@ function ExperienceItem({
           <button
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
-            className="flex items-center gap-1.5 text-[11px] text-white/25 hover:text-white/50
+            className="flex items-center gap-1.5 text-[11px] text-white/40 hover:text-white/65
               font-mono transition-colors duration-200 -ml-3 px-3 py-1"
           >
             <span
-              className="inline-block text-white/30 transition-transform duration-300"
+              className="inline-block text-white/45 transition-transform duration-300"
               style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
             >
               ›
@@ -81,7 +81,7 @@ function ExperienceItem({
               {exp.achievements.map((item, i) => (
                 <li
                   key={i}
-                  className="text-sm text-white/35 leading-relaxed pl-3 relative
+                  className="text-sm text-white/45 leading-relaxed pl-3 relative
                     before:absolute before:left-0 before:top-[9px]
                     before:w-1 before:h-px before:bg-white/15"
                 >

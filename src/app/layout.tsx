@@ -2,7 +2,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ScrollAnimator from "@/components/ScrollAnimator";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
@@ -103,7 +102,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-32x32.png", sizes: "32x32" },
     ],
   },
 
@@ -163,7 +161,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white`}
       >
-        <ScrollAnimator />
         {children}
         <Analytics />
       </body>

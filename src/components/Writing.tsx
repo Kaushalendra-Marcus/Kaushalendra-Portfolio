@@ -39,7 +39,7 @@ export default function Writing() {
           href="https://medium.com/@Kaushalendra-marcus"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[11px] text-white/20 hover:text-white/50 transition-colors font-mono link-underline"
+          className="text-[11px] text-white/35 hover:text-white/65 transition-colors font-mono link-underline"
         >
           All articles
         </a>
@@ -74,13 +74,13 @@ export default function Writing() {
                 transition-colors duration-200 leading-snug mb-1.5 line-clamp-2">
                 {article.title}
               </p>
-              <p className="text-xs text-white/25 leading-relaxed line-clamp-2 flex-1 mb-3">
+              <p className="text-xs text-white/40 leading-relaxed line-clamp-2 flex-1 mb-3">
                 {article.description}
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] text-white/20 font-mono">{article.date}</span>
-                <span className="text-white/10 text-[10px]">·</span>
-                <span className="text-[10px] text-white/20 font-mono">{article.readTime} read</span>
+                <span className="text-[10px] text-white/35 font-mono">{article.date}</span>
+                <span className="text-white/15 text-[10px]">·</span>
+                <span className="text-[10px] text-white/35 font-mono">{article.readTime} read</span>
               </div>
             </div>
           </a>

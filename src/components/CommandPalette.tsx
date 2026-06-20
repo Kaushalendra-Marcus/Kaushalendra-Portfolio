@@ -11,7 +11,6 @@ const SECTIONS = [
   { label: "Writing",            id: "writing" },
   { label: "Skills",             id: "skills" },
   { label: "Education",          id: "education" },
-  { label: "Currently Exploring",id: "currently-exploring" },
   { label: "Contact",            id: "contact" },
 ];
 
@@ -83,10 +82,10 @@ export default function CommandPalette() {
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Jump to section..."
-            className="flex-1 bg-transparent text-sm text-white placeholder-white/20
+            className="flex-1 bg-transparent text-sm text-white placeholder-white/30
               outline-none border-none"
           />
-          <kbd className="text-[10px] text-white/20 font-mono bg-white/[0.05]
+          <kbd className="text-[10px] text-white/35 font-mono bg-white/[0.05]
             border border-white/[0.08] rounded px-1.5 py-0.5">
             esc
           </kbd>
@@ -95,7 +94,7 @@ export default function CommandPalette() {
         {/* results */}
         <div className="py-1.5 max-h-72 overflow-y-auto">
           {filtered.length === 0 ? (
-            <p className="px-4 py-3 text-sm text-white/25">No sections found</p>
+            <p className="px-4 py-3 text-sm text-white/40">No sections found</p>
           ) : (
             filtered.map((s, i) => (
               <button
@@ -103,12 +102,12 @@ export default function CommandPalette() {
                 onClick={() => go(s.id)}
                 onMouseEnter={() => setActive(i)}
                 className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between ${
-                  active === i ? "bg-white/[0.06] text-white" : "text-white/40 hover:text-white/70"
+                  active === i ? "bg-white/[0.06] text-white" : "text-white/55 hover:text-white/80"
                 }`}
               >
                 {s.label}
                 {active === i && (
-                  <kbd className="text-[10px] text-white/25 font-mono">enter</kbd>
+                  <kbd className="text-[10px] text-white/35 font-mono">enter</kbd>
                 )}
               </button>
             ))
@@ -117,9 +116,9 @@ export default function CommandPalette() {
 
         {/* footer hint */}
         <div className="px-4 py-2 border-t border-white/[0.06] flex items-center gap-4">
-          <span className="text-[10px] text-white/15 font-mono">↑↓ navigate</span>
-          <span className="text-[10px] text-white/15 font-mono">↵ go</span>
-          <span className="text-[10px] text-white/15 font-mono">esc close</span>
+          <span className="text-[10px] text-white/35 font-mono">↑↓ navigate</span>
+          <span className="text-[10px] text-white/35 font-mono">↵ go</span>
+          <span className="text-[10px] text-white/35 font-mono">esc close</span>
         </div>
       </div>
     </div>

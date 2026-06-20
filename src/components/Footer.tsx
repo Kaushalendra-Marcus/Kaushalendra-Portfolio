@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="pt-16 pb-10">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-        <p className="text-xs text-white/15 font-mono">
+        <p className="text-xs text-white/35 font-mono">
           Kaushalendra Singh &nbsp;·&nbsp; {new Date().getFullYear()} &nbsp;·&nbsp; Last updated May 2026
         </p>
         <div className="flex items-center gap-6">
@@ -19,7 +19,7 @@ export default function Footer() {
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="text-xs text-white/20 hover:text-white/60 transition-colors link-underline"
+              className="text-xs text-white/35 hover:text-white/70 transition-colors link-underline"
             >
               {label}
             </a>
@@ -27,13 +27,13 @@ export default function Footer() {
         </div>
       </div>
       {/* Keyboard shortcut hint */}
-      <p className="text-[10px] text-white/10 font-mono">
+      <p className="text-[10px] text-white/30 font-mono">
         Press{" "}
-        <kbd className="text-white/15 bg-white/[0.04] border border-white/[0.08] rounded px-1 py-0.5 text-[9px]">
+        <kbd className="text-white/35 bg-white/[0.04] border border-white/[0.08] rounded px-1 py-0.5 text-[9px]">
           /
         </kbd>
         {" "}or{" "}
-        <kbd className="text-white/15 bg-white/[0.04] border border-white/[0.08] rounded px-1 py-0.5 text-[9px]">
+        <kbd className="text-white/35 bg-white/[0.04] border border-white/[0.08] rounded px-1 py-0.5 text-[9px]">
           ⌘K
         </kbd>
         {" "}to open the command palette

@@ -66,7 +66,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
         {project.status && (
           <div className="absolute bottom-3 left-3">
-            <span className="text-[10px] font-mono text-white/30 bg-black/60 px-2 py-0.5 rounded">
+            <span className="text-[10px] font-mono text-white/45 bg-black/60 px-2 py-0.5 rounded">
               {project.status}
             </span>
           </div>
@@ -83,17 +83,17 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
           <FaArrowUpRightFromSquare className="text-[10px] text-white/20
             group-hover:text-white/50 transition-colors mt-0.5 flex-shrink-0" />
         </div>
-        <p className="text-xs text-white/30 leading-relaxed mb-3 line-clamp-2">
+        <p className="text-xs text-white/45 leading-relaxed mb-3 line-clamp-2">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-1.5">
           {project.technologies.slice(0, 4).map((tech) => (
-            <span key={tech} className="text-[10px] text-white/25 font-mono">
+            <span key={tech} className="text-[10px] text-white/40 font-mono">
               {tech}
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="text-[10px] text-white/15 font-mono">
+            <span className="text-[10px] text-white/30 font-mono">
               +{project.technologies.length - 4}
             </span>
           )}

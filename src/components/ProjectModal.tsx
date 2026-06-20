@@ -114,7 +114,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.05] hover:bg-white/[0.08]
-                    border border-white/10 hover:border-white/20 rounded-xl text-xs text-gray-400
+                    border border-white/10 hover:border-white/20 rounded-xl text-xs text-gray-300
                     hover:text-white transition-all duration-200"
                 >
                   <FaGithub className="text-xs" />
@@ -138,7 +138,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Technologies */}
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-600 mb-2.5">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400 mb-2.5">
               Technologies
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -146,7 +146,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <span
                   key={tech}
                   className="px-2.5 py-1 bg-white/[0.04] border border-white/[0.08] rounded-lg
-                    text-xs text-gray-500 hover:border-cyan-400/20 hover:text-gray-300
+                    text-xs text-gray-300 hover:border-cyan-400/20 hover:text-gray-100
                     transition-all duration-200 cursor-default"
                 >
                   {tech}
@@ -157,17 +157,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Project details */}
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-600 mb-2.5">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400 mb-2.5">
               Project Details
             </p>
             <ul className="space-y-2.5">
               {project.detailedDescription.map((detail, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-3 text-sm text-gray-500 leading-relaxed"
+                  className="flex items-start gap-3 text-sm text-gray-300 leading-relaxed"
                   style={{ animation: `fadeIn 0.3s ease-out ${0.05 + index * 0.05}s both` }}
                 >
-                  <span className="text-cyan-500/30 flex-shrink-0 mt-1 text-[10px]" aria-hidden="true">▹</span>
+                  <span className="text-cyan-500/50 flex-shrink-0 mt-1 text-[10px]" aria-hidden="true">▹</span>
                   <span>{detail}</span>
                 </li>
               ))}

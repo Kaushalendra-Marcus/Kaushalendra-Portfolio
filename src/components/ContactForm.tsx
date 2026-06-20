@@ -28,7 +28,7 @@ export default function ContactForm() {
 
   const inputCls =
     "w-full bg-transparent border-b border-white/[0.08] py-2.5 text-sm text-white/70 " +
-    "placeholder-white/15 focus:outline-none focus:border-white/30 transition-colors duration-200";
+    "placeholder-white/25 focus:outline-none focus:border-white/30 transition-colors duration-200";
 
   if (status === "success") {
     return (
@@ -60,7 +60,7 @@ export default function ContactForm() {
           </p>
           <a
             href="mailto:yadavkausha4a5@gmail.com"
-            className="text-xs text-white/20 font-mono mt-3 block link-underline hover:text-white/45 transition-colors"
+            className="text-xs text-white/35 font-mono mt-3 block link-underline hover:text-white/60 transition-colors"
           >
             yadavkausha4a5@gmail.com
           </a>
@@ -70,7 +70,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit} className="flex-1 min-w-0 space-y-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div>
-              <label className="text-[10px] text-white/20 uppercase tracking-widest block mb-1">
+              <label className="text-[10px] text-white/35 uppercase tracking-widest block mb-1">
                 Name
               </label>
               <input
@@ -83,7 +83,7 @@ export default function ContactForm() {
               />
             </div>
             <div>
-              <label className="text-[10px] text-white/20 uppercase tracking-widest block mb-1">
+              <label className="text-[10px] text-white/35 uppercase tracking-widest block mb-1">
                 Email
               </label>
               <input
@@ -99,7 +99,7 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label className="text-[10px] text-white/20 uppercase tracking-widest block mb-1">
+            <label className="text-[10px] text-white/35 uppercase tracking-widest block mb-1">
               Message
             </label>
             <textarea

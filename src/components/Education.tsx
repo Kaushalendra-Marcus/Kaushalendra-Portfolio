@@ -5,7 +5,7 @@ export default function Education() {
 
       <div className="flex flex-col sm:flex-row sm:gap-8">
         <div className="flex-shrink-0 sm:w-44 mb-2 sm:mb-0 sm:pt-0.5">
-          <p className="text-[11px] text-white/20 font-mono mb-1">2023 - 2027</p>
+          <p className="text-[11px] text-white/40 font-mono mb-1">2023 - 2027</p>
           <p className="text-sm text-white/50">HBTU Kanpur</p>
         </div>
         <div className="flex-1 min-w-0">
@@ -20,7 +20,7 @@ export default function Education() {
             ].map((item, i) => (
               <li
                 key={i}
-                className="text-sm text-white/35 leading-relaxed pl-3 relative
+                className="text-sm text-white/45 leading-relaxed pl-3 relative
                   before:absolute before:left-0 before:top-[9px]
                   before:w-1 before:h-px before:bg-white/15"
               >
