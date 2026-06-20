@@ -18,6 +18,8 @@ export interface Experience {
   website: string;
   period: string;
   achievements: string[];
+  logo?: string;
+  note?: string;
 }
 
 export interface Skill {
