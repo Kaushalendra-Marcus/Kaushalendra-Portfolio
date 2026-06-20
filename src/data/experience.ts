@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
   {
     company: "EpicWise",
     role: "AI Founding Engineer Intern",
-    website: "https://epicwise.in",
+    website: "https://epicwise.io",
     period: "May 2026 - Present",
     achievements: [
       "Working directly with the founding team on the core EpicWise context engine - designing multi-step retrieval and reasoning pipelines using LangGraph.",
