@@ -11,6 +11,7 @@ import GitHubStats from "@/components/GitHubStats";
 import Writing from "@/components/Writing";
 import Skills from "@/components/Skills";
 import ContactForm from "@/components/ContactForm";
+import VisitorWidget from "@/components/VisitorWidget";
 import Footer from "@/components/Footer";
 import ScrollLine from "@/components/ScrollLine";
 import CommandPalette from "@/components/CommandPalette";
@@ -50,6 +51,7 @@ export default function Home() {
         <Writing />
         <Skills />
         <ContactForm />
+        <VisitorWidget />
         <Footer />
       </main>
 

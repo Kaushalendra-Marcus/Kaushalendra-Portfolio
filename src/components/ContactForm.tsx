@@ -1,12 +1,81 @@
 "use client";
 
 import { useState } from "react";
+import { FaEnvelope, FaXTwitter, FaCalendarDays, FaArrowUpRightFromSquare, FaArrowRight, FaClock, FaCircleCheck } from "react-icons/fa6";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export default function ContactForm() {
+const METHODS = [
+  {
+    icon: <FaCalendarDays />,
+    title: "Book a free call",
+    subtitle: "30 min, no pressure",
+    href: "https://cal.com/kaushalendra/30min",
+  },
+  {
+    icon: <FaEnvelope />,
+    title: "yadavkausha4a5@gmail.com",
+    subtitle: "Best for detailed questions",
+    href: "mailto:yadavkausha4a5@gmail.com",
+  },
+  {
+    icon: <FaXTwitter />,
+    title: "Follow on X",
+    subtitle: "Occasional build-in-public updates",
+    href: "https://x.com/Kaushal__marcus",
+  },
+];
+
+function GetInTouchCard() {
+  return (
+    <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6 h-full">
+      <h3 className="text-base font-semibold text-white/85 mb-1.5">Ways to Connect</h3>
+      <p className="text-sm text-white/35 leading-relaxed mb-5">
+        Open to internships, freelance work, and anything interesting in between.
+      </p>
+
+      <div className="divide-y divide-white/[0.06] border-y border-white/[0.06] mb-5">
+        {METHODS.map((m) => (
+          <a
+            key={m.title}
+            href={m.href}
+            target={m.href.startsWith("http") ? "_blank" : undefined}
+            rel={m.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="group flex items-center gap-3.5 py-3.5 hover:bg-white/[0.02] transition-colors duration-200 -mx-1 px-1 rounded-lg"
+          >
+            <span className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.07]
+              flex items-center justify-center text-white/45 group-hover:text-white/75
+              group-hover:border-white/[0.14] transition-all duration-200 flex-shrink-0 text-sm">
+              {m.icon}
+            </span>
+            <span className="flex-1 min-w-0">
+              <span className="block text-sm font-medium text-white/75 group-hover:text-white/95 transition-colors duration-200 truncate">
+                {m.title}
+              </span>
+              <span className="block text-xs text-white/30 mt-0.5">{m.subtitle}</span>
+            </span>
+            <FaArrowUpRightFromSquare className="text-[10px] text-white/15 group-hover:text-white/45 transition-colors duration-200 flex-shrink-0" />
+          </a>
+        ))}
+      </div>
+
+      <div className="space-y-2">
+        <p className="flex items-center gap-2 text-xs text-white/30">
+          <FaClock className="text-[11px] text-white/25" />
+          Usually replies within a day
+        </p>
+        <p className="flex items-center gap-2 text-xs text-white/30">
+          <FaCircleCheck className="text-[11px] text-white/25" />
+          Available for remote, freelance, or full-time
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function SendMessageCard() {
   const [status, setStatus] = useState<Status>("idle");
-  const [form, setForm]     = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
@@ -27,14 +96,14 @@ export default function ContactForm() {
   };
 
   const inputCls =
-    "w-full bg-transparent border-b border-white/[0.08] py-2.5 text-sm text-white/70 " +
-    "placeholder-white/25 focus:outline-none focus:border-white/30 transition-colors duration-200";
+    "w-full bg-white/[0.02] border border-white/[0.08] rounded-lg px-3.5 py-2.5 text-sm text-white/80 " +
+    "placeholder-white/25 focus:outline-none focus:border-white/25 focus:bg-white/[0.04] transition-colors duration-200";
 
   if (status === "success") {
     return (
-      <section id="contact" className="mb-16 pb-10 border-b border-white/[0.06]">
-        <p className="section-label">Contact</p>
-        <p className="text-sm text-white/40">
+      <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6 h-full flex flex-col items-start justify-center min-h-[280px]">
+        <h3 className="text-base font-semibold text-white/85 mb-2">Message sent</h3>
+        <p className="text-sm text-white/40 leading-relaxed">
           Got it. I&apos;ll reply within 24 hours.{" "}
           <button
             onClick={() => setStatus("idle")}
@@ -43,96 +112,78 @@ export default function ContactForm() {
             Send another
           </button>
         </p>
-      </section>
+      </div>
     );
   }
 
   return (
+    <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6 h-full">
+      <h3 className="text-base font-semibold text-white/85 mb-1.5">Quick Message</h3>
+      <p className="text-sm text-white/35 leading-relaxed mb-5">
+        Or type it out here — goes straight to my inbox.
+      </p>
+
+      <form onSubmit={handleSubmit} className="space-y-3.5">
+        <input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          required
+          placeholder="Full Name"
+          className={inputCls}
+        />
+        <input
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          required
+          placeholder="Email Address"
+          className={inputCls}
+        />
+        <textarea
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          required
+          rows={4}
+          placeholder="What's up?"
+          className={inputCls + " resize-none"}
+        />
+
+        {status === "error" && (
+          <p className="text-xs text-red-400/70">
+            Something went wrong. Email me at{" "}
+            <a href="mailto:yadavkausha4a5@gmail.com" className="underline">
+              yadavkausha4a5@gmail.com
+            </a>
+          </p>
+        )}
+
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white/85
+            bg-white/[0.06] hover:bg-white/[0.10] border border-white/[0.09]
+            rounded-lg px-5 py-2.5 transition-all duration-200
+            disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          {status === "sending" ? "Sending..." : "Send it over"}
+          {status !== "sending" && <FaArrowRight className="text-xs" />}
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default function ContactForm() {
+  return (
     <section id="contact" className="mb-16 pb-10 border-b border-white/[0.06]">
       <p className="section-label">Contact</p>
 
-      <div className="flex flex-col sm:flex-row sm:gap-8">
-        {/* Left: blurb */}
-        <div className="flex-shrink-0 sm:w-44 mb-6 sm:mb-0">
-          <p className="text-sm text-white/35 leading-relaxed">
-            Open to internships, freelance, and interesting projects.
-            Fill in the form or email directly.
-          </p>
-          <a
-            href="mailto:yadavkausha4a5@gmail.com"
-            className="text-xs text-white/35 font-mono mt-3 block link-underline hover:text-white/60 transition-colors"
-          >
-            yadavkausha4a5@gmail.com
-          </a>
-        </div>
-
-        {/* Right: form */}
-        <form onSubmit={handleSubmit} className="flex-1 min-w-0 space-y-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="text-[10px] text-white/35 uppercase tracking-widest block mb-1">
-                Name
-              </label>
-              <input
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                placeholder="Your name"
-                className={inputCls}
-              />
-            </div>
-            <div>
-              <label className="text-[10px] text-white/35 uppercase tracking-widest block mb-1">
-                Email
-              </label>
-              <input
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                placeholder="you@email.com"
-                className={inputCls}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="text-[10px] text-white/35 uppercase tracking-widest block mb-1">
-              Message
-            </label>
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              required
-              rows={4}
-              placeholder="What's up?"
-              className={inputCls + " resize-none"}
-            />
-          </div>
-
-          {status === "error" && (
-            <p className="text-xs text-red-400/70">
-              Something went wrong. Email me at{" "}
-              <a href="mailto:yadavkausha4a5@gmail.com" className="underline">
-                yadavkausha4a5@gmail.com
-              </a>
-            </p>
-          )}
-
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="text-sm text-white/45 hover:text-white/80
-              border border-white/[0.08] hover:border-white/[0.18]
-              rounded-lg px-5 py-2 transition-all duration-200
-              disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            {status === "sending" ? "Sending..." : "Send message"}
-          </button>
-        </form>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
+        <GetInTouchCard />
+        <SendMessageCard />
       </div>
     </section>
   );
