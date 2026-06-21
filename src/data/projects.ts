@@ -79,7 +79,7 @@ export const projects: Project[] = [
     technologies: ["Next.js", "Clerk", "MongoDB", "TypeScript", "Tailwind"],
     github: "https://github.com/Kaushalendra-Marcus/Postly",
     live: "https://postly-lake.vercel.app",
-    image: "/projects/postly-image.svg",
+    image: "/projects/postly-image.png",
   },
   {
     id: "myattendance",
@@ -127,43 +127,6 @@ export const projects: Project[] = [
     image: "/projects/grs-worker.png",
   },
   {
-    id: "cosmodetect",
-    title: "CosmoDetect",
-    subtitle: "AI Object Detection for Space Operations",
-    description:
-      "Custom YOLOv11 model for space object detection with deployed inference API.",
-    detailedDescription: [
-      "Trained custom YOLOv11 model for detecting and classifying space objects with high accuracy.",
-      "Implemented complete ML pipeline including data preprocessing, augmentation, and annotation.",
-      "Built REST API using FastAPI for real-time inference with optimized response times.",
-      "Deployed model on Render with automatic scaling and health monitoring.",
-      "Used OpenCV for image processing and PyTorch for model training and optimization.",
-    ],
-    technologies: ["Python", "YOLOv11", "OpenCV", "FastAPI", "PyTorch"],
-    github: "https://github.com/Kaushalendra-Marcus/SpaceSafe",
-    live: "https://object-detection-project-iz9g.onrender.com/docs",
-    gradient: "from-violet-600 to-indigo-600",
-    image: "/projects/cosmodetect.png",
-  },
-  {
-    id: "twitter-bot",
-    title: "Twitter AI Bot",
-    subtitle: "AI-Powered Twitter Automation",
-    description:
-      "Automated Twitter bot with AI-generated content and intelligent scheduling capabilities.",
-    detailedDescription: [
-      "Developed autonomous Twitter bot using Twitter API v2 for automated posting and engagement.",
-      "Integrated AI models for generating contextually relevant and engaging tweet content.",
-      "Implemented intelligent scheduling algorithm to optimize posting times for maximum engagement.",
-      "Built content moderation system to ensure brand consistency and safety.",
-      "Created analytics dashboard to track bot performance and engagement metrics.",
-    ],
-    technologies: ["Python", "AI/ML", "Twitter API", "OpenAI", "MongoDB"],
-    github: "https://github.com/Kaushalendra-Marcus/TwitterBotAI",
-    live: "https://tweetbotai.vercel.app/",
-    image: "/projects/twitterbot.png",
-  },
-  {
     id: "ai-context-engine",
     title: "AI Context Engine",
     subtitle: "Context-Aware Backend Intelligence System",
@@ -189,6 +152,44 @@ export const projects: Project[] = [
     live: "", // optional (add later if you deploy)
     gradient: "from-indigo-600 to-purple-600",
     image: "/projects/ai-context-engine.png",
+  },
+
+  {
+    id: "twitter-bot",
+    title: "Twitter AI Bot",
+    subtitle: "AI-Powered Twitter Automation",
+    description:
+      "Automated Twitter bot with AI-generated content and intelligent scheduling capabilities.",
+    detailedDescription: [
+      "Developed autonomous Twitter bot using Twitter API v2 for automated posting and engagement.",
+      "Integrated AI models for generating contextually relevant and engaging tweet content.",
+      "Implemented intelligent scheduling algorithm to optimize posting times for maximum engagement.",
+      "Built content moderation system to ensure brand consistency and safety.",
+      "Created analytics dashboard to track bot performance and engagement metrics.",
+    ],
+    technologies: ["Python", "AI/ML", "Twitter API", "OpenAI", "MongoDB"],
+    github: "https://github.com/Kaushalendra-Marcus/TwitterBotAI",
+    live: "https://tweetbotai.vercel.app/",
+    image: "/projects/twitterbot.png",
+  },
+  {
+    id: "cosmodetect",
+    title: "CosmoDetect",
+    subtitle: "AI Object Detection for Space Operations",
+    description:
+      "Custom YOLOv11 model for space object detection with deployed inference API.",
+    detailedDescription: [
+      "Trained custom YOLOv11 model for detecting and classifying space objects with high accuracy.",
+      "Implemented complete ML pipeline including data preprocessing, augmentation, and annotation.",
+      "Built REST API using FastAPI for real-time inference with optimized response times.",
+      "Deployed model on Render with automatic scaling and health monitoring.",
+      "Used OpenCV for image processing and PyTorch for model training and optimization.",
+    ],
+    technologies: ["Python", "YOLOv11", "OpenCV", "FastAPI", "PyTorch"],
+    github: "https://github.com/Kaushalendra-Marcus/SpaceSafe",
+    live: "https://object-detection-project-iz9g.onrender.com/docs",
+    gradient: "from-violet-600 to-indigo-600",
+    image: "/projects/cosmodetect.png",
   },
   {
     id: "cokkie-chat",
