@@ -177,7 +177,7 @@ export default function GitHubStats() {
 
       <div className="flex items-baseline justify-between mb-8">
         <p className="section-label" style={{ marginBottom: 0 }}>GitHub</p>
-        <img src={VIEWS_URL} alt="Profile views" className="h-5 opacity-60" loading="lazy" />
+        <img src={VIEWS_URL} alt="Profile views" className="h-5 opacity-100" loading="lazy" />
       </div>
 
       {/* Heatmap */}
