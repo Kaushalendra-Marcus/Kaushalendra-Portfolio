@@ -18,7 +18,7 @@ export default function Projects() {
       >
         <div className="flex items-baseline justify-between mb-8">
           <p className="section-label" style={{ marginBottom: 0 }}>Selected work</p>
-          <span className="text-[11px] text-white/15 font-mono">{projects.length} projects</span>
+          <span className="text-[11px] text-white/35 font-mono">{projects.length} projects</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-10">
