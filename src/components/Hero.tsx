@@ -6,7 +6,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Hero() {
   return (
-    <section id="hero" className="mb-24 pb-16 border-b border-white/[0.06]">
+    <section id="hero" className="mb-16 pb-10 border-b border-white/[0.06]">
       <style>{`
         @keyframes heroFade {
           from { opacity: 0; transform: translateY(14px); }

@@ -10,7 +10,6 @@ import OpenSourceContributions from "@/components/OpenSourceContributions";
 import GitHubStats from "@/components/GitHubStats";
 import Writing from "@/components/Writing";
 import Skills from "@/components/Skills";
-import Education from "@/components/Education";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import ScrollLine from "@/components/ScrollLine";
@@ -50,7 +49,6 @@ export default function Home() {
         <OpenSourceContributions />
         <Writing />
         <Skills />
-        <Education />
         <ContactForm />
         <Footer />
       </main>

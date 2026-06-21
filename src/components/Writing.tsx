@@ -32,7 +32,7 @@ const articles = [
 
 export default function Writing() {
   return (
-    <section id="writing" className="mb-24 pb-16 border-b border-white/[0.06]">
+    <section id="writing" className="mb-16 pb-10 border-b border-white/[0.06]">
       <div className="flex items-baseline justify-between mb-8">
         <p className="section-label" style={{ marginBottom: 0 }}>Writing</p>
         <a

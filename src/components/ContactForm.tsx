@@ -32,7 +32,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <section id="contact" className="mb-24 pb-16 border-b border-white/[0.06]">
+      <section id="contact" className="mb-16 pb-10 border-b border-white/[0.06]">
         <p className="section-label">Contact</p>
         <p className="text-sm text-white/40">
           Got it. I&apos;ll reply within 24 hours.{" "}
@@ -48,7 +48,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="mb-24 pb-16 border-b border-white/[0.06]">
+    <section id="contact" className="mb-16 pb-10 border-b border-white/[0.06]">
       <p className="section-label">Contact</p>
 
       <div className="flex flex-col sm:flex-row sm:gap-8">

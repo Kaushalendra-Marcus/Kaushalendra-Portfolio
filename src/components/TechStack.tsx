@@ -15,7 +15,7 @@ export default function TechStack() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="mb-24 pb-20 border-b border-white/10 px-2">
+    <section className="mb-16 pb-10 border-b border-white/[0.06] px-2">
 
       <h2 className="text-3xl font-bold mb-10 bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">
         My Stack

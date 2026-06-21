@@ -92,7 +92,7 @@ export default function OpenSourceContributions() {
   return (
     <section
       id="open-source"
-      className="mb-24 pb-16 border-b border-white/[0.06]"
+      className="mb-16 pb-10 border-b border-white/[0.06]"
       aria-label="Open Source Contributions"
     >
       <p className="section-label">Open Source</p>

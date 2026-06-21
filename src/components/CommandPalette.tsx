@@ -10,7 +10,6 @@ const SECTIONS = [
   { label: "GitHub Activity",    id: "github" },
   { label: "Writing",            id: "writing" },
   { label: "Skills",             id: "skills" },
-  { label: "Education",          id: "education" },
   { label: "Contact",            id: "contact" },
 ];
 

@@ -13,7 +13,7 @@ export default function Projects() {
     <>
       <section
         id="projects"
-        className="mb-24 pb-16 border-b border-white/[0.06]"
+        className="mb-16 pb-10 border-b border-white/[0.06]"
         aria-label="Featured Projects"
       >
         <div className="flex items-baseline justify-between mb-8">

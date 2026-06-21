@@ -4,7 +4,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="mb-24 pb-16 border-b border-white/[0.06]"
+      className="mb-16 pb-10 border-b border-white/[0.06]"
       aria-label="Technical Skills"
     >
       <p className="section-label">Skills</p>

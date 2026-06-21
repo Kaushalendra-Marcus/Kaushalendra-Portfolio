@@ -173,7 +173,7 @@ function ContribHeatmap() {
 // ─── Main section ────────────────────────────────────────────────────────────
 export default function GitHubStats() {
   return (
-    <section id="github" className="mb-24 pb-16 border-b border-white/[0.06]" aria-label="GitHub Activity">
+    <section id="github" className="mb-16 pb-10 border-b border-white/[0.06]" aria-label="GitHub Activity">
 
       <div className="flex items-baseline justify-between mb-8">
         <p className="section-label" style={{ marginBottom: 0 }}>GitHub</p>

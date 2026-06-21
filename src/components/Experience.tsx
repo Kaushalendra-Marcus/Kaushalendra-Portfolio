@@ -100,7 +100,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="mb-24 pb-16 border-b border-white/[0.06]"
+      className="mb-16 pb-10 border-b border-white/[0.06]"
       aria-label="Professional Experience"
     >
       <p className="section-label">Experience</p>
