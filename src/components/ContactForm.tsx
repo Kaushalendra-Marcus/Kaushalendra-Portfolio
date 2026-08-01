@@ -22,7 +22,7 @@ const METHODS = [
     icon: <FaXTwitter />,
     title: "Follow on X",
     subtitle: "Occasional build-in-public updates",
-    href: "https://x.com/Kaushal__marcus",
+    href: "https://x.com/kaushalxcode",
   },
 ];
 

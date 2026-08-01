@@ -11,7 +11,7 @@ export default function Footer() {
           {[
             { label: "GitHub",   href: "https://github.com/Kaushalendra-Marcus" },
             { label: "LinkedIn", href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/" },
-            { label: "X",        href: "https://x.com/Kaushal__marcus" },
+            { label: "X",        href: "https://x.com/kaushalxcode" },
             { label: "Email",    href: "mailto:yadavkausha4a5@gmail.com" },
           ].map(({ label, href }) => (
             <a

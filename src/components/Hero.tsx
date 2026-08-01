@@ -77,7 +77,7 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
         {[
           { label: "GitHub",   href: "https://github.com/Kaushalendra-Marcus",                    icon: <FaGithub className="text-sm" /> },
           { label: "LinkedIn", href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/", icon: <FaLinkedin className="text-sm" /> },
-          { label: "X",        href: "https://x.com/Kaushal__marcus",                             icon: <FaXTwitter className="text-sm" /> },
+          { label: "X",        href: "https://x.com/kaushalxcode",                             icon: <FaXTwitter className="text-sm" /> },
           { label: "Email",    href: "mailto:yadavkausha4a5@gmail.com",                            icon: <FaEnvelope className="text-sm" /> },
         ].map(({ label, href, icon }) => (
           <a

@@ -90,7 +90,7 @@ export const metadata: Metadata = {
       "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
     description:
       "Agentic AI, RAG pipelines, and scalable backend systems.",
-    creator: "@Kaushal__marcus",
+    creator: "@kaushalxcode",
     images: ["/kaushalendra-singh.png"],
   },
 
@@ -122,7 +122,7 @@ const jsonLd = {
 
   sameAs: [
     "https://github.com/Kaushalendra-Marcus",
-    "https://twitter.com/Kaushal__marcus",
+    "https://x.com/kaushalxcode",
     "https://linkedin.com/in/kaushalendra-singh-45b933272/",
   ],
 
