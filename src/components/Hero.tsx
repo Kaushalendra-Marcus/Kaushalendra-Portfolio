@@ -85,11 +85,12 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
             rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="flex items-center gap-1.5 text-sm text-white/40
-              hover:text-white/70 transition-colors duration-200 link-underline"
+            aria-label={label}
+            title={label}
+            className="flex items-center text-sm text-white/40
+              hover:text-white/70 transition-colors duration-200"
           >
             {icon}
-            <span className="hidden sm:inline">{label}</span>
           </a>
         ))}
 
@@ -98,11 +99,12 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
         <a
           href="/Kaushalendr_Singh.pdf"
           download="Kaushalendra_Singh_Resume.pdf"
-          className="flex items-center gap-1.5 text-sm text-white/45
+          aria-label="Resume"
+          title="Resume"
+          className="flex items-center text-sm text-white/45
             hover:text-white/70 transition-colors duration-200"
         >
           <FaFilePdf className="text-sm" />
-          <span>Resume</span>
         </a>
 
         <a
