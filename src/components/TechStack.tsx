@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   SiTypescript,
   SiJavascript,
@@ -27,9 +28,7 @@ import { techStack } from "@/data/skills";
 
 type TechIcon = ComponentType<{ className?: string; style?: CSSProperties }>;
 
-// Only tools with a real, verified brand mark (Simple Icons) get an icon
-// tile. Everything else in techStack renders as a text pill instead of a
-// guessed/hand-drawn logo — accuracy over completeness.
+// Tools with a real, verified brand mark via Simple Icons.
 const ICONS: Record<string, TechIcon> = {
   "TypeScript": SiTypescript,
   "JavaScript": SiJavascript,
@@ -80,6 +79,15 @@ const ICON_COLORS: Record<string, string> = {
   "Vercel": "#FFFFFF",
 };
 
+// Custom brand icons dropped into /public/icons — used for tools that have
+// no entry in the Simple Icons set.
+const IMAGE_ICONS: Record<string, string> = {
+  "Langfuse": "/icons/langfuse.png",
+  "LangSmith": "/icons/langsmith.png",
+  "FAISS": "/icons/FAISS.png",
+  "WebSockets": "/icons/websocket-io.png",
+};
+
 export default function TechStack() {
   return (
     <section id="tech-stack" className="mb-16 pb-10 border-b border-white/[0.06]" aria-label="Tech Stack">
@@ -88,6 +96,7 @@ export default function TechStack() {
       <div className="flex flex-wrap gap-2.5">
         {techStack.map((name) => {
           const Icon = ICONS[name];
+          const imageSrc = IMAGE_ICONS[name];
 
           if (Icon) {
             return (
@@ -102,6 +111,27 @@ export default function TechStack() {
                 <Icon
                   className="text-[20px] opacity-80 transition-all duration-200 group-hover:opacity-100 group-hover:scale-110"
                   style={{ color: ICON_COLORS[name] }}
+                />
+              </div>
+            );
+          }
+
+          if (imageSrc) {
+            return (
+              <div
+                key={name}
+                title={name}
+                className="group w-12 h-12 flex items-center justify-center rounded-xl
+                  bg-white/[0.04] border border-white/[0.07]
+                  hover:bg-white/[0.07] hover:border-white/[0.16]
+                  transition-all duration-200 cursor-default"
+              >
+                <Image
+                  src={imageSrc}
+                  alt={name}
+                  width={22}
+                  height={22}
+                  className="object-contain opacity-80 transition-all duration-200 group-hover:opacity-100 group-hover:scale-110"
                 />
               </div>
             );
