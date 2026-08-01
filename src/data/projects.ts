@@ -62,7 +62,7 @@ export const projects: Project[] = [
     live: "https://repograph.kaushalendra.me",
     gradient: "from-violet-600 to-indigo-600",
     image: "/projects/repograph-ai.svg",
-  },,
+  },
   {
     id: "ai-context-engine",
     title: "AI Context Engine",
