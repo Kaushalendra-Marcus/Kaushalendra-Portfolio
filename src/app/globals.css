@@ -3,6 +3,31 @@
 :root {
   --background: #080808;
   --foreground: #e8e8e8;
+
+  /* Tailark / shadcn tokens — matched to the existing editorial palette */
+  --radius: 0.5rem;
+  --card: #0d0d0d;
+  --card-foreground: #e8e8e8;
+  --popover: #0d0d0d;
+  --popover-foreground: #e8e8e8;
+  --primary: #e8e8e8;
+  --primary-foreground: #080808;
+  --secondary: #161616;
+  --secondary-foreground: #e8e8e8;
+  --muted: #141414;
+  --muted-foreground: rgba(232, 232, 232, 0.5);
+  --accent: #161616;
+  --accent-foreground: #e8e8e8;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #22d3ee;
+  --chart-1: #22d3ee;
+  --chart-2: #818cf8;
+  --chart-3: #e8e8e8;
+  --chart-4: rgba(232, 232, 232, 0.6);
+  --chart-5: rgba(232, 232, 232, 0.3);
 }
 
 @theme inline {
@@ -10,6 +35,34 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 * {

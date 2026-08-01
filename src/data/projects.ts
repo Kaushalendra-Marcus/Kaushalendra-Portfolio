@@ -62,6 +62,33 @@ export const projects: Project[] = [
     live: "https://repograph.kaushalendra.me",
     gradient: "from-violet-600 to-indigo-600",
     image: "/projects/repograph-ai.svg",
+  },,
+  {
+    id: "ai-context-engine",
+    title: "AI Context Engine",
+    subtitle: "Context-Aware Backend Intelligence System",
+    description:
+      "RAG-based system that retrieves relevant project context and generates structured technical insights using LLMs.",
+    detailedDescription: [
+      "Built a context-aware backend system that analyzes codebases, docs, and system data to generate actionable insights.",
+      "Implemented RAG pipeline using LangChain with semantic search over Pinecone vector database.",
+      "Used HuggingFace embeddings for accurate similarity search and contextual understanding.",
+      "Designed modular architecture with ingestion and query pipelines for scalability.",
+      "Generated structured outputs (summary, dependencies, risks) using Pydantic schemas.",
+      "Improved developer productivity by eliminating manual code exploration and documentation search.",
+    ],
+    technologies: [
+      "Python",
+      "LangChain",
+      "HuggingFace",
+      "Pinecone",
+      "Pydantic",
+      "RAG"
+    ],
+    github: "https://github.com/Kaushalendra-Marcus/ai-context-engine",
+    live: "", // optional (add later if you deploy)
+    gradient: "from-indigo-600 to-purple-600",
+    image: "/projects/ai-context-engine.png",
   },
   {
     id: "postly",
@@ -125,33 +152,6 @@ export const projects: Project[] = [
     live: "https://grsworker.com",
     gradient: "from-emerald-600 to-teal-600",
     image: "/projects/grs-worker.png",
-  },
-  {
-    id: "ai-context-engine",
-    title: "AI Context Engine",
-    subtitle: "Context-Aware Backend Intelligence System",
-    description:
-      "RAG-based system that retrieves relevant project context and generates structured technical insights using LLMs.",
-    detailedDescription: [
-      "Built a context-aware backend system that analyzes codebases, docs, and system data to generate actionable insights.",
-      "Implemented RAG pipeline using LangChain with semantic search over Pinecone vector database.",
-      "Used HuggingFace embeddings for accurate similarity search and contextual understanding.",
-      "Designed modular architecture with ingestion and query pipelines for scalability.",
-      "Generated structured outputs (summary, dependencies, risks) using Pydantic schemas.",
-      "Improved developer productivity by eliminating manual code exploration and documentation search.",
-    ],
-    technologies: [
-      "Python",
-      "LangChain",
-      "HuggingFace",
-      "Pinecone",
-      "Pydantic",
-      "RAG"
-    ],
-    github: "https://github.com/Kaushalendra-Marcus/ai-context-engine",
-    live: "", // optional (add later if you deploy)
-    gradient: "from-indigo-600 to-purple-600",
-    image: "/projects/ai-context-engine.png",
   },
 
   {
