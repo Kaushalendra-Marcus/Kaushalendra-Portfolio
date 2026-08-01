@@ -86,6 +86,7 @@ const IMAGE_ICONS: Record<string, string> = {
   "LangSmith": "/icons/langsmith.png",
   "FAISS": "/icons/FAISS.png",
   "WebSockets": "/icons/websocket-io.png",
+  "Pinecone": "/icons/pinecone.png",
 };
 
 export default function TechStack() {
