@@ -84,6 +84,7 @@ const ICON_COLORS: Record<string, string> = {
 const IMAGE_ICONS: Record<string, string> = {
   "Langfuse": "/icons/langfuse.png",
   "LangSmith": "/icons/langsmith.png",
+  "LangGraph": "/icons/langgraph.png",
   "FAISS": "/icons/FAISS.png",
   "WebSockets": "/icons/websocket-io.png",
   "Pinecone": "/icons/pinecone.png",
