@@ -16,7 +16,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       className="group cursor-pointer"
     >
       {/* Image zone - clean, no gradient overlays */}
-      <div className="relative h-40 rounded-xl overflow-hidden bg-[#0f0f0f]
+      <div className="relative aspect-video rounded-xl overflow-hidden bg-[#0f0f0f]
         border border-white/[0.06] mb-4
         group-hover:border-white/[0.12] transition-colors duration-300">
         {project.image ? (
