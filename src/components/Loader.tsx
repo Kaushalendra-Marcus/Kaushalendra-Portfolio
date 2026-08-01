@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-export default function Loader({ onDone }: { onDone: () => void }) {
+export default function Loader({
+  onDone,
+  onExitStart,
+}: {
+  onDone: () => void;
+  onExitStart?: () => void;
+}) {
   const [nameVisible, setNameVisible] = useState(false);
   const [tagVisible, setTagVisible] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -10,8 +16,14 @@ export default function Loader({ onDone }: { onDone: () => void }) {
   useEffect(() => {
     const t1 = setTimeout(() => setNameVisible(true), 800);
     const t2 = setTimeout(() => setTagVisible(true), 1600);
-    const t3 = setTimeout(() => setExiting(true), 3000);
-    const t4 = setTimeout(() => onDone(), 3500);
+    // Exit begins here — this is also the cue for the page underneath to
+    // start revealing itself, so the two animations play as one motion
+    // instead of "loader vanishes, then static page appears".
+    const t3 = setTimeout(() => {
+      setExiting(true);
+      onExitStart?.();
+    }, 3000);
+    const t4 = setTimeout(() => onDone(), 3550);
 
     return () => {
       clearTimeout(t1);
@@ -19,15 +31,21 @@ export default function Loader({ onDone }: { onDone: () => void }) {
       clearTimeout(t3);
       clearTimeout(t4);
     };
-  }, [onDone]);
+  }, [onDone, onExitStart]);
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden transition-opacity duration-500"
-      style={{ background: "#080808", opacity: exiting ? 0 : 1 }}
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
+      style={{
+        background: "#080808",
+        opacity: exiting ? 0 : 1,
+        transform: exiting ? "translateX(-4%) scale(1.05)" : "translateX(0) scale(1)",
+        transition:
+          "opacity 550ms cubic-bezier(0.4, 0, 0.2, 1), transform 550ms cubic-bezier(0.4, 0, 0.2, 1)",
+      }}
     >
       {/* Uiverse.io speeder loader by anand_4957 */}
-      <div className="loader">
+      <div className={`loader ${exiting ? "loader-exit" : ""}`}>
         <span>
           <span />
           <span />
@@ -68,6 +86,10 @@ export default function Loader({ onDone }: { onDone: () => void }) {
           margin-left: -50px;
           left: 50%;
           animation: speeder 0.4s linear infinite;
+        }
+        .loader-exit {
+          /* Revs up right before it's gone, like it's punching to hyperspace */
+          animation: speeder 0.12s linear infinite;
         }
         .loader > span {
           height: 5px;

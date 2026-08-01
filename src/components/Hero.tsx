@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaLinkedin, FaEnvelope, FaGithub, FaFilePdf } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 
-export default function Hero() {
+export default function Hero({ revealed = true }: { revealed?: boolean }) {
   return (
     <section id="hero" className="mb-16 pb-10 border-b border-white/[0.06]">
       <style>{`
@@ -23,7 +23,7 @@ export default function Hero() {
       `}</style>
 
       {/* Top row: name + photo */}
-      <div className="flex items-start justify-between gap-4 mb-8 h-a">
+      <div className={`flex items-start justify-between gap-4 mb-8 ${revealed ? "h-a" : "opacity-0"}`}>
         <div className="min-w-0">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05]">
             Kaushalendra<br />Singh
@@ -31,7 +31,7 @@ export default function Hero() {
         </div>
 
         {/* Photo - full color */}
-        <div className="relative flex-shrink-0 h-b">
+        <div className={`relative flex-shrink-0 ${revealed ? "h-b" : "opacity-0"}`}>
           <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden
             border border-white/[0.08]">
             <Image
@@ -56,14 +56,14 @@ export default function Hero() {
       </div>
 
       {/* Role line */}
-      <div className="h-c mb-5">
+      <div className={`mb-5 ${revealed ? "h-c" : "opacity-0"}`}>
         <p className="text-xs sm:text-sm text-white/45 font-mono">
           Full Stack &nbsp;/&nbsp; AI Backend &nbsp;/&nbsp; LLM Systems
         </p>
       </div>
 
       {/* Bio */}
-      <div className="h-d mb-8 max-w-lg">
+      <div className={`mb-8 max-w-lg ${revealed ? "h-d" : "opacity-0"}`}>
         <p className="text-sm sm:text-[15px] text-white/50 leading-[1.8]">
           I build AI-native products and backend systems focused on LLM
           workflows, real-time infrastructure, and scalable APIs. Recently
@@ -73,7 +73,7 @@ export default function Hero() {
       </div>
 
       {/* Links - responsive wrap */}
-      <div className="h-d flex flex-wrap items-center gap-x-5 gap-y-3">
+      <div className={`flex flex-wrap items-center gap-x-5 gap-y-3 ${revealed ? "h-d" : "opacity-0"}`}>
         {[
           { label: "GitHub",   href: "https://github.com/Kaushalendra-Marcus",                    icon: <FaGithub className="text-sm" /> },
           { label: "LinkedIn", href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/", icon: <FaLinkedin className="text-sm" /> },
