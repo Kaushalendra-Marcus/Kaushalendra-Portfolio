@@ -80,7 +80,7 @@ function EntryRow({
 
         {/* Right: period/meta + expand toggle. Full-width indented row on
             mobile (date left, chevron right); right-aligned inline on sm+ */}
-        <div className="flex items-center sm:items-start justify-between sm:justify-end gap-3 pl-16 sm:pl-0 flex-shrink-0">
+        <div className="flex items-center sm:items-start justify-between sm:justify-end gap-3 pl-[4.5rem] sm:pl-0 flex-shrink-0">
           {(period || meta) && (
             <div className="text-left sm:text-right">
               {period && (
@@ -116,7 +116,7 @@ function EntryRow({
           marginTop: open ? "0.9rem" : "0px",
         }}
       >
-        <ul className="space-y-2 pb-1 pl-16">
+        <ul className="space-y-2 pb-1 pl-[4.5rem]">
           {summary && (
             <li className="text-sm text-white/70 leading-relaxed mb-1 pl-3 relative
               before:absolute before:left-0 before:top-[9px]
@@ -137,7 +137,7 @@ function EntryRow({
         </ul>
 
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-x-3 gap-y-1 pl-16 mt-3">
+          <div className="flex flex-wrap gap-x-3 gap-y-1 pl-[4.5rem] mt-3">
             {tags.map((tag) => (
               <span key={tag} className="text-[10px] text-white/55 font-mono">
                 {tag}

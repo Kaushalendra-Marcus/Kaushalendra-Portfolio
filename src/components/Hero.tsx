@@ -25,7 +25,7 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
       {/* Top row: name + photo */}
       <div className={`flex items-start justify-between gap-4 mb-8 ${revealed ? "h-a" : "opacity-0"}`}>
         <div className="min-w-0">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.05] break-words">
             Kaushalendra<br />Singh
           </h1>
         </div>
