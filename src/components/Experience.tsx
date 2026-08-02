@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaChevronDown } from "react-icons/fa6";
 import { experiences } from "@/data/experience";
@@ -31,10 +31,21 @@ function EntryRow({
 }) {
   const [open, setOpen] = useState(false);
 
+  // Only respond to hover on devices that actually support it (mouse/trackpad).
+  // Touch devices fire a synthetic mouseenter on the first tap to simulate
+  // hover-preview, which would "eat" the first tap and force a second tap
+  // before onClick ever runs. Gating hover behind this check means touch
+  // devices rely purely on the tap/click handler below - one tap, done.
+  const [canHover, setCanHover] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setCanHover(mq.matches);
+  }, []);
+
   return (
     <div
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => canHover && setOpen(true)}
+      onMouseLeave={() => canHover && setOpen(false)}
       onClick={() => setOpen((o) => !o)}
       role="button"
       tabIndex={0}
