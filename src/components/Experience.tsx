@@ -51,17 +51,17 @@ function EntryRow({
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
         {/* Left: logo + title/subtitle */}
         <div className="flex items-start gap-4 min-w-0">
-          <span className="w-12 h-12 rounded-xl overflow-hidden bg-white/[0.08] border border-white/[0.12] group-hover:border-white/[0.22] transition-colors duration-300 flex-shrink-0 flex items-center justify-center p-2.5">
+          <span className="w-14 h-14 rounded-2xl overflow-hidden bg-white/[0.08] border border-white/[0.12] group-hover:border-white/[0.22] transition-colors duration-300 flex-shrink-0 flex items-center justify-center p-2">
             {logo ? (
               <Image
                 src={logo}
                 alt=""
-                width={32}
-                height={32}
+                width={40}
+                height={40}
                 className="object-contain w-full h-full"
               />
             ) : (
-              <span className="w-full h-full rounded-lg bg-white/[0.08]" />
+              <span className="w-full h-full rounded-xl bg-white/[0.08]" />
             )}
           </span>
           <div className="min-w-0 pt-0.5">
