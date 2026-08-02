@@ -70,7 +70,7 @@ function EntryRow({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="block text-[15px] font-semibold text-white hover:text-white transition-colors link-underline"
+              className="block text-[15px] font-semibold text-white hover:text-white transition-colors link-underline link-underline-solid"
             >
               {title}
             </a>
