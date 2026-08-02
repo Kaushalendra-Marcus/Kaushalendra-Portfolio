@@ -104,6 +104,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -112,6 +114,8 @@ body {
   font-family: var(--font-geist-sans), Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  max-width: 100%;
   /* Subtle noise texture - feels crafted, not AI */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
 }
@@ -208,3 +212,11 @@ main {
   transition: width 0.25s ease;
 }
 .link-underline:hover::after { width: 100%; }
+
+/* Solid pure-white variant — ignores parent's currentColor/opacity so it
+   always renders as a crisp #fff line instead of an anti-aliased hairline
+   that can look washed-out at 1px on some pixel ratios. */
+.link-underline-solid::after {
+  background-color: #ffffff;
+  height: 1.5px;
+}
