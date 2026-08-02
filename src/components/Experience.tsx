@@ -13,7 +13,9 @@ function EntryRow({
   href,
   period,
   meta,
+  summary,
   achievements,
+  tags,
   index,
 }: {
   logo?: string;
@@ -22,7 +24,9 @@ function EntryRow({
   href: string;
   period?: string;
   meta?: string;
+  summary?: string;
   achievements: string[];
+  tags?: string[];
   index: number;
 }) {
   const [open, setOpen] = useState(false);
@@ -91,12 +95,19 @@ function EntryRow({
       <div
         className="overflow-hidden transition-all duration-300 ease-out"
         style={{
-          maxHeight: open ? "600px" : "0px",
+          maxHeight: open ? "1000px" : "0px",
           opacity: open ? 1 : 0,
           marginTop: open ? "0.9rem" : "0px",
         }}
       >
         <ul className="space-y-2 pb-1 pl-16">
+          {summary && (
+            <li className="text-sm text-white/55 leading-relaxed mb-1 pl-3 relative
+              before:absolute before:left-0 before:top-[9px]
+              before:w-1 before:h-px before:bg-white/25">
+              {summary}
+            </li>
+          )}
           {achievements.map((item, i) => (
             <li
               key={i}
@@ -108,6 +119,16 @@ function EntryRow({
             </li>
           ))}
         </ul>
+
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-x-3 gap-y-1 pl-16 mt-3">
+            {tags.map((tag) => (
+              <span key={tag} className="text-[10px] text-white/40 font-mono">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -144,7 +165,10 @@ export default function Experience() {
             title={contribution.project}
             subtitle={contribution.role}
             href={contribution.website}
+            period={contribution.period}
+            summary={contribution.summary}
             achievements={contribution.achievements}
+            tags={contribution.technologies}
             index={experiences.length + index}
           />
         ))}
