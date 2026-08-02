@@ -3,149 +3,58 @@ import {
   SiTypescript,
   SiJavascript,
   SiPython,
-  SiCplusplus,
-  SiReact,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiExpress,
-  SiFastapi,
-  SiMongodb,
-  SiPostgresql,
-  SiMysql,
-  SiPrisma,
-  SiTailwindcss,
-  SiSocketdotio,
   SiLangchain,
-  SiHuggingface,
-  SiOllama,
-  SiDocker,
-  SiAmazonwebservices,
-  SiRedis,
-  SiVercel,
+  SiNodedotjs,
+  SiFastapi,
+  SiPostgresql,
+  SiMongodb,
+  SiNeo4J,
+  SiPrisma,
+  SiNextdotjs,
+  SiReact,
+  SiTailwindcss,
 } from "react-icons/si";
-import {
-  Search,
-  Database,
-  Layers,
-  MessageSquare,
-  Workflow,
-  Wrench,
-  Cpu,
-  Eye,
-  Sparkles,
-  Brain,
-  Globe,
-  Braces,
-  Link2,
-  Lock,
-  ShieldCheck,
-  KeyRound,
-  Blocks,
-  Cloud,
-  RefreshCw,
-  Server,
-  Terminal,
-  Binary,
-  Boxes,
-  CheckCircle2,
-  Network,
-  Zap,
-  Shapes,
-  BadgeCheck,
-  Code2,
-  Layout,
-  LayoutGrid,
-  Wand2,
-  FileCode,
-  Palette,
-} from "lucide-react";
+import { Search, Network, Database, Brain } from "lucide-react";
 import type { CSSProperties, ComponentType } from "react";
 import { skills } from "@/data/skills";
 
 type SkillIcon = ComponentType<{ className?: string; style?: CSSProperties }>;
 
 // Brand marks (Simple Icons) for real tools, generic Lucide icons standing
-// in for concepts/methodologies that have no official logo. Everything
-// renders in one muted tone below (not brand colors) — keeps the grid
-// editorial rather than a logo wall.
+// in for concepts that have no official logo. Everything renders in one
+// muted tone below (not brand colors) — keeps the grid editorial rather
+// than a logo wall.
 const ICONS: Record<string, SkillIcon> = {
   // Languages
-  "JavaScript": SiJavascript,
   "TypeScript": SiTypescript,
+  "JavaScript": SiJavascript,
   "Python": SiPython,
-  "C": Code2,
-  "C++": SiCplusplus,
-  "SQL": Database,
 
-  // AI / Agentic Systems
+  // AI / LLM Engineering
   "LangChain": SiLangchain,
   "RAG (Retrieval Augmented Generation)": Search,
-  "Vector Databases (Pinecone, FAISS)": Database,
-  "Embeddings": Layers,
-  "Prompt Engineering": MessageSquare,
-  "Agents (ReAct, Plan & Execute)": Workflow,
-  "Tool Calling": Wrench,
-  "Hugging Face (Transformers, Pipelines)": SiHuggingface,
-  "Open Source LLMs": Cpu,
-  "Model Serving (Ollama, HF Inference API)": SiOllama,
-  "YOLO": Eye,
-  "Gemini API": Sparkles,
-  "OpenAI API": Brain,
+  "MCP (Model Context Protocol)": Network,
+  "Vector Databases (Pinecone)": Database,
+  "Multi-LLM Integration (OpenAI, Anthropic, Gemini, Groq)": Brain,
 
-  // Backend
+  // Backend & Databases
   "Node.js": SiNodedotjs,
-  "Express.js": SiExpress,
   "FastAPI": SiFastapi,
-  "REST APIs": Globe,
-  "GraphQL": Braces,
-  "Prisma": SiPrisma,
-  "Mongoose": Link2,
-  "NextAuth": Lock,
-  "Zod": ShieldCheck,
-  "Socket.IO": SiSocketdotio,
-  "Authentication (JWT, OAuth)": KeyRound,
-  "API Design": Blocks,
-
-  // Database
-  "MongoDB": SiMongodb,
-  "MySQL": SiMysql,
   "PostgreSQL": SiPostgresql,
-  "Redis (Caching)": SiRedis,
-
-  // DevOps & Cloud
-  "Docker": SiDocker,
-  "AWS (EC2, S3)": SiAmazonwebservices,
-  "Vercel": SiVercel,
-  "Render": Cloud,
-  "CI/CD Pipelines": RefreshCw,
-  "Nginx (Basics)": Server,
-  "Linux": Terminal,
-
-  // Core Concepts
-  "Data Structures & Algorithms": Binary,
-  "OOP": Boxes,
-  "SOLID Principles": CheckCircle2,
-  "System Design (LLD, HLD)": Network,
-  "Concurrency & Async Programming": Zap,
-  "Design Patterns": Shapes,
-  "Type Safety": BadgeCheck,
+  "MongoDB": SiMongodb,
+  "Neo4j": SiNeo4J,
+  "Prisma": SiPrisma,
 
   // Frontend
   "Next.js": SiNextdotjs,
   "React": SiReact,
   "Tailwind CSS": SiTailwindcss,
-  "ShadCN UI": LayoutGrid,
-  "Radix UI": Layout,
-  "Framer Motion": Wand2,
-  "HTML5": FileCode,
-  "CSS3": Palette,
 };
 
-// Custom brand marks dropped into /public/icons — no entry in the Simple
-// Icons set (same assets TechStack.tsx uses).
+// Custom brand mark dropped into /public/icons — no entry in the Simple
+// Icons set (same asset TechStack.tsx uses).
 const IMAGE_ICONS: Record<string, string> = {
   "LangGraph": "/icons/langgraph.png",
-  "WebSockets": "/icons/websocket-io.png",
 };
 
 function SkillBadge({ name }: { name: string }) {
