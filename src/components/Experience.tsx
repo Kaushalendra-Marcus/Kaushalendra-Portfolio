@@ -156,6 +156,7 @@ export default function Experience() {
             period={exp.period}
             meta={exp.note}
             achievements={exp.achievements}
+            tags={exp.technologies}
             index={index}
           />
         ))}
