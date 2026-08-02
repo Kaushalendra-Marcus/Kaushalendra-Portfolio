@@ -216,7 +216,7 @@ export default function CommandPalette() {
         </div>
 
         {/* footer hint */}
-        <div className="px-4 py-2 border-t border-border flex items-center gap-4">
+        <div className="px-4 py-2 border-t border-border flex flex-wrap items-center gap-x-4 gap-y-1">
           <span className="text-[10px] text-foreground/35 font-mono">↑↓ to navigate</span>
           <span className="text-[10px] text-foreground/35 font-mono">↵ to select</span>
           <span className="text-[10px] text-foreground/35 font-mono">esc to close</span>

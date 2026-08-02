@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaChevronDown } from "react-icons/fa6";
 import { experiences } from "@/data/experience";
@@ -31,10 +31,24 @@ function EntryRow({
 }) {
   const [open, setOpen] = useState(false);
 
+  // Only auto-open on hover for devices that truly support it (mouse /
+  // trackpad). Touch devices simulate a "mouseenter" on the first tap,
+  // which would otherwise silently open the row before the tap's own
+  // click ever runs — leaving nothing left to close it on a second tap
+  // except the chevron button specifically. Gating this means touch
+  // devices rely purely on the click handler below, so tapping anywhere
+  // on the row opens AND closes it, same gesture either way.
+  const [canHover, setCanHover] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setCanHover(mq.matches);
+  }, []);
+
   return (
     <div
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={() => canHover && setOpen(true)}
+      onMouseLeave={() => canHover && setOpen(false)}
+      onClick={() => setOpen((o) => !o)}
       className="group py-6 px-4 -mx-4 rounded-xl border-b border-dashed border-foreground/[0.12] last:border-b-0 cursor-pointer transition-colors duration-300 hover:bg-foreground/[0.03] hover:border-foreground/[0.18]"
       style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.08}s both` }}
     >
@@ -59,6 +73,7 @@ function EntryRow({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="block text-[15px] font-semibold text-foreground hover:text-foreground transition-colors link-underline"
             >
               {title}
@@ -81,7 +96,6 @@ function EntryRow({
             </div>
           )}
           <button
-            onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-label={open ? "Hide details" : "Show details"}
             className="text-foreground/50 group-hover:text-foreground/80 hover:text-foreground transition-colors p-1 -m-1 sm:mt-0.5"
