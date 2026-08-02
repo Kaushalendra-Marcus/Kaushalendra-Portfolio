@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import ScrollLine from "@/components/ScrollLine";
 import CommandPalette from "@/components/CommandPalette";
 import Loader from "@/components/Loader";
+import Projects from "@/components/Projects";
 
 const VISITED_KEY = "kp_intro_seen";
 
@@ -52,6 +53,7 @@ export default function Home() {
       >
         <Hero revealed={revealed} />
         <Experience />
+        <Projects />
         <Skills />
         <ContactForm />
         <Writing />
