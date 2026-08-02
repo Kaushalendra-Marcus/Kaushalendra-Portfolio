@@ -8,7 +8,7 @@ export const experiences: Experience[] = [
     period: "May 2026 - Present",
     logo: "/companieslogo/epicwise.png",
     note: "Canada startup",
-    technologies: ["FastAPI", "LangGraph", "LangChain", "Pinecone", "Neo4j", "Redis", "PostgreSQL", "MCP", "Langfuse"],
+    technologies: ["LangGraph", "LangChain", "Pinecone", "Neo4j", "MCP", "Langfuse"],
     achievements: [
       "Working directly with the founding team on the core EpicWise context engine - designing multi-step retrieval and reasoning pipelines using LangGraph.",
       "Building hybrid retrieval combining vector search (Pinecone) and graph-based retrieval (Neo4j) to surface relevant organizational context.",
@@ -35,7 +35,7 @@ export const experiences: Experience[] = [
     website: "https://grsworker.com/",
     period: "Sep 2025 - Nov 2025",
     logo: "/companieslogo/grsworker.png",
-    technologies: ["Next.js", "Prisma", "MongoDB", "NextAuth", "Zod", "Tailwind CSS", "Framer Motion", "Twilio"],
+    technologies: ["Next.js", "Prisma", "MongoDB", "Zod", "Twilio"],
     achievements: [
       "Architected a full-stack worker management app with Next.js 15, Prisma ORM, and NextAuth - handling complex relational DB schemas and secure session management.",
       "Integrated Zod validation across all API routes, reducing form submission errors by 40% in the first month post-launch.",

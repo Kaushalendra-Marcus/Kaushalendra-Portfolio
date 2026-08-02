@@ -171,44 +171,5 @@ export const projects: Project[] = [
     github: "https://github.com/Kaushalendra-Marcus/TwitterBotAI",
     live: "https://tweetbotai.vercel.app/",
     image: "/projects/twitterbot.png",
-  },
-  {
-    id: "cosmodetect",
-    title: "CosmoDetect",
-    subtitle: "AI Object Detection for Space Operations",
-    description:
-      "Custom YOLOv11 model for space object detection with deployed inference API.",
-    detailedDescription: [
-      "Trained custom YOLOv11 model for detecting and classifying space objects with high accuracy.",
-      "Implemented complete ML pipeline including data preprocessing, augmentation, and annotation.",
-      "Built REST API using FastAPI for real-time inference with optimized response times.",
-      "Deployed model on Render with automatic scaling and health monitoring.",
-      "Used OpenCV for image processing and PyTorch for model training and optimization.",
-    ],
-    technologies: ["Python", "YOLOv11", "OpenCV", "FastAPI", "PyTorch"],
-    github: "https://github.com/Kaushalendra-Marcus/SpaceSafe",
-    live: "https://object-detection-project-iz9g.onrender.com/docs",
-    gradient: "from-violet-600 to-indigo-600",
-    image: "/projects/cosmodetect.png",
-  },
-  {
-    id: "cokkie-chat",
-    title: "Cokkie Chat",
-    subtitle: "Real-Time Chat Application",
-    description:
-      "MERN stack chat application with Socket.IO for instant messaging. 150+ active users with 80+ Lighthouse score.",
-    detailedDescription: [
-      "Developed full-stack real-time chat application using MERN stack with WebSocket communication.",
-      "Implemented Socket.IO for instant message delivery, typing indicators, and online status.",
-      "Built user authentication with JWT tokens and secure password hashing.",
-      "Designed responsive chat interface with message threading, emoji support, and file sharing.",
-      "Optimized performance achieving 80+ Lighthouse score across all metrics.",
-      "Scaled to support 150+ concurrent users with low latency and high reliability.",
-    ],
-    technologies: ["MERN", "Socket.IO", "Real-time", "JWT", "MongoDB"],
-    github: "https://github.com/Kaushalendra-Marcus/chat-application",
-    live: "https://cokkie-chat.onrender.com",
-    gradient: "from-orange-600 to-red-600",
-    image: "/projects/cokkiechat.png",
-  },
+  }
 ];
