@@ -35,6 +35,16 @@ function EntryRow({
     <div
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onClick={() => setOpen((o) => !o)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setOpen((o) => !o);
+        }
+      }}
+      aria-expanded={open}
       className="group py-6 px-4 -mx-4 rounded-xl border-b border-dashed border-white/[0.12] last:border-b-0 cursor-pointer transition-colors duration-300 hover:bg-white/[0.03] hover:border-white/[0.18]"
       style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.08}s both` }}
     >
@@ -59,6 +69,7 @@ function EntryRow({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="block text-[15px] font-semibold text-white hover:text-white transition-colors link-underline"
             >
               {title}
@@ -81,7 +92,10 @@ function EntryRow({
             </div>
           )}
           <button
-            onClick={() => setOpen((o) => !o)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen((o) => !o);
+            }}
             aria-expanded={open}
             aria-label={open ? "Hide details" : "Show details"}
             className="text-white/50 group-hover:text-white/80 hover:text-white transition-colors p-1 -m-1 sm:mt-0.5"
