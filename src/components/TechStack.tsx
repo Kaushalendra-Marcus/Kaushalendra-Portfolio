@@ -106,12 +106,12 @@ export default function TechStack() {
                 key={name}
                 title={name}
                 className="group w-12 h-12 flex items-center justify-center rounded-xl
-                  bg-white/[0.04] border border-white/[0.07]
-                  hover:bg-white/[0.07] hover:border-white/[0.16]
+                  bg-white/[0.06] border border-white/[0.12]
+                  hover:bg-white/[0.10] hover:border-white/[0.24]
                   transition-all duration-200 cursor-default"
               >
                 <Icon
-                  className="text-[20px] opacity-80 transition-all duration-200 group-hover:opacity-100 group-hover:scale-110"
+                  className="text-[20px] opacity-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-110"
                   style={{ color: ICON_COLORS[name] }}
                 />
               </div>
@@ -124,8 +124,8 @@ export default function TechStack() {
                 key={name}
                 title={name}
                 className="group w-12 h-12 flex items-center justify-center rounded-xl
-                  bg-white/[0.04] border border-white/[0.07]
-                  hover:bg-white/[0.07] hover:border-white/[0.16]
+                  bg-white/[0.06] border border-white/[0.12]
+                  hover:bg-white/[0.10] hover:border-white/[0.24]
                   transition-all duration-200 cursor-default"
               >
                 <Image
@@ -133,7 +133,7 @@ export default function TechStack() {
                   alt={name}
                   width={22}
                   height={22}
-                  className="object-contain opacity-80 transition-all duration-200 group-hover:opacity-100 group-hover:scale-110"
+                  className="object-contain opacity-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-110"
                 />
               </div>
             );
@@ -146,11 +146,11 @@ export default function TechStack() {
               key={name}
               title={name}
               className="group h-12 px-3.5 flex items-center justify-center rounded-xl
-                bg-white/[0.04] border border-white/[0.07]
-                hover:bg-white/[0.07] hover:border-white/[0.16]
+                bg-white/[0.06] border border-white/[0.12]
+                hover:bg-white/[0.10] hover:border-white/[0.24]
                 transition-all duration-200 cursor-default"
             >
-              <span className="text-[11px] font-mono uppercase tracking-wide whitespace-nowrap text-white/65 group-hover:text-white/90 transition-colors duration-200">
+              <span className="text-[11px] font-mono uppercase tracking-wide whitespace-nowrap text-white/80 group-hover:text-white transition-colors duration-200">
                 {name}
               </span>
             </div>
