@@ -14,16 +14,16 @@ export default function Loader({
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setNameVisible(true), 800);
-    const t2 = setTimeout(() => setTagVisible(true), 1600);
+    const t1 = setTimeout(() => setNameVisible(true), 150);
+    const t2 = setTimeout(() => setTagVisible(true), 350);
     // Exit begins here — this is also the cue for the page underneath to
     // start revealing itself, so the two animations play as one motion
     // instead of "loader vanishes, then static page appears".
     const t3 = setTimeout(() => {
       setExiting(true);
       onExitStart?.();
-    }, 3000);
-    const t4 = setTimeout(() => onDone(), 3550);
+    }, 700);
+    const t4 = setTimeout(() => onDone(), 1000);
 
     return () => {
       clearTimeout(t1);
@@ -41,7 +41,7 @@ export default function Loader({
         opacity: exiting ? 0 : 1,
         transform: exiting ? "translateX(-4%) scale(1.05)" : "translateX(0) scale(1)",
         transition:
-          "opacity 550ms cubic-bezier(0.4, 0, 0.2, 1), transform 550ms cubic-bezier(0.4, 0, 0.2, 1)",
+          "opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
       {/* Uiverse.io speeder loader by anand_4957 */}
@@ -66,13 +66,13 @@ export default function Loader({
 
       <div className="relative z-10 flex flex-col items-center pointer-events-none select-none mt-24 sm:mt-28">
         <p
-          className="font-mono text-white uppercase tracking-[10px] sm:tracking-[14px] text-sm sm:text-base transition-opacity duration-[1000ms]"
+          className="font-mono text-white uppercase tracking-[10px] sm:tracking-[14px] text-sm sm:text-base transition-opacity duration-300"
           style={{ opacity: nameVisible ? 1 : 0 }}
         >
           Kaushalendra
         </p>
         <p
-          className="font-mono text-[9px] sm:text-[10px] tracking-[4px] uppercase mt-3 transition-opacity duration-[1000ms]"
+          className="font-mono text-[9px] sm:text-[10px] tracking-[4px] uppercase mt-3 transition-opacity duration-300"
           style={{ opacity: tagVisible ? 1 : 0, color: "rgba(255,255,255,0.4)" }}
         >
           builds things that ship.
