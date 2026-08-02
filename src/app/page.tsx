@@ -53,7 +53,16 @@ export default function Home() {
       >
         <Hero revealed={revealed} />
         <Experience />
-        <Projects />
+
+        <section
+          id="projects"
+          className="mb-16 pb-10 border-b border-foreground/[0.06]"
+          aria-label="Projects"
+        >
+          <p className="section-label">Projects</p>
+          <Projects limit={2} />
+        </section>
+
         <Skills />
         <ContactForm />
         <Writing />
