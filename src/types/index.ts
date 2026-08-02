@@ -20,6 +20,7 @@ export interface Experience {
   achievements: string[];
   logo?: string;
   note?: string;
+  technologies?: string[];
 }
 
 export interface Skill {

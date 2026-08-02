@@ -58,9 +58,9 @@ export default function Home() {
         <GitHubStats />
         <Projects />
         <TechStack />
-        <Writing />
         <Skills />
         <ContactForm />
+        <Writing />
         <VisitorWidget />
         <Footer />
       </main>
