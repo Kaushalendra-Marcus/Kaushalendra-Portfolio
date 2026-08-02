@@ -4,7 +4,8 @@ export const skills: Skill[] = [
   {
     category: "Languages",
     items: [
-      "JavaScript/TypeScript",
+      "JavaScript",
+      "TypeScript",
       "Python",
       "C",
       "C++",
@@ -26,7 +27,8 @@ export const skills: Skill[] = [
       "Open Source LLMs",
       "Model Serving (Ollama, HF Inference API)",
       "YOLO",
-      "Gemini API / OpenAI API",
+      "Gemini API",
+      "OpenAI API",
     ],
   },
   {

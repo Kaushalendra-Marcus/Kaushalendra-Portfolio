@@ -4,7 +4,6 @@ import { useState, useLayoutEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
-import TechStack from "@/components/TechStack";
 import Projects from "@/components/Projects";
 import GitHubStats from "@/components/GitHubStats";
 import Writing from "@/components/Writing";
@@ -57,7 +56,6 @@ export default function Home() {
         <Experience />
         <GitHubStats />
         <Projects />
-        <TechStack />
         <Skills />
         <ContactForm />
         <Writing />
