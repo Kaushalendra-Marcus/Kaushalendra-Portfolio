@@ -69,10 +69,10 @@ function EntryRow({
                 alt=""
                 width={40}
                 height={40}
-                className="object-contain w-full h-full"
+                className="object-contain w-full h-full rounded-lg"
               />
             ) : (
-              <span className="w-full h-full rounded-xl bg-white/[0.08]" />
+              <span className="w-full h-full rounded-lg bg-white/[0.08]" />
             )}
           </span>
           <div className="min-w-0 pt-0.5">
