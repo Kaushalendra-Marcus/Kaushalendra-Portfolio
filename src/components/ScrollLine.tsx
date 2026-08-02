@@ -70,7 +70,7 @@ export default function ScrollLine() {
       }}
     >
       {/* Base track */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-foreground/[0.05] to-transparent" />
 
       {/* Progress fill with blue gradient + moving pattern */}
       <motion.div
@@ -98,7 +98,7 @@ export default function ScrollLine() {
         />
         
         {/* Subtle glass overlay */}
-        <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-background/[0.08] backdrop-blur-[0.5px]" />
       </motion.div>
 
       {/* Section markers */}
@@ -123,14 +123,14 @@ export default function ScrollLine() {
                 backgroundColor: isActive
                   ? "rgba(59, 130, 246, 0.3)"  // blue-500
                   : isHovered
-                  ? "rgba(255,255,255,0.12)"
-                  : "rgba(255,255,255,0.04)",
+                  ? "var(--hover-dot-bg, rgba(0,0,0,0.12))"
+                  : "var(--rest-dot-bg, rgba(0,0,0,0.05))",
                 borderColor: isActive
                   ? "rgba(59, 130, 246, 0.5)"
-                  : "rgba(255,255,255,0.08)",
+                  : "var(--dot-border, rgba(0,0,0,0.10))",
               }}
               transition={{ duration: 0.2 }}
-              className="w-1.5 h-1.5 rounded-full border backdrop-blur-sm"
+              className="w-1.5 h-1.5 rounded-full border backdrop-blur-sm dark:[--hover-dot-bg:rgba(255,255,255,0.12)] dark:[--rest-dot-bg:rgba(255,255,255,0.04)] dark:[--dot-border:rgba(255,255,255,0.08)]"
               style={{
                 boxShadow: isActive ? "0 0 12px rgba(59, 130, 246, 0.4)" : "none",
               }}
@@ -145,16 +145,16 @@ export default function ScrollLine() {
                   transition={{ duration: 0.15 }}
                   className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
                 >
-                  <div className="relative px-3 py-1.5 bg-black/20 backdrop-blur-xl rounded-lg border border-white/[0.08] shadow-2xl">
+                  <div className="relative px-3 py-1.5 bg-popover/90 backdrop-blur-xl rounded-lg border border-border shadow-2xl">
                     <div className="flex items-center gap-1.5">
                       {isActive && (
                         <span className="w-1 h-1 rounded-full bg-blue-400 flex-shrink-0" />
                       )}
-                      <span className="text-[11px] font-medium text-gray-300 whitespace-nowrap">
+                      <span className="text-[11px] font-medium text-popover-foreground/80 whitespace-nowrap">
                         {label}
                       </span>
                     </div>
-                    <div className="absolute left-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 bg-black/20 backdrop-blur-xl border-l border-b border-white/[0.08] rotate-45" />
+                    <div className="absolute left-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 bg-popover/90 backdrop-blur-xl border-l border-b border-border rotate-45" />
                   </div>
                 </motion.div>
               )}

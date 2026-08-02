@@ -4,8 +4,6 @@ import { useState, useLayoutEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import GitHubStats from "@/components/GitHubStats";
 import Writing from "@/components/Writing";
 import Skills from "@/components/Skills";
 import ContactForm from "@/components/ContactForm";
@@ -43,7 +41,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <ScrollLine />
       <CommandPalette />
@@ -54,8 +52,6 @@ export default function Home() {
       >
         <Hero revealed={revealed} />
         <Experience />
-        <GitHubStats />
-        <Projects />
         <Skills />
         <ContactForm />
         <Writing />

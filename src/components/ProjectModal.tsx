@@ -26,7 +26,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       style={{ animation: "fadeIn 0.2s ease-out both" }}
       onClick={onClose}
       role="dialog"
@@ -39,13 +39,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       `}</style>
 
       <div
-        className="bg-[#0a0a0a] border border-white/10 rounded-2xl max-w-2xl w-full
-          max-h-[90vh] overflow-y-auto relative shadow-2xl shadow-black"
+        className="bg-popover border border-border rounded-2xl max-w-2xl w-full
+          max-h-[90vh] overflow-y-auto relative shadow-2xl"
         style={{ animation: "slideUp 0.25s ease-out both" }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* - Hero image */}
-        <div className="relative overflow-hidden rounded-t-2xl bg-[#0a0a0a]">
+        <div className="relative overflow-hidden rounded-t-2xl bg-popover">
           {project.image ? (
             <>
               {/* - Full screenshot, no cropping */}
@@ -60,7 +60,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 />
               </div>
               {/* - Thin bottom fade into body */}
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-popover to-transparent" />
             </>
           ) : (
             <div className={`h-48 w-full bg-gradient-to-br ${project.gradient || "from-blue-600 to-purple-600"} relative flex items-center justify-center`}>
@@ -74,11 +74,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 p-2 bg-black/60 backdrop-blur-md border border-white/10
-              hover:bg-black/80 hover:border-white/25 rounded-xl transition-all duration-200 group z-10"
+            className="absolute top-3 right-3 p-2 bg-black/60 backdrop-blur-md border border-white/[0.14]
+              hover:bg-black/80 hover:border-white/30 rounded-xl transition-all duration-200 group z-10"
             aria-label="Close modal"
           >
-            <FaTimes className="text-white/60 group-hover:text-white text-xs group-hover:rotate-90 transition-all duration-200" />
+            <FaTimes className="text-white/70 group-hover:text-white text-xs group-hover:rotate-90 transition-all duration-200" />
           </button>
 
           {/* Status badge */}
@@ -92,7 +92,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         {/* - Divider */}
-        <div className="h-px bg-white/[0.06]" />
+        <div className="h-px bg-foreground/[0.06]" />
 
         {/* - Body */}
         <div className="p-5 space-y-5">
@@ -100,10 +100,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* - Title + links row */}
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-cyan-400/50 mb-1">
+              <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[var(--ring)]/70 mb-1">
                 {project.subtitle}
               </p>
-              <h2 className="text-lg font-bold text-white leading-tight">
+              <h2 className="text-lg font-bold text-popover-foreground leading-tight">
                 {project.title}
               </h2>
             </div>
@@ -113,9 +113,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.05] hover:bg-white/[0.08]
-                    border border-white/10 hover:border-white/20 rounded-xl text-xs text-gray-300
-                    hover:text-white transition-all duration-200"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-foreground/[0.05] hover:bg-foreground/[0.09]
+                    border border-border hover:border-foreground/25 rounded-xl text-xs text-foreground/70
+                    hover:text-foreground transition-all duration-200"
                 >
                   <FaGithub className="text-xs" />
                   <span>GitHub</span>
@@ -126,7 +126,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-cyan-500 hover:bg-cyan-400
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[var(--ring)] hover:opacity-85
                     rounded-xl text-xs text-black font-semibold transition-all duration-200"
                 >
                   <FaExternalLinkAlt className="text-[9px]" />
@@ -138,15 +138,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Technologies */}
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400 mb-2.5">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-2.5">
               Technologies
             </p>
             <div className="flex flex-wrap gap-1.5">
               {project.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2.5 py-1 bg-white/[0.04] border border-white/[0.08] rounded-lg
-                    text-xs text-gray-300 hover:border-cyan-400/20 hover:text-gray-100
+                  className="px-2.5 py-1 bg-foreground/[0.04] border border-border rounded-lg
+                    text-xs text-foreground/70 hover:border-[var(--ring)]/40 hover:text-foreground/95
                     transition-all duration-200 cursor-default"
                 >
                   {tech}
@@ -157,17 +157,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
           {/* Project details */}
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-gray-400 mb-2.5">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-2.5">
               Project Details
             </p>
             <ul className="space-y-2.5">
               {project.detailedDescription.map((detail, index) => (
                 <li
                   key={index}
-                  className="flex items-start gap-3 text-sm text-gray-300 leading-relaxed"
+                  className="flex items-start gap-3 text-sm text-foreground/70 leading-relaxed"
                   style={{ animation: `fadeIn 0.3s ease-out ${0.05 + index * 0.05}s both` }}
                 >
-                  <span className="text-cyan-500/50 flex-shrink-0 mt-1 text-[10px]" aria-hidden="true">▹</span>
+                  <span className="text-[var(--ring)]/60 flex-shrink-0 mt-1 text-[10px]" aria-hidden="true">▹</span>
                   <span>{detail}</span>
                 </li>
               ))}

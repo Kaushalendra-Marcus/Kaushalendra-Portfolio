@@ -29,26 +29,26 @@ export default function VisitorWidget() {
   }, []);
 
   return (
-    <div className="mb-16 bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6
+    <div className="mb-16 bg-card border border-foreground/[0.06] rounded-2xl p-6
       flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div className="flex items-start gap-3 max-w-xl">
-        <span className="text-3xl text-white/15 font-serif leading-none flex-shrink-0 -mt-1" aria-hidden="true">
+        <span className="text-3xl text-foreground/20 font-serif leading-none flex-shrink-0 -mt-1" aria-hidden="true">
           &ldquo;
         </span>
         <div>
-          <p className="text-sm text-white/55 leading-relaxed">
+          <p className="text-sm text-foreground/60 leading-relaxed">
             Don't tell people your potential. Show them your work.
           </p>
-          <p className="text-xs text-white/30 font-mono mt-2">— Unknown</p>
+          <p className="text-xs text-foreground/35 font-mono mt-2">— Unknown</p>
         </div>
       </div>
 
       {count !== null && (
-        <p className="text-sm text-white/40 font-mono flex-shrink-0 sm:text-right">
+        <p className="text-sm text-foreground/45 font-mono flex-shrink-0 sm:text-right">
           You are the{" "}
-          <span className="text-white font-semibold">
+          <span className="text-foreground font-semibold">
             {count.toLocaleString()}
-            <sup className="text-[10px] font-normal text-white/40">{ordinalSuffix(count)}</sup>
+            <sup className="text-[10px] font-normal text-foreground/45">{ordinalSuffix(count)}</sup>
           </span>{" "}
           visitor
         </p>

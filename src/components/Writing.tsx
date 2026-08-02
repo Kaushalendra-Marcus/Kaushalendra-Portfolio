@@ -32,14 +32,14 @@ const articles = [
 
 export default function Writing() {
   return (
-    <section id="writing" className="mb-16 pb-10 border-b border-white/[0.06]">
+    <section id="writing" className="mb-16 pb-10 border-b border-foreground/[0.06]">
       <div className="flex items-baseline justify-between mb-8">
         <p className="section-label" style={{ marginBottom: 0 }}>Writing</p>
         <a
           href="https://medium.com/@Kaushalendra-marcus"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[11px] text-white/35 hover:text-white/65 transition-colors font-mono link-underline"
+          className="text-[11px] text-foreground/40 hover:text-foreground/70 transition-colors font-mono link-underline"
         >
           All articles
         </a>
@@ -57,8 +57,8 @@ export default function Writing() {
           >
             {/* Thumbnail */}
             <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden
-              bg-white/[0.03] border border-white/[0.06]
-              group-hover:border-white/[0.12] transition-colors duration-300 mb-3 flex-shrink-0">
+              bg-foreground/[0.03] border border-foreground/[0.06]
+              group-hover:border-foreground/[0.12] transition-colors duration-300 mb-3 flex-shrink-0">
               <Image
                 src={article.thumbnail}
                 alt={article.title}
@@ -70,17 +70,17 @@ export default function Writing() {
 
             {/* Text */}
             <div className="flex-1 flex flex-col">
-              <p className="text-sm font-medium text-white/60 group-hover:text-white/90
+              <p className="text-sm font-medium text-foreground/65 group-hover:text-foreground/95
                 transition-colors duration-200 leading-snug mb-1.5 line-clamp-2">
                 {article.title}
               </p>
-              <p className="text-xs text-white/40 leading-relaxed line-clamp-2 flex-1 mb-3">
+              <p className="text-xs text-foreground/45 leading-relaxed line-clamp-2 flex-1 mb-3">
                 {article.description}
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] text-white/35 font-mono">{article.date}</span>
-                <span className="text-white/15 text-[10px]">·</span>
-                <span className="text-[10px] text-white/35 font-mono">{article.readTime} read</span>
+                <span className="text-[10px] text-foreground/40 font-mono">{article.date}</span>
+                <span className="text-foreground/15 text-[10px]">·</span>
+                <span className="text-[10px] text-foreground/40 font-mono">{article.readTime} read</span>
               </div>
             </div>
           </a>

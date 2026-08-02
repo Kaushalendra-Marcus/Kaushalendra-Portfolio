@@ -64,8 +64,8 @@ function SkillBadge({ name }: { name: string }) {
   return (
     <div
       className="group inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg
-        bg-white/[0.05] border border-white/[0.10]
-        hover:bg-white/[0.09] hover:border-white/[0.22]
+        bg-foreground/[0.05] border border-foreground/[0.10]
+        hover:bg-foreground/[0.09] hover:border-foreground/[0.22]
         transition-all duration-200 cursor-default"
     >
       {imageSrc ? (
@@ -77,9 +77,9 @@ function SkillBadge({ name }: { name: string }) {
           className="object-contain opacity-45 group-hover:opacity-85 transition-opacity duration-200 flex-shrink-0"
         />
       ) : Icon ? (
-        <Icon className="text-[15px] text-white/45 group-hover:text-white/85 transition-colors duration-200 flex-shrink-0" />
+        <Icon className="text-[15px] text-foreground/45 group-hover:text-foreground/85 transition-colors duration-200 flex-shrink-0" />
       ) : null}
-      <span className="text-[13px] text-white/70 group-hover:text-white/95 transition-colors duration-200 whitespace-nowrap">
+      <span className="text-[13px] text-foreground/70 group-hover:text-foreground/95 transition-colors duration-200 whitespace-nowrap">
         {name}
       </span>
     </div>
@@ -90,7 +90,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="mb-16 pb-10 border-b border-white/[0.06]"
+      className="mb-16 pb-10 border-b border-foreground/[0.06]"
       aria-label="Technical Skills"
     >
       <p className="section-label">Skills</p>
@@ -101,7 +101,7 @@ export default function Skills() {
             key={group.category}
             style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.06}s both` }}
           >
-            <p className="text-[11px] text-white/40 uppercase tracking-[0.1em] font-medium mb-3">
+            <p className="text-[11px] text-muted-foreground uppercase tracking-[0.1em] font-medium mb-3">
               {group.category}
             </p>
             <div className="flex flex-wrap gap-2">

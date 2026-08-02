@@ -1,136 +1,125 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Search } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
-  { label: "About",      href: "#hero" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects",   href: "#projects" },
-  { label: "Writing",    href: "#writing" },
+  { label: "Projects",      href: "/projects" },
+  { label: "Proof of Work", href: "/proof-of-work" },
+  { label: "Resume",        href: "/resume" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled]           = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
-  const [menuOpen, setMenuOpen]           = useState(false);
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 30);
-      const sections = NAV_LINKS.map(l => l.href.replace("#", ""));
-      let current = "hero";
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 100) current = id;
-      }
-      setActiveSection(current);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
+  const openSearch = () => {
     setMenuOpen(false);
-    const el = document.getElementById(href.replace("#", ""));
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    // CommandPalette listens for this same synthetic combo it already
+    // handles for real ⌘K presses — one trigger path, no duplicate logic.
+    const ev = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
+    window.dispatchEvent(ev);
   };
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#080808]/90 backdrop-blur-xl border-b border-white/[0.05]"
+          ? "bg-popover/90 backdrop-blur-xl border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 lg:px-12 h-12 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12 h-14 flex items-center justify-between">
 
-        {/* Logo */}
-        <button
-          onClick={() => scrollTo("#hero")}
-          className="text-xs font-mono text-white/40 hover:text-white/75 transition-colors tracking-widest uppercase"
+        {/* Logo — profile photo, links home */}
+        <Link
+          href="/"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Home"
+          className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden border border-border
+            hover:border-foreground/30 transition-colors duration-200"
         >
-          KS
-        </button>
+          <Image
+            src="/kaushal.jpeg"
+            alt="Kaushalendra Singh"
+            width={32}
+            height={32}
+            className="object-cover w-full h-full"
+            priority
+          />
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6" aria-label="Primary navigation">
           {NAV_LINKS.map(({ label, href }) => {
-            const id = href.replace("#", "");
-            const isActive = activeSection === id;
+            const isActive = pathname === href;
             return (
-              <button
+              <Link
                 key={href}
-                onClick={() => scrollTo(href)}
+                href={href}
                 className={`text-xs transition-colors duration-200 ${
-                  isActive ? "text-white/85" : "text-white/40 hover:text-white/65"
+                  isActive ? "text-foreground/90 font-medium" : "text-foreground/45 hover:text-foreground/75"
                 }`}
               >
                 {label}
-              </button>
+              </Link>
             );
           })}
         </nav>
 
-        {/* Keyboard shortcut hint */}
-        <button
-          onClick={() => {
-            const ev = new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true });
-            window.dispatchEvent(ev);
-          }}
-          className="hidden lg:flex items-center gap-1.5 text-[10px] text-white/30
-            font-mono hover:text-white/55 transition-colors"
-        >
-          <kbd className="bg-white/[0.04] border border-white/[0.08] rounded px-1 py-0.5">/</kbd>
-          <span>search</span>
-        </button>
+        {/* Right: search + theme toggle */}
+        <div className="flex items-center gap-0.5">
+          <button
+            onClick={openSearch}
+            aria-label="Search"
+            title="Search (⌘K)"
+            className="flex items-center justify-center w-7 h-7 rounded-lg text-foreground/45
+              hover:text-foreground/85 hover:bg-foreground/[0.06] transition-colors duration-200"
+          >
+            <Search className="w-[15px] h-[15px]" />
+          </button>
 
-        {/* CTA */}
-        <a
-          href="https://cal.com/kaushalendra/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:block text-xs text-white/40 hover:text-white/80
-            border border-white/[0.08] hover:border-white/[0.18]
-            rounded-lg px-3 py-1.5 transition-all duration-200"
-        >
-          Schedule a call
-        </a>
+          <ThemeToggle />
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-[5px] p-1"
-          onClick={() => setMenuOpen(o => !o)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-        >
-          <span className={`block h-px w-4 bg-white/40 transition-all duration-200 origin-center ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-          <span className={`block h-px w-4 bg-white/40 transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block h-px w-4 bg-white/40 transition-all duration-200 origin-center ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
-        </button>
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden flex flex-col gap-[5px] p-1 ml-1"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            <span className={`block h-px w-4 bg-foreground/50 transition-all duration-200 origin-center ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+            <span className={`block h-px w-4 bg-foreground/50 transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px w-4 bg-foreground/50 transition-all duration-200 origin-center ${menuOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile drawer */}
       {menuOpen && (
-        <div className="md:hidden bg-[#080808]/95 backdrop-blur-xl border-b border-white/[0.05] px-6 pb-5 pt-3">
+        <div className="md:hidden bg-popover/95 backdrop-blur-xl border-b border-border px-6 pb-5 pt-3">
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map(({ label, href }) => (
-              <button
+              <Link
                 key={href}
-                onClick={() => scrollTo(href)}
-                className="text-left py-2 text-sm text-white/45 hover:text-white/80 transition-colors"
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="text-left py-2 text-sm text-foreground/55 hover:text-foreground/90 transition-colors"
               >
                 {label}
-              </button>
+              </Link>
             ))}
-            <a
-              href="https://cal.com/kaushalendra/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 text-sm text-white/50 border border-white/[0.08] rounded-lg px-4 py-2 text-center hover:text-white/80 transition-colors"
-            >
-              Schedule a call
-            </a>
           </nav>
         </div>
       )}

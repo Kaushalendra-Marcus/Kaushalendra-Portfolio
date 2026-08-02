@@ -28,44 +28,44 @@ const METHODS = [
 
 function GetInTouchCard() {
   return (
-    <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6 h-full">
-      <h3 className="text-base font-semibold text-white/85 mb-1.5">Ways to Connect</h3>
-      <p className="text-sm text-white/35 leading-relaxed mb-5">
+    <div className="bg-card border border-foreground/[0.06] rounded-2xl p-6 h-full">
+      <h3 className="text-base font-semibold text-foreground/85 mb-1.5">Ways to Connect</h3>
+      <p className="text-sm text-foreground/40 leading-relaxed mb-5">
         Open to internships, freelance work, and anything interesting in between.
       </p>
 
-      <div className="divide-y divide-white/[0.06] border-y border-white/[0.06] mb-5">
+      <div className="divide-y divide-foreground/[0.06] border-y border-foreground/[0.06] mb-5">
         {METHODS.map((m) => (
           <a
             key={m.title}
             href={m.href}
             target={m.href.startsWith("http") ? "_blank" : undefined}
             rel={m.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="group flex items-center gap-3.5 py-3.5 hover:bg-white/[0.02] transition-colors duration-200 -mx-1 px-1 rounded-lg"
+            className="group flex items-center gap-3.5 py-3.5 hover:bg-foreground/[0.03] transition-colors duration-200 -mx-1 px-1 rounded-lg"
           >
-            <span className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.07]
-              flex items-center justify-center text-white/45 group-hover:text-white/75
-              group-hover:border-white/[0.14] transition-all duration-200 flex-shrink-0 text-sm">
+            <span className="w-9 h-9 rounded-lg bg-foreground/[0.04] border border-foreground/[0.07]
+              flex items-center justify-center text-foreground/45 group-hover:text-foreground/75
+              group-hover:border-foreground/[0.14] transition-all duration-200 flex-shrink-0 text-sm">
               {m.icon}
             </span>
             <span className="flex-1 min-w-0">
-              <span className="block text-sm font-medium text-white/75 group-hover:text-white/95 transition-colors duration-200 truncate">
+              <span className="block text-sm font-medium text-foreground/75 group-hover:text-foreground/95 transition-colors duration-200 truncate">
                 {m.title}
               </span>
-              <span className="block text-xs text-white/30 mt-0.5">{m.subtitle}</span>
+              <span className="block text-xs text-foreground/35 mt-0.5">{m.subtitle}</span>
             </span>
-            <FaArrowUpRightFromSquare className="text-[10px] text-white/15 group-hover:text-white/45 transition-colors duration-200 flex-shrink-0" />
+            <FaArrowUpRightFromSquare className="text-[10px] text-foreground/20 group-hover:text-foreground/50 transition-colors duration-200 flex-shrink-0" />
           </a>
         ))}
       </div>
 
       <div className="space-y-2">
-        <p className="flex items-center gap-2 text-xs text-white/30">
-          <FaClock className="text-[11px] text-white/25" />
+        <p className="flex items-center gap-2 text-xs text-foreground/35">
+          <FaClock className="text-[11px] text-foreground/30" />
           Usually replies within a day
         </p>
-        <p className="flex items-center gap-2 text-xs text-white/30">
-          <FaCircleCheck className="text-[11px] text-white/25" />
+        <p className="flex items-center gap-2 text-xs text-foreground/35">
+          <FaCircleCheck className="text-[11px] text-foreground/30" />
           Available for remote, freelance, or full-time
         </p>
       </div>
@@ -96,18 +96,18 @@ function SendMessageCard() {
   };
 
   const inputCls =
-    "w-full bg-white/[0.02] border border-white/[0.08] rounded-lg px-3.5 py-2.5 text-sm text-white/80 " +
-    "placeholder-white/25 focus:outline-none focus:border-white/25 focus:bg-white/[0.04] transition-colors duration-200";
+    "w-full bg-foreground/[0.02] border border-foreground/[0.10] rounded-lg px-3.5 py-2.5 text-sm text-foreground/85 " +
+    "placeholder-foreground/30 focus:outline-none focus:border-foreground/30 focus:bg-foreground/[0.04] transition-colors duration-200";
 
   if (status === "success") {
     return (
-      <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6 h-full flex flex-col items-start justify-center min-h-[280px]">
-        <h3 className="text-base font-semibold text-white/85 mb-2">Message sent</h3>
-        <p className="text-sm text-white/40 leading-relaxed">
+      <div className="bg-card border border-foreground/[0.06] rounded-2xl p-6 h-full flex flex-col items-start justify-center min-h-[280px]">
+        <h3 className="text-base font-semibold text-foreground/85 mb-2">Message sent</h3>
+        <p className="text-sm text-foreground/45 leading-relaxed">
           Got it. I&apos;ll reply within 24 hours.{" "}
           <button
             onClick={() => setStatus("idle")}
-            className="text-white/60 hover:text-white underline transition-colors"
+            className="text-foreground/65 hover:text-foreground underline transition-colors"
           >
             Send another
           </button>
@@ -117,9 +117,9 @@ function SendMessageCard() {
   }
 
   return (
-    <div className="bg-[#0d0d0d] border border-white/[0.06] rounded-2xl p-6 h-full">
-      <h3 className="text-base font-semibold text-white/85 mb-1.5">Quick Message</h3>
-      <p className="text-sm text-white/35 leading-relaxed mb-5">
+    <div className="bg-card border border-foreground/[0.06] rounded-2xl p-6 h-full">
+      <h3 className="text-base font-semibold text-foreground/85 mb-1.5">Quick Message</h3>
+      <p className="text-sm text-foreground/40 leading-relaxed mb-5">
         Or type it out here — goes straight to my inbox.
       </p>
 
@@ -152,7 +152,7 @@ function SendMessageCard() {
         />
 
         {status === "error" && (
-          <p className="text-xs text-red-400/70">
+          <p className="text-xs text-destructive/80">
             Something went wrong. Email me at{" "}
             <a href="mailto:yadavkausha4a5@gmail.com" className="underline">
               yadavkausha4a5@gmail.com
@@ -163,8 +163,8 @@ function SendMessageCard() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white/85
-            bg-white/[0.06] hover:bg-white/[0.10] border border-white/[0.09]
+          className="w-full flex items-center justify-center gap-2 text-sm font-medium text-foreground/90
+            bg-foreground/[0.06] hover:bg-foreground/[0.10] border border-foreground/[0.09]
             rounded-lg px-5 py-2.5 transition-all duration-200
             disabled:opacity-40 disabled:cursor-not-allowed"
         >
@@ -178,7 +178,7 @@ function SendMessageCard() {
 
 export default function ContactForm() {
   return (
-    <section id="contact" className="mb-16 pb-10 border-b border-white/[0.06]">
+    <section id="contact" className="mb-16 pb-10 border-b border-foreground/[0.06]">
       <p className="section-label">Contact</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">

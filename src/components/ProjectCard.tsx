@@ -16,9 +16,9 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       className="group cursor-pointer"
     >
       {/* Image zone - clean, no gradient overlays */}
-      <div className="relative aspect-video rounded-xl overflow-hidden bg-[#0f0f0f]
-        border border-white/[0.06] mb-4
-        group-hover:border-white/[0.12] transition-colors duration-300">
+      <div className="relative aspect-video rounded-xl overflow-hidden bg-card
+        border border-foreground/[0.06] mb-4
+        group-hover:border-foreground/[0.12] transition-colors duration-300">
         {project.image ? (
           <Image
             src={project.image}
@@ -28,14 +28,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
           />
         ) : (
-          <div className={`w-full h-full bg-gradient-to-br ${project.gradient ?? "from-white/[0.03] to-white/[0.01]"} flex items-end p-4`}>
-            <span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+          <div className={`w-full h-full bg-gradient-to-br ${project.gradient ?? "from-foreground/[0.03] to-foreground/[0.01]"} flex items-end p-4`}>
+            <span className="text-[10px] font-mono text-foreground/25 uppercase tracking-widest">
               {project.subtitle}
             </span>
           </div>
         )}
 
-        {/* Links - show on hover, top right */}
+        {/* Links - show on hover, top right. Sit on the screenshot image
+            itself, so a fixed dark scrim reads correctly in both themes. */}
         <div className="absolute top-3 right-3 flex gap-1.5
           opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           {project.github && (
@@ -45,7 +46,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               className="p-1.5 bg-black/70 backdrop-blur-sm rounded-lg
-                text-white/50 hover:text-white transition-colors border border-white/[0.08]"
+                text-white/60 hover:text-white transition-colors border border-white/[0.12]"
             >
               <FaGithub className="text-xs" />
             </a>
@@ -57,7 +58,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
               className="p-1.5 bg-black/70 backdrop-blur-sm rounded-lg
-                text-white/50 hover:text-white transition-colors border border-white/[0.08]"
+                text-white/60 hover:text-white transition-colors border border-white/[0.12]"
             >
               <FaArrowUpRightFromSquare className="text-[10px]" />
             </a>
@@ -66,7 +67,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
         {project.status && (
           <div className="absolute bottom-3 left-3">
-            <span className="text-[10px] font-mono text-white/45 bg-black/60 px-2 py-0.5 rounded">
+            <span className="text-[10px] font-mono text-white/70 bg-black/60 px-2 py-0.5 rounded">
               {project.status}
             </span>
           </div>
@@ -76,24 +77,24 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       {/* Text below image - no card background */}
       <div className="px-1">
         <div className="flex items-start justify-between gap-2 mb-1">
-          <h3 className="text-sm font-medium text-white/70
-            group-hover:text-white transition-colors duration-200">
+          <h3 className="text-sm font-medium text-foreground/75
+            group-hover:text-foreground transition-colors duration-200">
             {project.title}
           </h3>
-          <FaArrowUpRightFromSquare className="text-[10px] text-white/20
-            group-hover:text-white/50 transition-colors mt-0.5 flex-shrink-0" />
+          <FaArrowUpRightFromSquare className="text-[10px] text-foreground/25
+            group-hover:text-foreground/60 transition-colors mt-0.5 flex-shrink-0" />
         </div>
-        <p className="text-xs text-white/45 leading-relaxed mb-3 line-clamp-2">
+        <p className="text-xs text-foreground/50 leading-relaxed mb-3 line-clamp-2">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-1.5">
           {project.technologies.slice(0, 4).map((tech) => (
-            <span key={tech} className="text-[10px] text-white/40 font-mono">
+            <span key={tech} className="text-[10px] text-foreground/45 font-mono">
               {tech}
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="text-[10px] text-white/30 font-mono">
+            <span className="text-[10px] text-foreground/35 font-mono">
               +{project.technologies.length - 4}
             </span>
           )}
