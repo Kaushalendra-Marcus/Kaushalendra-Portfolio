@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
 import TechStack from "@/components/TechStack";
 import Projects from "@/components/Projects";
-import OpenSourceContributions from "@/components/OpenSourceContributions";
 import GitHubStats from "@/components/GitHubStats";
 import Writing from "@/components/Writing";
 import Skills from "@/components/Skills";
@@ -55,11 +54,10 @@ export default function Home() {
           ${revealed ? "opacity-100" : "opacity-0"}`}
       >
         <Hero revealed={revealed} />
-        <GitHubStats />
-        <TechStack />
-        <Projects />
         <Experience />
-        <OpenSourceContributions />
+        <GitHubStats />
+        <Projects />
+        <TechStack />
         <Writing />
         <Skills />
         <ContactForm />

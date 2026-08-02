@@ -11,14 +11,4 @@ export const openSourceContributions = [
       "Collaborated directly with maintainers on a large‑scale real‑world codebase (React, Electron, Node.js).",
     ],
   },
-  {
-    project: "aden-hive",
-    role: "Contributor (Bug fixes & UI improvements)",
-    website: "https://github.com/aden-hive/hive/issues/6906",
-    logo: "/contributionorg/adenhive.png",
-    achievements: [
-      "Reported and proposed fix for dropdown visibility issue on sign‑up page (Issue #6906) – options were cut off due to improper positioning.",
-      "Suggested using a portal, adding max‑height with scroll, and dynamic flip behavior to keep dropdown within viewport.",
-    ],
-  },
 ];
