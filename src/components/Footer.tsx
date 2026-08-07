@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="pt-16 pb-10">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
         <p className="text-xs text-foreground/40 font-mono">
-          Kaushalendra Singh &nbsp;·&nbsp; {new Date().getFullYear()} &nbsp;·&nbsp; Last updated May 2026
+          Kaushalendra Singh &nbsp;·&nbsp; {new Date().getFullYear()}
         </p>
         <div className="flex items-center gap-6">
           {[
