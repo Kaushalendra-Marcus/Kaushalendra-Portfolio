@@ -37,9 +37,8 @@ export default function VisitorWidget() {
         </span>
         <div>
           <p className="text-sm text-foreground/60 leading-relaxed">
-            Don't tell people your potential. Show them your work.
+            The best portfolio is running code.
           </p>
-          <p className="text-xs text-foreground/35 font-mono mt-2">— Unknown</p>
         </div>
       </div>
 
