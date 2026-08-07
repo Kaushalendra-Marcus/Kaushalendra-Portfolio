@@ -45,6 +45,48 @@ export const projects: Project[] = [
     image: "/projects/buildify-labs.png",
   },
   {
+    id: "evident",
+    title: "Evident",
+    subtitle: "Open-Source AI Extraction & Trust Layer",
+
+    description:
+      "Open-source, agent-agnostic extraction engine that converts any URL into structured, typed data with transparent confidence scoring, exposed through MCP, REST, and a native Python SDK.",
+
+    detailedDescription: [
+      "Architected an AI extraction framework that orchestrates multiple fetching strategies through a resilience ladder, automatically escalating from static requests to JavaScript rendering when needed.",
+
+      "Designed a deterministic confidence scoring system that returns structured provenance, extraction method, and trust metadata with every response, enabling autonomous AI agents to make informed decisions.",
+
+      "Built a versioned recipe registry that enables high-confidence deterministic extraction for supported platforms while seamlessly falling back to LLM-powered schema extraction for arbitrary websites.",
+
+      "Implemented protocol-agnostic interfaces including MCP server, REST API, and native Python SDK, all backed by the same orchestration engine and identical response contracts.",
+
+      "Developed secure server-side fetching with built-in SSRF protection, URL validation, failure diagnostics, and transparent extraction pipelines instead of opaque scraping.",
+
+      "Created an extensible plugin architecture supporting structured extraction, health checks, crawling, search integration, and community-contributed extraction recipes.",
+
+      "Built comprehensive automated tests using mocked HTTP fixtures to ensure deterministic behavior across extraction pipelines without relying on live network responses.",
+    ],
+
+    technologies: [
+      "Python",
+      "MCP",
+      "FastAPI",
+      "Crawl4AI",
+      "Playwright",
+      "Anthropic",
+      "Pydantic",
+      "httpx",
+      "Trafilatura",
+      "Docker",
+    ],
+
+    github: "https://github.com/Kaushalendra-Marcus/evident",
+    live: "https://evident.kaushalendra.me",
+    gradient: "from-amber-500 to-orange-600",
+    image: "/projects/evident.png",
+  },
+  {
     id: "repograph-ai",
     title: "RepoGraph AI",
     subtitle: "VS Code Extension",
@@ -57,7 +99,15 @@ export const projects: Project[] = [
       "Designed smart filtering to auto-skip node_modules, dist, build outputs, and generated code across 20+ languages.",
       "Built with full privacy in mind — no backend, no account required, API keys stored in VS Code SecretStorage via OS keychain.",
     ],
-    technologies: ["TypeScript", "VS Code API", "Groq", "Ollama", "Gemini", "Anthropic", "OpenAI"],
+    technologies: [
+      "TypeScript",
+      "VS Code API",
+      "Groq",
+      "Ollama",
+      "Gemini",
+      "Anthropic",
+      "OpenAI",
+    ],
     github: "https://github.com/Kaushalendra-Marcus/RepoGraph-AI",
     live: "https://repograph.kaushalendra.me",
     gradient: "from-violet-600 to-indigo-600",
@@ -83,7 +133,7 @@ export const projects: Project[] = [
       "HuggingFace",
       "Pinecone",
       "Pydantic",
-      "RAG"
+      "RAG",
     ],
     github: "https://github.com/Kaushalendra-Marcus/ai-context-engine",
     live: "", // optional (add later if you deploy)
@@ -171,5 +221,5 @@ export const projects: Project[] = [
     github: "https://github.com/Kaushalendra-Marcus/TwitterBotAI",
     live: "https://tweetbotai.vercel.app/",
     image: "/projects/twitterbot.png",
-  }
+  },
 ];
