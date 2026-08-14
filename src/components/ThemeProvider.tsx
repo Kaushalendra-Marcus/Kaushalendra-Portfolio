@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 
 type Theme = "light" | "dark";
 
@@ -17,13 +17,27 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // theme). We just read it back here so React's state agrees with
   // what's already painted.
   const [theme, setTheme] = useState<Theme>("dark");
+  const clickSoundRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
     setTheme(isDark ? "dark" : "light");
   }, []);
 
+  const playClickSound = () => {
+    if (!clickSoundRef.current) {
+      clickSoundRef.current = new Audio("/audio/click-effect-sound.mp3");
+      clickSoundRef.current.volume = 0.4;
+    }
+    clickSoundRef.current.currentTime = 0;
+    clickSoundRef.current.play().catch(() => {
+      // Autoplay can be blocked before any user gesture; safe to ignore
+      // since this always fires from a click/keypress handler.
+    });
+  };
+
   const toggleTheme = () => {
+    playClickSound();
     setTheme((prev) => {
       const next = prev === "dark" ? "light" : "dark";
       document.documentElement.classList.toggle("dark", next === "dark");
