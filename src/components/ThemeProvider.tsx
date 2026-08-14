@@ -6,8 +6,18 @@ type Theme = "light" | "dark";
 
 interface ThemeContextValue {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (origin?: { x: number; y: number }) => void;
 }
+
+// The View Transitions API isn't in TS's DOM lib on every version we might
+// build with, so we type just the bit we use rather than pulling in a
+// third-party lib.dom augmentation.
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (callback: () => void) => {
+    ready: Promise<void>;
+    finished: Promise<void>;
+  };
+};
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
@@ -36,10 +46,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const toggleTheme = () => {
+  const toggleTheme = (origin?: { x: number; y: number }) => {
     playClickSound();
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
+
+    const next = theme === "dark" ? "light" : "dark";
+    const applyTheme = () => {
       document.documentElement.classList.toggle("dark", next === "dark");
       try {
         localStorage.setItem("theme", next);
@@ -47,8 +58,52 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         // localStorage unavailable (private browsing etc.) — theme just
         // won't persist across visits, not worth failing over.
       }
-      return next;
-    });
+      setTheme(next);
+    };
+
+    const doc = document as ViewTransitionDocument;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // No View Transitions support (or the user asked for less motion) —
+    // fall back to the plain instant swap, still backed by the 0.3s
+    // color transition already on <body>.
+    if (!doc.startViewTransition || reducedMotion) {
+      applyTheme();
+      return;
+    }
+
+    // Default to a top-right origin (near the navbar toggle) when we
+    // don't have a click position, e.g. triggered from the command palette.
+    const x = origin?.x ?? window.innerWidth - 28;
+    const y = origin?.y ?? 28;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = doc.startViewTransition(applyTheme);
+
+    transition.ready
+      .then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${endRadius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 650,
+            easing: "cubic-bezier(0.65, 0, 0.35, 1)",
+            pseudoElement: "::view-transition-new(root)",
+          }
+        );
+      })
+      .catch(() => {
+        // A second click before the first transition finishes causes the
+        // browser to skip this one and reject `ready` — applyTheme()
+        // already ran via the startViewTransition callback either way.
+      });
   };
 
   return (

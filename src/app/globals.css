@@ -181,6 +181,36 @@ main {
 .animate-fadeInUp  { animation: fadeInUp 0.6s ease-out both; }
 .animate-scaleIn   { animation: fadeIn 0.3s ease-out both; }
 
+/* ─── Theme toggle: circular reveal (View Transitions API) ─── */
+/* The UA's default is a cross-fade between the old/new snapshots; we kill
+   that and drive our own clip-path animation on the "new" snapshot from
+   ThemeProvider instead, so the incoming theme wipes in as an expanding
+   circle from the toggle button instead of just cutting over. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Small burst ring on the toggle button itself, fired on click for
+   immediate tactile feedback while the page-wide wipe plays out. */
+@keyframes theme-pulse-ring {
+  from {
+    box-shadow: 0 0 0 0 var(--ring);
+    opacity: 0.5;
+  }
+  to {
+    box-shadow: 0 0 0 14px var(--ring);
+    opacity: 0;
+  }
+}
+
 /* ─── Scrollbar ──────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
