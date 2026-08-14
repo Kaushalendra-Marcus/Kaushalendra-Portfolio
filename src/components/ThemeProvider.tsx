@@ -19,6 +19,43 @@ type ViewTransitionDocument = Document & {
   };
 };
 
+/**
+ * Start/end clip-path polygons for a "curtain drag" reveal: the incoming
+ * theme sweeps in from one edge of the screen to the other — top-down when
+ * switching to dark (night falling), bottom-up when switching to light
+ * (dawn breaking) — instead of just cutting over. The two points along the
+ * leading edge are offset by `tilt`, biased toward whichever side the
+ * toggle was clicked on, so the edge reads as a hand dragging a shade
+ * rather than a robotic straight line. Only two keyframes are needed —
+ * the browser interpolates each polygon point linearly between them.
+ */
+function buildCurtainClipPath(
+  toDark: boolean,
+  origin?: { x: number; y: number }
+): [string, string] {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const tilt = Math.min(w, h) * 0.07;
+  const clickX = origin?.x ?? w - 28;
+  const leftLeads = clickX <= w / 2;
+
+  if (toDark) {
+    // Curtain falls from the top edge down to the bottom.
+    const leftStart = leftLeads ? 0 : -tilt;
+    const rightStart = leftLeads ? -tilt : 0;
+    const start = `polygon(0px 0px, ${w}px 0px, ${w}px ${rightStart}px, 0px ${leftStart}px)`;
+    const end = `polygon(0px 0px, ${w}px 0px, ${w}px ${h + tilt}px, 0px ${h + tilt}px)`;
+    return [start, end];
+  }
+
+  // Curtain rises from the bottom edge up to the top.
+  const leftStart = leftLeads ? h : h + tilt;
+  const rightStart = leftLeads ? h + tilt : h;
+  const start = `polygon(0px ${h}px, ${w}px ${h}px, ${w}px ${rightStart}px, 0px ${leftStart}px)`;
+  const end = `polygon(0px ${h}px, ${w}px ${h}px, ${w}px ${-tilt}px, 0px ${-tilt}px)`;
+  return [start, end];
+}
+
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
@@ -72,28 +109,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    // Default to a top-right origin (near the navbar toggle) when we
-    // don't have a click position, e.g. triggered from the command palette.
-    const x = origin?.x ?? window.innerWidth - 28;
-    const y = origin?.y ?? 28;
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
+    const [startClip, endClip] = buildCurtainClipPath(next === "dark", origin);
     const transition = doc.startViewTransition(applyTheme);
 
     transition.ready
       .then(() => {
         document.documentElement.animate(
+          { clipPath: [startClip, endClip] },
           {
-            clipPath: [
-              `circle(0px at ${x}px ${y}px)`,
-              `circle(${endRadius}px at ${x}px ${y}px)`,
-            ],
-          },
-          {
-            duration: 650,
+            duration: 750,
             easing: "cubic-bezier(0.65, 0, 0.35, 1)",
             pseudoElement: "::view-transition-new(root)",
           }
