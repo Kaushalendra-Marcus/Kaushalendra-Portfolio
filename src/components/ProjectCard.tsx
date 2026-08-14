@@ -25,7 +25,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             alt={`${project.title} screenshot`}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
           />
         ) : (
           <div className={`w-full h-full bg-gradient-to-br ${project.gradient ?? "from-foreground/[0.03] to-foreground/[0.01]"} flex items-end p-4`}>
