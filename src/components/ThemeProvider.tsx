@@ -6,7 +6,7 @@ type Theme = "light" | "dark";
 
 interface ThemeContextValue {
   theme: Theme;
-  toggleTheme: (origin?: { x: number; y: number }) => void;
+  toggleTheme: () => void;
 }
 
 // The View Transitions API isn't in TS's DOM lib on every version we might
@@ -19,42 +19,24 @@ type ViewTransitionDocument = Document & {
   };
 };
 
+// Total time the reveal animation runs for, start to finish.
+const CORNER_WIPE_DURATION_MS = 460;
+
+// Smooth deceleration, no overshoot — a plain, premium ease rather than
+// a bounce. Fast to start, gentle to land.
+const CORNER_WIPE_EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
+
 /**
- * Start/end clip-path polygons for a "curtain drag" reveal: the incoming
- * theme sweeps in from one edge of the screen to the other — top-down when
- * switching to dark (night falling), bottom-up when switching to light
- * (dawn breaking) — instead of just cutting over. The two points along the
- * leading edge are offset by `tilt`, biased toward whichever side the
- * toggle was clicked on, so the edge reads as a hand dragging a shade
- * rather than a robotic straight line. Only two keyframes are needed —
- * the browser interpolates each polygon point linearly between them.
+ * Corner-to-corner wipe — the incoming theme grows as a plain rectangle
+ * pinned to the top-right corner (where the toggle lives) and expanding
+ * toward the bottom-left, so its free corner slides in a single straight
+ * line across the screen. Two clip-path states, browser-interpolated —
+ * no per-frame shape math, no wobble, no bounce.
  */
-function buildCurtainClipPath(
-  toDark: boolean,
-  origin?: { x: number; y: number }
-): [string, string] {
-  const w = window.innerWidth;
-  const h = window.innerHeight;
-  const tilt = Math.min(w, h) * 0.07;
-  const clickX = origin?.x ?? w - 28;
-  const leftLeads = clickX <= w / 2;
-
-  if (toDark) {
-    // Curtain falls from the top edge down to the bottom.
-    const leftStart = leftLeads ? 0 : -tilt;
-    const rightStart = leftLeads ? -tilt : 0;
-    const start = `polygon(0px 0px, ${w}px 0px, ${w}px ${rightStart}px, 0px ${leftStart}px)`;
-    const end = `polygon(0px 0px, ${w}px 0px, ${w}px ${h + tilt}px, 0px ${h + tilt}px)`;
-    return [start, end];
-  }
-
-  // Curtain rises from the bottom edge up to the top.
-  const leftStart = leftLeads ? h : h + tilt;
-  const rightStart = leftLeads ? h + tilt : h;
-  const start = `polygon(0px ${h}px, ${w}px ${h}px, ${w}px ${rightStart}px, 0px ${leftStart}px)`;
-  const end = `polygon(0px ${h}px, ${w}px ${h}px, ${w}px ${-tilt}px, 0px ${-tilt}px)`;
-  return [start, end];
-}
+const CORNER_WIPE_KEYFRAMES: Keyframe[] = [
+  { clipPath: "inset(0% 0% 100% 100%)", offset: 0 },
+  { clipPath: "inset(0% 0% 0% 0%)", offset: 1 },
+];
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
@@ -83,7 +65,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const toggleTheme = (origin?: { x: number; y: number }) => {
+  const toggleTheme = () => {
     playClickSound();
 
     const next = theme === "dark" ? "light" : "dark";
@@ -109,25 +91,27 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    const [startClip, endClip] = buildCurtainClipPath(next === "dark", origin);
-    const transition = doc.startViewTransition(applyTheme);
+    try {
+      const transition = doc.startViewTransition(applyTheme);
 
-    transition.ready
-      .then(() => {
-        document.documentElement.animate(
-          { clipPath: [startClip, endClip] },
-          {
-            duration: 750,
-            easing: "cubic-bezier(0.65, 0, 0.35, 1)",
+      transition.ready
+        .then(() => {
+          document.documentElement.animate(CORNER_WIPE_KEYFRAMES, {
+            duration: CORNER_WIPE_DURATION_MS,
+            easing: CORNER_WIPE_EASING,
             pseudoElement: "::view-transition-new(root)",
-          }
-        );
-      })
-      .catch(() => {
-        // A second click before the first transition finishes causes the
-        // browser to skip this one and reject `ready` — applyTheme()
-        // already ran via the startViewTransition callback either way.
-      });
+          });
+        })
+        .catch(() => {
+          // A second click before the first transition finishes causes the
+          // browser to skip this one and reject `ready` — applyTheme()
+          // already ran via the startViewTransition callback either way.
+        });
+    } catch {
+      // Anything unexpected here should never leave a click doing
+      // nothing — fall back to the instant swap.
+      applyTheme();
+    }
   };
 
   return (
