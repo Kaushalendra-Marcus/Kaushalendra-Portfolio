@@ -31,7 +31,9 @@ function GetInTouchCard() {
     <div className="bg-card border border-foreground/[0.06] rounded-2xl p-6 h-full">
       <h3 className="text-base font-semibold text-foreground/85 mb-1.5">Ways to Connect</h3>
       <p className="text-sm text-foreground/40 leading-relaxed mb-5">
-        Open to internships, freelance work, and anything interesting in between.
+        Open to backend/AI engineering roles, internships, and freelance
+        work — especially anything involving retrieval, agents, or LLM
+        infrastructure.
       </p>
 
       <div className="divide-y divide-foreground/[0.06] border-y border-foreground/[0.06] mb-5">

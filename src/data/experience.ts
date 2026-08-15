@@ -10,10 +10,10 @@ export const experiences: Experience[] = [
     note: "Canada startup",
     technologies: ["LangGraph", "LangChain", "Pinecone", "Neo4j", "MCP", "Langfuse"],
     achievements: [
-      "Working directly with the founding team on the core EpicWise context engine - designing multi-step retrieval and reasoning pipelines using LangGraph.",
-      "Building hybrid retrieval combining vector search (Pinecone) and graph-based retrieval (Neo4j) to surface relevant organizational context.",
-      "Authoring system prompts, execution routers, and tool-calling schemas; contributing to MCP integrations connecting EpicWise to developer tools.",
-      "Building internal tracing and observability tooling using Langfuse and structured logging; participating in real architecture decisions with full system context.",
+      "Working directly with the founding team on EpicWise's core context engine - designing the multi-step retrieval and reasoning pipelines (LangGraph) that decide what context the system surfaces and why.",
+      "Built hybrid retrieval combining vector search (Pinecone) and graph-based retrieval (Neo4j), so the engine surfaces relationships pure similarity search misses - not just similar text, but connected context.",
+      "Authoring system prompts, execution routers, and tool-calling schemas; building the MCP integrations that connect EpicWise to a developer's existing tools instead of asking them to switch context.",
+      "Built the internal tracing and observability layer (Langfuse + structured logging) the team uses to debug retrieval quality - the infrastructure that's invisible until it's missing, and why architecture decisions here aren't guesses.",
     ],
   },
   {

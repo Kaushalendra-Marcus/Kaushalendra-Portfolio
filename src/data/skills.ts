@@ -26,33 +26,17 @@ export const skills: Skill[] = [
   },
 ];
 
+// Deliberately NOT a repeat of the categorized list above - this is the
+// secondary infra/tooling layer (observability, local inference, vector
+// search, deployment) that supports the AI/LLM work without diluting it
+// with generalist items already implied by "full-stack."
 export const techStack = [
-  "Python",
-  "LangChain",
-  "LangGraph",
   "Langfuse",
   "LangSmith",
-  "Pinecone",
   "FAISS",
   "Hugging Face",
   "Ollama",
-  "FastAPI",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "PostgreSQL",
-  "MySQL",
-  "Redis",
   "Docker",
   "AWS",
-  "TypeScript",
-  "JavaScript",
-  "C++",
-  "React",
-  "Next.js",
-  "Tailwind CSS",
-  "Socket.IO",
-  "WebSockets",
-  "Prisma",
-  "Vercel",
+  "Redis",
 ];

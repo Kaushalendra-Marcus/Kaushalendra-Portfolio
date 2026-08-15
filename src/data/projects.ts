@@ -7,22 +7,22 @@ export const projects: Project[] = [
     subtitle: "Agentic AI Business Intelligence System",
 
     description:
-      "Agentic AI-powered analytics platform that converts natural language into SQL, orchestrates multi-step reasoning with LangGraph and DeepAgents, and delivers structured insights with dynamic visualizations.",
+      "Agentic analytics platform that turns a plain-English business question into a governed SQL query, an analysis, and a rendered chart - with guardrails against hallucinated or unsafe SQL built into the architecture, not bolted on after.",
 
     detailedDescription: [
-      "Designed an agentic AI system using LangGraph and DeepAgents to orchestrate multi-step workflows: query understanding → SQL generation → sanitization → execution → analysis → structured output.",
+      "The core problem: letting non-technical users query a real database in plain English safely - without hallucinated SQL, unbounded queries, or unguarded execution - is the part most 'chat with your data' tools skip. Solved with an agentic system (LangGraph + DeepAgents) that runs query understanding → SQL generation → sanitization → execution → analysis → structured output as a stateful graph, not a single prompt.",
 
-      "Built modular AI agents (SQL generator, analysis engine, visual selector, insight generator) coordinated through stateful execution graphs.",
+      "Built modular agents (SQL generator, analysis engine, visual selector, insight generator) that each own one pipeline step, coordinated through the execution graph so failures are isolated and each stage is independently testable.",
 
-      "Integrated MCP (Model Context Protocol) for structured tool interaction, enabling controlled access to SQL execution, data analysis, and external context sources.",
+      "Integrated MCP for structured tool interaction, giving the agents controlled, auditable access to SQL execution, data analysis, and external context sources instead of unrestricted tool calls.",
 
-      "Implemented a secure data layer with SQL sanitization, schema-constrained query generation, and execution guards to prevent unsafe operations.",
+      "Implemented the safety layer that makes natural-language-to-SQL tractable: schema-constrained query generation, SQL sanitization, and execution guards that block unsafe operations before they reach the database.",
 
-      "Developed strict JSON-based output pipelines using Pydantic for reliable frontend rendering of charts, KPI cards, anomalies, and insights.",
+      "Developed strict Pydantic-typed JSON output pipelines so the frontend renders charts, KPI cards, anomalies, and insights without ad-hoc parsing of LLM output.",
 
-      "Added production-grade backend controls including authentication, rate limiting, plan-based access, and file validation.",
+      "Added the production controls a real product needs - authentication, rate limiting, plan-based access, and file validation - rather than treating them as an afterthought.",
 
-      "Built a dynamic Next.js frontend that renders AI-generated UI components in real-time based on structured responses.",
+      "Built a dynamic Next.js frontend that renders AI-generated UI components in real time from those structured responses, so the interface adapts to whatever the agents return.",
     ],
 
     technologies: [
@@ -50,22 +50,22 @@ export const projects: Project[] = [
     subtitle: "Open-Source AI Extraction & Trust Layer",
 
     description:
-      "Open-source, agent-agnostic extraction engine that converts any URL into structured, typed data with transparent confidence scoring, exposed through MCP, REST, and a native Python SDK.",
+      "Open-source extraction engine built for a specific problem: AI agents can scrape a page but have no way to know if the result is complete or trustworthy. Evident returns typed data with transparent confidence scoring, over MCP, REST, and a native Python SDK.",
 
     detailedDescription: [
-      "Architected an AI extraction framework that orchestrates multiple fetching strategies through a resilience ladder, automatically escalating from static requests to JavaScript rendering when needed.",
+      "The problem: most extraction tools return data with no signal about how much to trust it - no indication if a JS-rendered page silently failed on a static fetch, or if a result is partial. Solved with a resilience ladder that escalates from static requests to JavaScript rendering only when needed, instead of defaulting to a headless browser for everything.",
 
-      "Designed a deterministic confidence scoring system that returns structured provenance, extraction method, and trust metadata with every response, enabling autonomous AI agents to make informed decisions.",
+      "Designed a deterministic confidence scoring system that returns structured provenance, extraction method, and trust metadata with every response - so an autonomous agent can decide whether to trust the answer or retry, instead of guessing.",
 
-      "Built a versioned recipe registry that enables high-confidence deterministic extraction for supported platforms while seamlessly falling back to LLM-powered schema extraction for arbitrary websites.",
+      "Built a versioned recipe registry for high-confidence deterministic extraction on supported platforms, falling back to LLM-powered schema extraction for arbitrary sites - so common cases don't pay an LLM-inference cost.",
 
-      "Implemented protocol-agnostic interfaces including MCP server, REST API, and native Python SDK, all backed by the same orchestration engine and identical response contracts.",
+      "Implemented protocol-agnostic interfaces - MCP server, REST API, and native Python SDK - all backed by the same orchestration engine and identical response contracts, so extraction logic is written once and consumed three ways.",
 
-      "Developed secure server-side fetching with built-in SSRF protection, URL validation, failure diagnostics, and transparent extraction pipelines instead of opaque scraping.",
+      "Hardened server-side fetching with SSRF protection, URL validation, and failure diagnostics, treating fetching as an attack surface rather than a convenience feature - no opaque scraping.",
 
-      "Created an extensible plugin architecture supporting structured extraction, health checks, crawling, search integration, and community-contributed extraction recipes.",
+      "Built an extensible plugin architecture (structured extraction, health checks, crawling, search integration, community-contributed recipes) so the extraction surface grows without touching the core engine.",
 
-      "Built comprehensive automated tests using mocked HTTP fixtures to ensure deterministic behavior across extraction pipelines without relying on live network responses.",
+      "Built comprehensive automated tests using mocked HTTP fixtures, so extraction behavior stays deterministic and testable without depending on live network responses.",
     ],
 
     technologies: [
@@ -91,13 +91,13 @@ export const projects: Project[] = [
     title: "RepoGraph AI",
     subtitle: "VS Code Extension",
     description:
-      "Free VS Code extension that maps any codebase into an interactive dependency graph with AI-powered file summaries and live codebase Q&A.",
+      "Free VS Code extension that maps any codebase into an interactive dependency graph with AI-powered summaries and codebase Q&A - built so nothing leaves your machine and no single model provider is required.",
     detailedDescription: [
-      "Built a VS Code extension that scans workspaces and maps every file relationship into an interactive force-directed dependency graph.",
-      "Integrated 5 AI providers — Groq, Ollama, Gemini, Anthropic, and OpenAI — with support for custom model names and zero telemetry.",
-      "Implemented a multi-turn Q&A agent with full graph, summary, and file context so questions build on each other naturally.",
-      "Designed smart filtering to auto-skip node_modules, dist, build outputs, and generated code across 20+ languages.",
-      "Built with full privacy in mind — no backend, no account required, API keys stored in VS Code SecretStorage via OS keychain.",
+      "The problem: understanding an unfamiliar codebase is slow, and most AI code tools either send your code to a third-party backend or lock you into one model provider. Built a VS Code extension that scans the workspace locally and maps every file relationship into an interactive force-directed dependency graph instead.",
+      "Integrated 5 AI providers — Groq, Ollama, Gemini, Anthropic, and OpenAI — with support for custom model names, so the choice of model, including fully local via Ollama, stays with the user.",
+      "Implemented a multi-turn Q&A agent with full graph, summary, and file context, so follow-up questions build on prior answers instead of starting over each time.",
+      "Designed smart filtering to auto-skip node_modules, dist, build outputs, and generated code across 20+ languages, so the graph reflects actual source, not build noise.",
+      "Built with privacy as an architectural constraint, not a feature: no backend, no account required, API keys stored in VS Code's SecretStorage via the OS keychain - the code never leaves the machine.",
     ],
     technologies: [
       "TypeScript",
@@ -118,14 +118,14 @@ export const projects: Project[] = [
     title: "AI Context Engine",
     subtitle: "Context-Aware Backend Intelligence System",
     description:
-      "RAG-based system that retrieves relevant project context and generates structured technical insights using LLMs.",
+      "RAG system that answers 'how does this part of the system work' by retrieving against the actual codebase, docs, and system data - and returning structured output instead of a wall of text.",
     detailedDescription: [
-      "Built a context-aware backend system that analyzes codebases, docs, and system data to generate actionable insights.",
-      "Implemented RAG pipeline using LangChain with semantic search over Pinecone vector database.",
-      "Used HuggingFace embeddings for accurate similarity search and contextual understanding.",
-      "Designed modular architecture with ingestion and query pipelines for scalability.",
-      "Generated structured outputs (summary, dependencies, risks) using Pydantic schemas.",
-      "Improved developer productivity by eliminating manual code exploration and documentation search.",
+      "The problem: answering how a system works usually means manually grepping through code, docs, and tickets. Built a context-aware backend that ingests codebases, docs, and system data to answer that directly.",
+      "Implemented a RAG pipeline using LangChain with semantic search over a Pinecone vector database as the retrieval layer.",
+      "Used HuggingFace embeddings for the similarity search layer, tuned for contextual accuracy over raw retrieval speed.",
+      "Designed a modular ingestion/query pipeline split so new data sources can be added without touching retrieval or generation logic.",
+      "Constrained LLM output to Pydantic schemas - summary, dependencies, risks - so results are structured data a UI or another system can consume, not just a paragraph of prose.",
+      "Outcome: turns a manual code-exploration-and-doc-search task into a direct query - the retrieval and schema-constraint work is the actual engineering problem this solves.",
     ],
     technologies: [
       "Python",
@@ -145,13 +145,13 @@ export const projects: Project[] = [
     title: "Postly",
     subtitle: "Modern Social Media Platform",
     description:
-      "Full-stack social media application with authentication, posting, media uploads, and real-time interactions.",
+      "Full-stack social app - auth, posting, media uploads, real-time feed - built to get a complete social-app data model down end to end.",
     detailedDescription: [
-      "Developed a comprehensive social media platform with user authentication, profile management, and content creation features.",
-      "Implemented secure authentication using Clerk with support for multiple sign-in methods.",
-      "Built real-time feed with infinite scroll, like/comment functionality, and media upload capabilities.",
-      "Designed responsive UI with modern design patterns and smooth animations.",
-      "Integrated MongoDB for scalable data storage with optimized queries.",
+      "Full-stack social app built end to end to get a real social-app data model down: auth, posting, media uploads, feed.",
+      "Used Clerk for authentication across multiple sign-in methods.",
+      "Built a real-time feed with infinite scroll, likes, and comments.",
+      "Handled media uploads and a responsive UI on top of the feed.",
+      "Used MongoDB as the data layer with queries structured for the feed's access patterns.",
     ],
     technologies: ["Next.js", "Clerk", "MongoDB", "TypeScript", "Tailwind"],
     github: "https://github.com/Kaushalendra-Marcus/Postly",
@@ -163,13 +163,13 @@ export const projects: Project[] = [
     title: "MyAttendance",
     subtitle: "Smart Attendance Management System",
     description:
-      "Progressive Web App for attendance tracking used by 1300+ active users to maintain 75% attendance criteria.",
+      "Progressive Web App used by 1300+ active students to track attendance against a 75% minimum requirement, with a prediction algorithm for how many classes can safely be missed.",
     detailedDescription: [
-      "Built Progressive Web App (PWA) that works offline and provides native app-like experience.",
-      "Implemented real-time attendance tracking with calendar view and detailed statistics.",
-      "Developed smart prediction algorithm to help students maintain minimum attendance requirements.",
-      "Designed intuitive dashboard showing attendance percentage, present/absent days, and alerts.",
-      "Scaled to support 1300+ active users with consistent performance and reliability.",
+      "Used by 1300+ active students to track attendance against a 75% minimum requirement.",
+      "Built a prediction algorithm that tells a student how many classes they can miss, or need to attend, to stay above the threshold - the actual problem the app solves, not just a log of numbers.",
+      "Built as a Progressive Web App so it works offline and feels native, since students check it between classes without reliable signal.",
+      "Calendar view and stats dashboard for present/absent history, plus alerts when attendance gets close to the threshold.",
+      "Grew from a personal tool to something classmates started relying on daily - real usage that shaped the prediction algorithm and offline handling more than any spec would have.",
     ],
     technologies: ["Next.js", "MongoDB", "PWA", "TypeScript", "Chart.js"],
     github: "https://github.com/Kaushalendra-Marcus/attendance-tracker",
@@ -181,14 +181,14 @@ export const projects: Project[] = [
     title: "GRS Worker Business",
     subtitle: "Worker Management System",
     description:
-      "Enterprise platform for managing worker information, attendance, payroll with Twilio SMS and QR codes.",
+      "The client-facing product behind the GRS Worker internship listed under Experience - an admin platform for worker records, attendance, and payroll.",
     detailedDescription: [
-      "Architected full-stack application with Next.js 15, Prisma ORM, and NextAuth for secure authentication.",
-      "Integrated Twilio SMS API for automated worker notifications and communication.",
-      "Implemented QR code generation for worker identification and quick check-ins.",
-      "Built comprehensive admin dashboard with worker management, attendance tracking, and payroll processing.",
-      "Used Zod for robust form validation reducing data entry errors by 40%.",
-      "Optimized performance with Turbopack and Server Actions for instant page loads.",
+      "Architected the full-stack application with Next.js 15, Prisma ORM, and NextAuth for secure session management.",
+      "Integrated Twilio SMS for automated worker notifications and shift communication.",
+      "Implemented QR-code generation for worker identification and quick check-ins.",
+      "Built the admin dashboard covering worker management, attendance tracking, and payroll processing.",
+      "Used Zod for schema validation across API routes, catching malformed submissions before they hit the database.",
+      "Built on Next.js 15 with Prisma/PostgreSQL, using Turbopack and Server Actions for faster page loads.",
     ],
     technologies: [
       "Next.js 15",
@@ -209,13 +209,13 @@ export const projects: Project[] = [
     title: "Twitter AI Bot",
     subtitle: "AI-Powered Twitter Automation",
     description:
-      "Automated Twitter bot with AI-generated content and intelligent scheduling capabilities.",
+      "Side project automating AI-generated tweets via the Twitter API v2 - built to get hands-on with the API and prompt-driven content, not a production content system.",
     detailedDescription: [
-      "Developed autonomous Twitter bot using Twitter API v2 for automated posting and engagement.",
-      "Integrated AI models for generating contextually relevant and engaging tweet content.",
-      "Implemented intelligent scheduling algorithm to optimize posting times for maximum engagement.",
-      "Built content moderation system to ensure brand consistency and safety.",
-      "Created analytics dashboard to track bot performance and engagement metrics.",
+      "Side project built to get hands-on with the Twitter API v2 - automated posting via an AI-generated content pipeline.",
+      "Used an LLM to generate tweet content from prompts rather than static templates.",
+      "Built basic scheduling logic to space out posting times.",
+      "Added a lightweight content check before anything posts, to avoid off-brand or repetitive tweets.",
+      "Logged basic engagement metrics to see what the bot was posting and how it performed.",
     ],
     technologies: ["Python", "AI/ML", "Twitter API", "OpenAI", "MongoDB"],
     github: "https://github.com/Kaushalendra-Marcus/TwitterBotAI",
