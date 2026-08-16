@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "AI Backend Engineer specializing in Agentic AI, RAG pipelines, and scalable backend systems. Building intelligent systems using LangChain, LangGraph, and modern web technologies.",
+    "AI Engineer specializing in Agentic AI, RAG pipelines, and scalable backend systems. Building intelligent systems using LangChain, LangGraph, and modern web technologies.",
 
   keywords: [
     "Kaushalendra Singh",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
         url: "/kaushalendra-singh.png",
         width: 1200,
         height: 630,
-        alt: "Kaushalendra Singh – AI Backend Engineer",
+        alt: "Kaushalendra Singh – AI Engineer",
       },
     ],
     locale: "en_US",
@@ -119,7 +119,7 @@ const jsonLd = {
   url: "https://kaushalendra.me/",
   image: "https://kaushalendra.me//kaushalendra-singh.png",
 
-  jobTitle: "AI Backend Engineer",
+  jobTitle: "AI Engineer",
 
   sameAs: [
     "https://github.com/Kaushalendra-Marcus",

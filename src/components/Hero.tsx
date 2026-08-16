@@ -58,7 +58,7 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
       {/* Role line */}
       <div className={`mb-5 ${revealed ? "h-c" : "opacity-0"}`}>
         <p className="text-xs sm:text-sm text-foreground/45 font-mono">
-          AI Backend Engineer &nbsp;—&nbsp; Retrieval, Agents &amp; LLM Infra
+          AI Engineer &nbsp;—&nbsp; Retrieval, Agents &amp; LLM Infra
         </p>
       </div>
 
