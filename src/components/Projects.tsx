@@ -15,7 +15,7 @@ export default function Projects({ limit }: { limit?: number }) {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-8 sm:gap-x-6 sm:gap-y-10">
         {visibleProjects.map((project, index) => (
           <div
             key={project.id}
