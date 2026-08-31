@@ -6,7 +6,7 @@ const articles = [
     description:
       "How I went from find + mental models to a visual dependency graph, static flow analysis, and RAG-powered Q&A — inside VS Code.",
     url: "https://medium.com/@Kaushalendra-marcus/i-built-an-ai-powered-vs-code-extension-that-understands-your-entire-codebase-c0c2a6e817de",
-    thumbnail: "https://miro.medium.com/v2/resize:fit:1200/1*oMjgbqLDhb0FE9nAThfbpQ.png",
+    thumbnail: "https://miro.medium.com/v2/format:webp/1*Bf-P4ZDUm9a4hkbFeyLnaw.png",
     readTime: "9 min",
     date: "Aug 31, 2026",
   },
@@ -15,7 +15,7 @@ const articles = [
     description:
       "A practical breakdown of how AI systems talk to external tools like GitHub, Slack, and databases - and why MCP is the protocol that makes it clean.",
     url: "https://medium.com/kairi-ai/understanding-mcp-architecture-from-first-principles-complete-guide-for-ai-engineers-ef5b2e510bb5",
-    thumbnail: "https://miro.medium.com/v2/resize:fit:1018/1*iWBlcKoa_3_ptATziHs7ZA.png",
+    thumbnail: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*RjdInJAfEMhe90rYh5kkPg.png",
     readTime: "4 min",
     date: "Apr 24, 2026",
   },
@@ -27,16 +27,7 @@ const articles = [
     thumbnail: "https://miro.medium.com/v2/resize:fit:972/1*pN71hxAvN8HE_NnDnYDUUg.png",
     readTime: "7 min",
     date: "May 21, 2026",
-  },
-  {
-    title: "The Model Context Protocol: Why It Will Become an Industry Standard",
-    description:
-      "The story of AI's biggest integration problem - from ChatGPT's explosive growth to how MCP solves the context gap between LLMs and real-world tooling.",
-    url: "https://medium.com/kairi-ai/the-model-context-protocol-mcp-why-it-will-become-an-industry-standard-928e122844b8",
-    thumbnail: "https://miro.medium.com/v2/resize:fit:1200/1*LHdbbp1pP0nor_-rfk8MhQ.png",
-    readTime: "8 min",
-    date: "May 21, 2026",
-  },
+  }
 ];
 
 export default function Writing() {

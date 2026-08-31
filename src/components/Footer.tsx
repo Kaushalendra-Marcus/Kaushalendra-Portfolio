@@ -3,11 +3,11 @@
 export default function Footer() {
   return (
     <footer className="pt-16 pb-10">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+      <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-4 mb-4 text-center lg:text-left">
         <p className="text-xs text-foreground/40 font-mono">
           Kaushalendra Singh &nbsp;·&nbsp; {new Date().getFullYear()}
         </p>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center justify-center lg:justify-start gap-6 flex-wrap">
           {[
             { label: "GitHub",   href: "https://github.com/Kaushalendra-Marcus" },
             { label: "LinkedIn", href: "https://www.linkedin.com/in/kaushalendra-singh-45b933272/" },
@@ -26,8 +26,8 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      {/* Keyboard shortcut hint */}
-      <p className="text-[10px] text-foreground/35 font-mono">
+      {/* Keyboard shortcut hint — centered only on mobile/tablet, left on desktop */}
+      <p className="text-[10px] text-foreground/35 font-mono text-center lg:text-left">
         Press{" "}
         <kbd className="text-foreground/40 bg-foreground/[0.05] border border-border rounded px-1 py-0.5 text-[9px]">
           /
