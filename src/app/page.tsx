@@ -13,6 +13,7 @@ import ScrollLine from "@/components/ScrollLine";
 import CommandPalette from "@/components/CommandPalette";
 import Loader from "@/components/Loader";
 import Projects from "@/components/Projects";
+import StarField from "@/components/StarField";
 
 const VISITED_KEY = "kp_intro_seen";
 
@@ -42,10 +43,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       <Navbar />
       <ScrollLine />
       <CommandPalette />
+      {/* Broad starfield at page bottom — theme tokens, not footer-clipped */}
+      <StarField variant="broad" />
       <main
         className={`w-full max-w-5xl mx-auto px-6 lg:px-12 py-20 pt-28 relative z-10
           transition-opacity duration-700 ease-out motion-reduce:transition-none
