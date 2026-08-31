@@ -14,13 +14,13 @@ export default function Loader({
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setNameVisible(true), 150);
-    const t2 = setTimeout(() => setTagVisible(true), 350);
+    const t1 = setTimeout(() => setNameVisible(true), 200);
+    const t2 = setTimeout(() => setTagVisible(true), 450);
     const t3 = setTimeout(() => {
       setExiting(true);
       onExitStart?.();
-    }, 1000);
-    const t4 = setTimeout(() => onDone(), 1200);
+    }, 2400);
+    const t4 = setTimeout(() => onDone(), 2800);
 
     return () => {
       clearTimeout(t1);
