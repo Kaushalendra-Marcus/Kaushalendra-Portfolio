@@ -11,6 +11,15 @@ const articles = [
     date: "Aug 31, 2026",
   },
   {
+    title: "Building Your First MCP Server",
+    description:
+      "There is a specific kind of frustration that comes from tracking expenses through an app — you open it, tap through three screens. Here's how a simple MCP server fixes it.",
+    url: "https://medium.com/@Kaushalendra-marcus/building-your-first-mcp-server-9aca1726d39c",
+    thumbnail: "https://miro.medium.com/v2/resize:fit:1200/1*cNyEGqix1bTVyTGP_GVb3w.png",
+    readTime: "8 min",
+    date: "Aug 31, 2026",
+  },
+  {
     title: "Understanding MCP Architecture from First Principles",
     description:
       "A practical breakdown of how AI systems talk to external tools like GitHub, Slack, and databases - and why MCP is the protocol that makes it clean.",
@@ -19,15 +28,6 @@ const articles = [
     readTime: "4 min",
     date: "Apr 24, 2026",
   },
-  {
-    title: "The MCP Lifecycle, Explained",
-    description:
-      "What actually happens the instant Claude Desktop connects to an MCP server - a detailed walkthrough so you debug faster when building your own servers and clients.",
-    url: "https://medium.com/@Kaushalendra-marcus/the-mcp-lifecycle-explained-400a360625e6",
-    thumbnail: "https://miro.medium.com/v2/resize:fit:972/1*pN71hxAvN8HE_NnDnYDUUg.png",
-    readTime: "7 min",
-    date: "May 21, 2026",
-  }
 ];
 
 export default function Writing() {
