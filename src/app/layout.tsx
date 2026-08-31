@@ -44,16 +44,15 @@ export const metadata: Metadata = {
     "LangChain",
     "LangGraph",
     "RAG",
-    "LLM Systems",
+    "MCP",
+    "RepoGraph",
     "Vector Database",
     "Pinecone",
-    "FAISS",
     "Next.js Developer",
     "TypeScript",
     "Python",
     "FastAPI",
     "System Design",
-    "Full Stack Developer",
   ],
 
   authors: [
@@ -70,7 +69,7 @@ export const metadata: Metadata = {
     title:
       "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
     description:
-      "Building intelligent AI systems using RAG pipelines, LangGraph, and scalable backend architectures.",
+      "AI Engineer specializing in Agentic AI, RAG pipelines, and scalable backend systems. Building intelligent systems using LangChain, LangGraph, and modern web technologies.",
     url: "https://kaushalendra.me/",
     siteName: "Kaushalendra Portfolio",
     images: [
@@ -90,7 +89,7 @@ export const metadata: Metadata = {
     title:
       "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
     description:
-      "Agentic AI, RAG pipelines, and scalable backend systems.",
+      "AI Engineer specializing in Agentic AI, RAG pipelines, and scalable backend systems.",
     creator: "@kaushalxcode",
     images: ["/kaushalendra-singh.png"],
   },
@@ -117,14 +116,14 @@ const jsonLd = {
   "@type": "Person",
   name: "Kaushalendra Singh",
   url: "https://kaushalendra.me/",
-  image: "https://kaushalendra.me//kaushalendra-singh.png",
+  image: "https://kaushalendra.me/kaushalendra-singh.png",
 
   jobTitle: "AI Engineer",
 
   sameAs: [
     "https://github.com/Kaushalendra-Marcus",
     "https://x.com/kaushalxcode",
-    "https://linkedin.com/in/kaushalendra-singh-45b933272/",
+    "https://www.linkedin.com/in/kaushalendra-singh-45b933272/",
   ],
 
   knowsAbout: [
