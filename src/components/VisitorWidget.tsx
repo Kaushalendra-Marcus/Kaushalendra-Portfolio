@@ -40,7 +40,7 @@ export default function VisitorWidget() {
             <div className="vw-dot" aria-hidden="true" />
             <div className="vw-ray" aria-hidden="true" />
 
-            <div className="relative z-[1] flex flex-col items-center justify-center text-center px-6">
+            <div className="relative z-[1] flex flex-col items-center justify-center text-center w-[74%] max-w-[15rem] sm:w-auto sm:max-w-[16rem] mx-auto px-1">
               <p className="vw-count">
                 {count !== null ? formatted : "···"}
               </p>
@@ -49,7 +49,7 @@ export default function VisitorWidget() {
               </p>
 
               {count !== null && (
-                <p className="mt-4 text-xs leading-relaxed text-foreground/45 font-mono max-w-[18rem]">
+                <p className="mt-3 sm:mt-4 text-[11px] sm:text-xs leading-relaxed text-foreground/45 font-mono break-words">
                   You&apos;re the{" "}
                   <span className="text-foreground font-semibold">
                     {formatted}
