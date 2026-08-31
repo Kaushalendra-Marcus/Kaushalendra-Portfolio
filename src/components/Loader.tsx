@@ -16,14 +16,11 @@ export default function Loader({
   useEffect(() => {
     const t1 = setTimeout(() => setNameVisible(true), 150);
     const t2 = setTimeout(() => setTagVisible(true), 350);
-    // Exit begins here — this is also the cue for the page underneath to
-    // start revealing itself, so the two animations play as one motion
-    // instead of "loader vanishes, then static page appears".
     const t3 = setTimeout(() => {
       setExiting(true);
       onExitStart?.();
-    }, 700);
-    const t4 = setTimeout(() => onDone(), 1000);
+    }, 1000);
+    const t4 = setTimeout(() => onDone(), 1200);
 
     return () => {
       clearTimeout(t1);
@@ -44,27 +41,36 @@ export default function Loader({
           "opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
-      {/* Uiverse.io speeder loader by anand_4957 */}
-      <div className={`loader ${exiting ? "loader-exit" : ""}`}>
-        <span>
-          <span />
-          <span />
-          <span />
-          <span />
-        </span>
-        <div className="base">
-          <span />
-          <div className="face" />
+      {/* Spider — Uiverse by TechByElijah, scoped to loader */}
+      <div className={`sp-stage ${exiting ? "sp-exiting" : ""}`}>
+        <div className="sp-container sp-center">
+          <div className="sp-rope sp-center">
+            <div className="sp-legs sp-center">
+              <div className="sp-boot-l"></div>
+              <div className="sp-boot-r"></div>
+            </div>
+            <div className="sp-costume sp-center">
+              <div className="sp-spider">
+                <div className="sp-s1 sp-center"></div>
+                <div className="sp-s2 sp-center"></div>
+                <div className="sp-s3"></div>
+                <div className="sp-s4"></div>
+              </div>
+              <div className="sp-belt sp-center"></div>
+              <div className="sp-hand-r"></div>
+              <div className="sp-hand-l"></div>
+              <div className="sp-neck sp-center"></div>
+              <div className="sp-mask sp-center">
+                <div className="sp-eye-l"></div>
+                <div className="sp-eye-r"></div>
+              </div>
+              <div className="sp-cover sp-center"></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="longfazers">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
 
-      <div className="relative z-10 flex flex-col items-center pointer-events-none select-none mt-24 sm:mt-28">
+      <div className="relative z-10 flex flex-col items-center pointer-events-none select-none mt-[140px] sm:mt-[160px]">
         <p
           className="font-mono text-white uppercase tracking-[10px] sm:tracking-[14px] text-sm sm:text-base transition-opacity duration-300"
           style={{ opacity: nameVisible ? 1 : 0 }}
@@ -80,237 +86,190 @@ export default function Loader({
       </div>
 
       <style jsx>{`
-        .loader {
+        .sp-center {
           position: absolute;
-          top: 50%;
-          margin-left: -50px;
+          transform: translateX(-50%);
           left: 50%;
-          animation: speeder 0.4s linear infinite;
         }
-        .loader-exit {
-          /* Revs up right before it's gone, like it's punching to hyperspace */
-          animation: speeder 0.12s linear infinite;
-        }
-        .loader > span {
-          height: 5px;
-          width: 35px;
-          background: #e8e8e8;
+        .sp-stage {
           position: absolute;
-          top: -19px;
-          left: 60px;
-          border-radius: 2px 10px 1px 0;
+          top: 44%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 21.87em;
+          height: 31.25em;
+          font-size: 12px;
+          transition: transform 300ms ease, opacity 300ms ease;
+          animation: spDrop 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
-        .base span {
+        .sp-exiting {
+          transform: translate(-50%, -50%) scale(1.08);
+          opacity: 0.85;
+          animation: none;
+        }
+        @keyframes spDrop {
+          0% { transform: translate(-50%, -170%); }
+          60% { transform: translate(-50%, -42%); }
+          75% { transform: translate(-50%, -56%); }
+          88% { transform: translate(-50%, -48%); }
+          100% { transform: translate(-50%, -50%); }
+        }
+        .sp-container {
+          height: 31.25em;
+          width: 21.87em;
+          margin-top: -325px;
           position: absolute;
-          width: 0;
-          height: 0;
-          border-top: 6px solid transparent;
-          border-right: 100px solid #e8e8e8;
-          border-bottom: 6px solid transparent;
+          left: 50%;
+          transform: translateX(-50%);
         }
-        .base span:before {
-          content: "";
-          height: 22px;
-          width: 22px;
-          border-radius: 50%;
-          background: #e8e8e8;
-          position: absolute;
-          right: -110px;
-          top: -16px;
+        .sp-rope {
+          height: 13.62em;
+          width: 0.15em;
+          background-color: #ffffff;
+          animation: spSwing 2s infinite;
         }
-        .base span:after {
-          content: "";
-          position: absolute;
-          width: 0;
-          height: 0;
-          border-top: 0 solid transparent;
-          border-right: 55px solid #e8e8e8;
-          border-bottom: 16px solid transparent;
-          top: -16px;
-          right: -98px;
-        }
-        .face {
-          position: absolute;
-          height: 12px;
-          width: 20px;
-          background: #e8e8e8;
-          border-radius: 20px 20px 0 0;
-          transform: rotate(-40deg);
-          right: -125px;
-          top: -15px;
-        }
-        .face:after {
-          content: "";
-          height: 12px;
-          width: 12px;
-          background: #e8e8e8;
-          right: 4px;
-          top: 7px;
-          position: absolute;
-          transform: rotate(40deg);
-          transform-origin: 50% 50%;
-          border-radius: 0 0 0 2px;
-        }
-        .loader > span > span:nth-child(1),
-        .loader > span > span:nth-child(2),
-        .loader > span > span:nth-child(3),
-        .loader > span > span:nth-child(4) {
-          width: 30px;
-          height: 1px;
-          background: #e8e8e8;
-          position: absolute;
-          animation: fazer1 0.2s linear infinite;
-        }
-        .loader > span > span:nth-child(2) {
-          top: 3px;
-          animation: fazer2 0.4s linear infinite;
-        }
-        .loader > span > span:nth-child(3) {
-          top: 1px;
-          animation: fazer3 0.4s linear infinite;
-          animation-delay: -1s;
-        }
-        .loader > span > span:nth-child(4) {
-          top: 4px;
-          animation: fazer4 1s linear infinite;
-          animation-delay: -1s;
-        }
-        @keyframes fazer1 {
-          0% {
-            left: 0;
-          }
-          100% {
-            left: -80px;
-            opacity: 0;
-          }
-        }
-        @keyframes fazer2 {
-          0% {
-            left: 0;
-          }
-          100% {
-            left: -100px;
-            opacity: 0;
-          }
-        }
-        @keyframes fazer3 {
-          0% {
-            left: 0;
-          }
-          100% {
-            left: -50px;
-            opacity: 0;
-          }
-        }
-        @keyframes fazer4 {
-          0% {
-            left: 0;
-          }
-          100% {
-            left: -150px;
-            opacity: 0;
-          }
-        }
-        @keyframes speeder {
-          0% {
-            transform: translate(2px, 1px) rotate(0deg);
-          }
-          10% {
-            transform: translate(-1px, -3px) rotate(-1deg);
-          }
-          20% {
-            transform: translate(-2px, 0px) rotate(1deg);
-          }
-          30% {
-            transform: translate(1px, 2px) rotate(0deg);
-          }
-          40% {
-            transform: translate(1px, -1px) rotate(1deg);
-          }
+        @keyframes spSwing {
           50% {
-            transform: translate(-1px, 3px) rotate(-1deg);
-          }
-          60% {
-            transform: translate(-1px, 1px) rotate(0deg);
-          }
-          70% {
-            transform: translate(3px, 1px) rotate(-1deg);
-          }
-          80% {
-            transform: translate(-2px, -1px) rotate(1deg);
-          }
-          90% {
-            transform: translate(2px, 1px) rotate(0deg);
-          }
-          100% {
-            transform: translate(1px, -2px) rotate(-1deg);
+            transform: translateX(-50%) translateY(-0.6em);
           }
         }
-        .longfazers {
+        .sp-legs {
+          height: 1.12em;
+          width: 7.5em;
+          background-color: transparent;
+          box-shadow: 0 0 0 0.12em #140243, 0 0 0 1.06em #1b1676, 0 0 0 1.18em #140243;
+          top: 12.5em;
+          border-radius: 3.12em;
+        }
+        .sp-boot-l,
+        .sp-boot-r {
+          height: 1.25em;
+          width: 2.5em;
+          background-color: #e32832;
           position: absolute;
-          width: 100%;
-          height: 100%;
+          border: 0.12em solid #140243;
+          bottom: 1.12em;
         }
-        .longfazers span {
+        .sp-boot-l { left: 1em; }
+        .sp-boot-r {
+          transform: rotateY(180deg);
+          left: 3.81em;
+        }
+        .sp-boot-l:before,
+        .sp-boot-r:before {
+          content: "";
           position: absolute;
-          height: 2px;
-          width: 20%;
-          background: #e8e8e8;
+          width: 0;
+          height: 0;
+          border-bottom: 1.12em solid #140243;
+          border-left: 1.18em solid transparent;
+          bottom: 1.31em;
+          left: 1.46em;
         }
-        .longfazers span:nth-child(1) {
-          top: 20%;
-          animation: lf 0.6s linear infinite;
-          animation-delay: -5s;
+        .sp-boot-l:after,
+        .sp-boot-r:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-bottom: 1.12em solid #e32832;
+          border-left: 1em solid transparent;
+          right: 0;
+          top: -0.93em;
         }
-        .longfazers span:nth-child(2) {
-          top: 40%;
-          animation: lf2 0.8s linear infinite;
-          animation-delay: -1s;
+        .sp-costume {
+          height: 6.25em;
+          width: 5.62em;
+          background: linear-gradient(to right, #1b1676 20%, #e32832 20%, #e32832 80%, #1b1676 80%);
+          border: 0.12em solid #140243;
+          top: 14.68em;
         }
-        .longfazers span:nth-child(3) {
-          top: 60%;
-          animation: lf3 0.6s linear infinite;
+        .sp-spider {
+          height: 1.87em;
+          width: 0.93em;
+          background-color: #140243;
+          border-radius: 45%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: calc(50% + 0.93em);
+          left: 50%;
         }
-        .longfazers span:nth-child(4) {
-          top: 80%;
-          animation: lf4 0.5s linear infinite;
-          animation-delay: -3s;
+        .sp-s1, .sp-s3 {
+          height: 7.5em;
+          width: 2.5em;
+          border-radius: 0 0 1.37em 1.37em;
+          border-bottom: 0.12em solid #140243;
+          position: absolute;
         }
-        @keyframes lf {
-          0% {
-            left: 200%;
-          }
-          100% {
-            left: -200%;
-            opacity: 0;
-          }
+        .sp-s2, .sp-s4 {
+          height: 7.5em;
+          width: 3.12em;
+          border-radius: 0 0 1.56em 1.56em;
+          border-bottom: 0.12em solid #140243;
+          position: absolute;
         }
-        @keyframes lf2 {
-          0% {
-            left: 200%;
-          }
-          100% {
-            left: -200%;
-            opacity: 0;
-          }
+        .sp-s1, .sp-s2, .sp-s3, .sp-s4 { left: 50%; }
+        .sp-s1 { bottom: 1.43em; }
+        .sp-s2 { bottom: 0.93em; }
+        .sp-s3, .sp-s4 { transform: translateX(-50%) rotateX(180deg); }
+        .sp-s3 { top: 1.43em; }
+        .sp-s4 { top: 0.93em; }
+        .sp-belt {
+          height: 0.43em;
+          width: 5.87em;
+          background-color: #e32832;
+          border: 0.12em solid #140243;
+          top: -0.12em;
         }
-        @keyframes lf3 {
-          0% {
-            left: 200%;
-          }
-          100% {
-            left: -100%;
-            opacity: 0;
-          }
+        .sp-hand-r, .sp-hand-l {
+          height: 8.12em;
+          background: linear-gradient(#e32832 4.6em, #140243 4.6em, #140243 4.75em, #1b1676 4.75em, #1b1676 8.12em);
+          width: 1.12em;
+          border: 0.12em solid #140243;
+          border-radius: 1.25em;
+          position: absolute;
+          transform-origin: bottom;
+          bottom: -0.12em;
         }
-        @keyframes lf4 {
-          0% {
-            left: 200%;
-          }
-          100% {
-            left: -100%;
-            opacity: 0;
-          }
+        .sp-hand-r { right: -0.75em; transform: rotate(-22deg); }
+        .sp-hand-l { left: -0.75em; transform: rotate(22deg); }
+        .sp-neck {
+          height: 0.37em;
+          width: 1.25em;
+          background-color: #e32832;
+          bottom: -0.62em;
+          border: 0.12em solid #140243;
+        }
+        .sp-mask {
+          height: 4.65em;
+          width: 4.06em;
+          background-color: #e32832;
+          border-radius: 50% 50% 50% 50% / 54% 54% 46% 46%;
+          border: 0.12em solid #140243;
+          top: 6.56em;
+        }
+        .sp-eye-l, .sp-eye-r {
+          height: 0.68em;
+          width: 1.37em;
+          background-color: #ffffff;
+          border-radius: 1.37em 1.37em 0 0;
+          border: 0.12em solid #140243;
+          position: absolute;
+          top: 2.1em;
+        }
+        .sp-eye-l { left: 0.3em; }
+        .sp-eye-r { right: 0.3em; }
+        .sp-cover {
+          height: 3.12em;
+          width: 0.15em;
+          background-color: #ffffff;
+          bottom: 8.12em;
+        }
+        @media screen and (min-width: 600px) {
+          .sp-stage { font-size: 15px; }
+        }
+        @media screen and (max-width: 400px) {
+          .sp-stage { font-size: 10px; }
         }
       `}</style>
     </div>
