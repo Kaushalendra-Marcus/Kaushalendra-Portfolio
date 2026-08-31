@@ -2,6 +2,15 @@ import Image from "next/image";
 
 const articles = [
   {
+    title: "I Built an AI-Powered VS Code Extension That Understands Your Entire Codebase",
+    description:
+      "How I went from find + mental models to a visual dependency graph, static flow analysis, and RAG-powered Q&A — inside VS Code.",
+    url: "https://medium.com/@Kaushalendra-marcus/i-built-an-ai-powered-vs-code-extension-that-understands-your-entire-codebase-c0c2a6e817de",
+    thumbnail: "https://miro.medium.com/v2/resize:fit:1200/1*oMjgbqLDhb0FE9nAThfbpQ.png",
+    readTime: "9 min",
+    date: "Aug 31, 2026",
+  },
+  {
     title: "Understanding MCP Architecture from First Principles",
     description:
       "A practical breakdown of how AI systems talk to external tools like GitHub, Slack, and databases - and why MCP is the protocol that makes it clean.",
