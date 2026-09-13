@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "Tailwind",
     ],
 
-    github: "https://github.com/Kaushalendra-Marcus/AI-Business-Intelligence",
+    github: "https://github.com/Kaushalendra-Marcus/buildifylabs",
     live: "https://buildifylabs.in",
     gradient: "from-blue-600 to-cyan-600",
     image: "/projects/buildify-labs.png",

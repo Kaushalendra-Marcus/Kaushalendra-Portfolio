@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ExternalLink, Download } from "lucide-react";
 
-const RESUME_PATH = "/Kaushalendr_Singh.pdf";
+const RESUME_PATH = "/Kaushalendra_Singh_Resume.pdf";
 
 export default function ResumeViewer() {
   const [mode, setMode] = useState<"preview" | "document">("preview");
