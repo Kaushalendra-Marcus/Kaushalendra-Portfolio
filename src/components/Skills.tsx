@@ -55,6 +55,7 @@ const ICONS: Record<string, SkillIcon> = {
 // Icons set (same asset TechStack.tsx uses).
 const IMAGE_ICONS: Record<string, string> = {
   "LangGraph": "/icons/langgraph.png",
+  "DeepEval": "/icons/deepeval.svg",
 };
 
 function SkillBadge({ name }: { name: string }) {

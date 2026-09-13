@@ -10,6 +10,7 @@ export const skills: Skill[] = [
     items: [
       "LangChain",
       "LangGraph",
+      "DeepEval",
       "RAG (Retrieval Augmented Generation)",
       "MCP (Model Context Protocol)",
       "Vector Databases (Pinecone)",
@@ -33,6 +34,7 @@ export const skills: Skill[] = [
 export const techStack = [
   "Langfuse",
   "LangSmith",
+  "DeepEval",
   "FAISS",
   "Hugging Face",
   "Ollama",

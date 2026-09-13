@@ -85,6 +85,7 @@ const IMAGE_ICONS: Record<string, string> = {
   "Langfuse": "/icons/langfuse.png",
   "LangSmith": "/icons/langsmith.png",
   "LangGraph": "/icons/langgraph.png",
+  "DeepEval": "/icons/deepeval.svg",
   "FAISS": "/icons/FAISS.png",
   "WebSockets": "/icons/websocket-io.png",
   "Pinecone": "/icons/pinecone.png",
