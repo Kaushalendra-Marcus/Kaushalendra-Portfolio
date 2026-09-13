@@ -87,7 +87,9 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
             key={label}
             href={href}
             target={href.startsWith("http") ? "_blank" : undefined}
-            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+            // rel="me" on profile links: identity consolidation — tells
+            // Google these GitHub/LinkedIn/X profiles are the same person.
+            rel={href.startsWith("http") ? "me noopener noreferrer" : undefined}
             aria-label={label}
             title={label}
             className="flex items-center text-sm text-foreground/40

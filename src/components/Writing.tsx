@@ -38,7 +38,7 @@ export default function Writing() {
         <a
           href="https://medium.com/@Kaushalendra-marcus"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="me noopener noreferrer"
           className="text-[11px] text-foreground/40 hover:text-foreground/70 transition-colors font-mono link-underline"
         >
           All articles

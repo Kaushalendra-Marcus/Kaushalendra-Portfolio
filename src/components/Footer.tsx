@@ -18,7 +18,9 @@ export default function Footer() {
               key={label}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              // rel="me": same identity-consolidation signal as the hero —
+              // every page carries it via this footer.
+              rel={href.startsWith("http") ? "me noopener noreferrer" : undefined}
               className="text-xs text-foreground/40 hover:text-foreground/75 transition-colors link-underline"
             >
               {label}

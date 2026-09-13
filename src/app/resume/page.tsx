@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Link from "next/link";
 import { ArrowLeft, FileText } from "lucide-react";
 import PageShell from "@/components/PageShell";
@@ -7,11 +8,60 @@ import ResumeViewer from "@/components/ResumeViewer";
 export const metadata: Metadata = {
   title: "Resume",
   description: "Resume of Kaushalendra Singh, Full Stack AI Engineer — experience, projects, and skills in one document.",
+  alternates: {
+    canonical: "https://kaushalendra.me/resume",
+  },
+  openGraph: {
+    title: "Resume | Kaushalendra Singh — Full Stack AI Engineer",
+    description: "Resume of Kaushalendra Singh, Full Stack AI Engineer — experience, projects, and skills.",
+    url: "https://kaushalendra.me/resume",
+    siteName: "Kaushalendra Singh",
+    images: [
+      {
+        url: "/kaushalendra-singh.png",
+        width: 1730,
+        height: 909,
+        alt: "Kaushalendra Singh – Full Stack AI Engineer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resume | Kaushalendra Singh — Full Stack AI Engineer",
+    description: "Resume of Kaushalendra Singh, Full Stack AI Engineer — experience, projects, and skills.",
+    images: ["/kaushalendra-singh.png"],
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Kaushalendra Singh",
+      item: "https://kaushalendra.me/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Resume",
+      item: "https://kaushalendra.me/resume",
+    },
+  ],
 };
 
 export default function ResumePage() {
   return (
     <PageShell>
+      <Script
+        id="resume-breadcrumb-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Link
         href="/"
         aria-label="Back to home"

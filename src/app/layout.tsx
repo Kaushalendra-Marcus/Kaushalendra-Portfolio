@@ -38,6 +38,9 @@ export const metadata: Metadata = {
 
   keywords: [
     "Kaushalendra Singh",
+    "Kaushalendra",
+    "Kaushalendra Singh Portfolio",
+    "Kaushalendra Portfolio",
     "Full Stack AI Engineer",
     "Forward Deployed Engineer",
     "Forward Deployed AI Engineer",
@@ -117,48 +120,71 @@ export const metadata: Metadata = {
   },
 };
 
-// UPDATED JSON-LD (VERY IMPORTANT)
+// Entity graph: Person (who) + WebSite (what). The sameAs profile URLs
+// plus rel="me" links on the page tell Google these profiles — GitHub,
+// LinkedIn, X, Medium — are all the same person, so a "kaushalendra"
+// search surfaces the portfolio first and the profiles alongside it.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Kaushalendra Singh",
-  url: "https://kaushalendra.me/",
-  image: "https://kaushalendra.me/kaushalendra-singh.png",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://kaushalendra.me/#person",
+      name: "Kaushalendra Singh",
+      alternateName: ["Kaushalendra", "Kaushalendra Marcus"],
+      url: "https://kaushalendra.me/",
+      image: "https://kaushalendra.me/kaushalendra-singh.png",
 
-  jobTitle: "Full Stack AI Engineer",
+      jobTitle: "Full Stack AI Engineer",
 
-  description:
-    "Full Stack AI Engineer (Forward Deployed) building agentic AI systems, RAG pipelines, and LLM evaluation infrastructure.",
+      description:
+        "Full Stack AI Engineer (Forward Deployed) building agentic AI systems, RAG pipelines, and LLM evaluation infrastructure.",
 
-  sameAs: [
-    "https://github.com/Kaushalendra-Marcus",
-    "https://x.com/kaushalxcode",
-    "https://www.linkedin.com/in/kaushalendra-singh-45b933272/",
+      sameAs: [
+        "https://github.com/Kaushalendra-Marcus",
+        "https://www.linkedin.com/in/kaushalendra-singh-45b933272/",
+        "https://x.com/kaushalxcode",
+        "https://medium.com/@Kaushalendra-marcus",
+      ],
+
+      knowsAbout: [
+        "Agentic AI",
+        "AI Agents",
+        "LangChain",
+        "LangGraph",
+        "DeepEval",
+        "LLM Evaluation",
+        "RAG Systems",
+        "LLM Pipelines",
+        "Model Context Protocol",
+        "Backend Architecture",
+        "FastAPI",
+        "Node.js",
+        "Next.js",
+        "Vector Databases",
+        "Embeddings",
+        "System Design",
+      ],
+
+      worksFor: {
+        "@type": "Organization",
+        name: "Independent",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kaushalendra.me/#website",
+      url: "https://kaushalendra.me/",
+      name: "Kaushalendra Singh",
+      alternateName: [
+        "Kaushalendra Singh Portfolio",
+        "Kaushalendra Portfolio",
+      ],
+      inLanguage: "en-US",
+      author: { "@id": "https://kaushalendra.me/#person" },
+      publisher: { "@id": "https://kaushalendra.me/#person" },
+    },
   ],
-
-  knowsAbout: [
-    "Agentic AI",
-    "AI Agents",
-    "LangChain",
-    "LangGraph",
-    "DeepEval",
-    "LLM Evaluation",
-    "RAG Systems",
-    "LLM Pipelines",
-    "Model Context Protocol",
-    "Backend Architecture",
-    "FastAPI",
-    "Node.js",
-    "Next.js",
-    "Vector Databases",
-    "Embeddings",
-    "System Design",
-  ],
-
-  worksFor: {
-    "@type": "Organization",
-    name: "Independent",
-  },
 };
 
 export default function RootLayout({

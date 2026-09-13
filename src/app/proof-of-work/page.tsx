@@ -1,16 +1,66 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import PageShell from "@/components/PageShell";
 import ContributionGraph from "@/components/ContributionGraph";
 import PullRequestsList from "@/components/PullRequestsList";
 
 export const metadata: Metadata = {
   title: "Proof of Work",
-  description: "Open source activity, GitHub contributions, and pull requests.",
+  description: "Proof of work by Kaushalendra Singh — open source activity, GitHub contributions, and pull requests.",
+  alternates: {
+    canonical: "https://kaushalendra.me/proof-of-work",
+  },
+  openGraph: {
+    title: "Proof of Work | Kaushalendra Singh — Full Stack AI Engineer",
+    description: "Open source activity, GitHub contributions, and pull requests by Kaushalendra Singh.",
+    url: "https://kaushalendra.me/proof-of-work",
+    siteName: "Kaushalendra Singh",
+    images: [
+      {
+        url: "/kaushalendra-singh.png",
+        width: 1730,
+        height: 909,
+        alt: "Kaushalendra Singh – Full Stack AI Engineer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Proof of Work | Kaushalendra Singh — Full Stack AI Engineer",
+    description: "Open source activity, GitHub contributions, and pull requests by Kaushalendra Singh.",
+    images: ["/kaushalendra-singh.png"],
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Kaushalendra Singh",
+      item: "https://kaushalendra.me/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Proof of Work",
+      item: "https://kaushalendra.me/proof-of-work",
+    },
+  ],
 };
 
 export default function ProofOfWorkPage() {
   return (
     <PageShell>
+      <Script
+        id="pow-breadcrumb-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mb-10">
         <p className="section-label" style={{ marginBottom: 6 }}>Proof of Work</p>
         <h1 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight mb-3">Proof Of Work</h1>
