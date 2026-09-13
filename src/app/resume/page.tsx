@@ -6,7 +6,7 @@ import ResumeViewer from "@/components/ResumeViewer";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: "Kaushalendra Singh's resume — experience, projects, and skills in one document.",
+  description: "Resume of Kaushalendra Singh, Full Stack AI Engineer — experience, projects, and skills in one document.",
 };
 
 export default function ResumePage() {
@@ -30,7 +30,7 @@ export default function ResumePage() {
         <div>
           <h1 className="text-xl font-bold text-foreground leading-tight">Resume</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
-            Kaushalendra Singh · Full Stack Engineer &amp; AI/ML
+            Kaushalendra Singh · Full Stack AI Engineer
           </p>
         </div>
       </div>

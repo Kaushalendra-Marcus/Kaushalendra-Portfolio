@@ -29,30 +29,33 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kaushalendra.me/"),
 
   title: {
-    default:
-      "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
+    default: "Kaushalendra Singh | Full Stack AI Engineer",
     template: "%s | Kaushalendra Singh",
   },
 
   description:
-    "AI Engineer specializing in Agentic AI, RAG pipelines, and scalable backend systems. Building intelligent systems using LangChain, LangGraph, and modern web technologies.",
+    "Full Stack AI Engineer building agentic AI systems, RAG pipelines, and LLM evals with LangChain, LangGraph, DeepEval, and MCP — plus the Next.js frontends on top.",
 
   keywords: [
     "Kaushalendra Singh",
-    "AI Backend Engineer",
+    "Full Stack AI Engineer",
+    "Forward Deployed Engineer",
+    "Forward Deployed AI Engineer",
+    "AI Engineer",
     "Agentic AI",
+    "AI Agents",
     "LangChain",
     "LangGraph",
+    "DeepEval",
+    "LLM Evaluation",
     "RAG",
     "MCP",
-    "RepoGraph",
     "Vector Database",
     "Pinecone",
     "Next.js Developer",
     "TypeScript",
     "Python",
     "FastAPI",
-    "System Design",
   ],
 
   authors: [
@@ -66,18 +69,17 @@ export const metadata: Metadata = {
   publisher: "Kaushalendra Singh",
 
   openGraph: {
-    title:
-      "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
+    title: "Kaushalendra Singh — Full Stack AI Engineer | Agentic AI & LLM Systems",
     description:
-      "AI Engineer specializing in Agentic AI, RAG pipelines, and scalable backend systems. Building intelligent systems using LangChain, LangGraph, and modern web technologies.",
+      "Full Stack AI Engineer building agentic AI systems, RAG pipelines, and LLM evals with LangChain, LangGraph, DeepEval, and MCP — plus the Next.js frontends on top.",
     url: "https://kaushalendra.me/",
-    siteName: "Kaushalendra Portfolio",
+    siteName: "Kaushalendra Singh",
     images: [
       {
         url: "/kaushalendra-singh.png",
-        width: 1200,
-        height: 630,
-        alt: "Kaushalendra Singh – AI Engineer",
+        width: 1730,
+        height: 909,
+        alt: "Kaushalendra Singh – Full Stack AI Engineer",
       },
     ],
     locale: "en_US",
@@ -86,10 +88,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title:
-      "Kaushalendra Singh - Full Stack Engineer | AI Backend | LLM & Agentic Systems",
+    title: "Kaushalendra Singh — Full Stack AI Engineer | Agentic AI & LLM Systems",
     description:
-      "AI Engineer specializing in Agentic AI, RAG pipelines, and scalable backend systems.",
+      "Full Stack AI Engineer building agentic AI systems, RAG pipelines, and LLM evals. LangChain, LangGraph, DeepEval, MCP.",
     creator: "@kaushalxcode",
     images: ["/kaushalendra-singh.png"],
   },
@@ -97,6 +98,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 
   icons: {
@@ -118,7 +125,10 @@ const jsonLd = {
   url: "https://kaushalendra.me/",
   image: "https://kaushalendra.me/kaushalendra-singh.png",
 
-  jobTitle: "AI Engineer",
+  jobTitle: "Full Stack AI Engineer",
+
+  description:
+    "Full Stack AI Engineer (Forward Deployed) building agentic AI systems, RAG pipelines, and LLM evaluation infrastructure.",
 
   sameAs: [
     "https://github.com/Kaushalendra-Marcus",
@@ -128,13 +138,18 @@ const jsonLd = {
 
   knowsAbout: [
     "Agentic AI",
+    "AI Agents",
     "LangChain",
     "LangGraph",
+    "DeepEval",
+    "LLM Evaluation",
     "RAG Systems",
     "LLM Pipelines",
+    "Model Context Protocol",
     "Backend Architecture",
     "FastAPI",
     "Node.js",
+    "Next.js",
     "Vector Databases",
     "Embeddings",
     "System Design",

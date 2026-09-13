@@ -2,7 +2,7 @@
 
 # Kaushalendra Singh — Portfolio
 
-**Full Stack Engineer · AI Backend · LLM & Agentic Systems**
+**Full Stack AI Engineer · Agentic AI · LLM Systems**
 
 [![Live](https://img.shields.io/badge/Live-kaushalendra.me-blue?style=flat-square)](https://kaushalendra.me)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org)

@@ -5,7 +5,7 @@ import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Selected work — AI-native products, backend systems, and full-stack apps I've built and shipped.",
+  description: "Projects by Full Stack AI Engineer Kaushalendra Singh — agentic AI platforms, RAG systems, LLM evals, and full-stack apps built and shipped.",
 };
 
 export default function ProjectsPage() {
