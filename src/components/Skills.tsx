@@ -24,9 +24,9 @@ import { skills } from "@/data/skills";
 type SkillIcon = ComponentType<{ className?: string; style?: CSSProperties }>;
 
 // Brand marks (Simple Icons) for real tools, generic Lucide icons standing
-// in for concepts that have no official logo. Everything renders in one
-// muted tone below (not brand colors) — keeps the grid editorial rather
-// than a logo wall.
+// in for concepts that have no official logo. Muted by default, brand color
+// on hover (see ICON_COLORS + SkillBadge) — keeps the grid editorial rather
+// than a logo wall, but rewards hovering.
 const ICONS: Record<string, SkillIcon> = {
   // Languages
   "TypeScript": SiTypescript,
@@ -57,8 +57,35 @@ const ICONS: Record<string, SkillIcon> = {
   "Tailwind CSS": SiTailwindcss,
 };
 
-// Custom brand mark dropped into /public/icons — no entry in the Simple
-// Icons set (same asset TechStack.tsx uses).
+// Hover color per skill — brand colors for real tools, accent tones for
+// concept badges (Lucide) that have no official logo. "Next.js" is
+// intentionally left out: its brand is pure black/white, so the default
+// muted-to-foreground hover already is its brand color in each theme.
+const ICON_COLORS: Record<string, string> = {
+  "TypeScript": "#3178C6",
+  "JavaScript": "#EAB308",
+  "Python": "#3776AB",
+  "LangChain": "#65A30D",
+  "PyTorch": "#EE4C2C",
+  "RAG (Retrieval Augmented Generation)": "#0891B2",
+  "MCP (Model Context Protocol)": "#8B5CF6",
+  "Vector Databases (Pinecone, FAISS)": "#10B981",
+  "Multi-LLM Integration (OpenAI, Anthropic, Gemini, Groq)": "#EC4899",
+  "Node.js": "#5FA04E",
+  "FastAPI": "#009688",
+  "PostgreSQL": "#4169E1",
+  "MongoDB": "#47A248",
+  "Neo4j": "#018BFF",
+  "Prisma": "#64748B",
+  "Docker": "#2496ED",
+  "AWS": "#FF9900",
+  "React": "#0284C7",
+  "Tailwind CSS": "#06B6D4",
+};
+
+// Custom brand marks dropped into /public/icons — no entry in the Simple
+// Icons set (same assets TechStack.tsx uses). These are full-color images,
+// so they just fade from muted to full opacity on hover.
 const IMAGE_ICONS: Record<string, string> = {
   "LangGraph": "/icons/langgraph.png",
   "Langfuse": "/icons/langfuse.png",
@@ -69,6 +96,7 @@ const IMAGE_ICONS: Record<string, string> = {
 function SkillBadge({ name }: { name: string }) {
   const Icon = ICONS[name];
   const imageSrc = IMAGE_ICONS[name];
+  const hoverColor = ICON_COLORS[name];
 
   return (
     <div
@@ -76,6 +104,7 @@ function SkillBadge({ name }: { name: string }) {
         bg-foreground/[0.05] border border-foreground/[0.10]
         hover:bg-foreground/[0.09] hover:border-foreground/[0.22]
         transition-all duration-200 cursor-default"
+      style={hoverColor ? ({ "--skill-hover": hoverColor } as CSSProperties) : undefined}
     >
       {imageSrc ? (
         <Image
@@ -83,10 +112,14 @@ function SkillBadge({ name }: { name: string }) {
           alt=""
           width={15}
           height={15}
-          className="object-contain opacity-45 group-hover:opacity-85 transition-opacity duration-200 flex-shrink-0"
+          className="object-contain opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-200 flex-shrink-0"
         />
       ) : Icon ? (
-        <Icon className="text-[15px] text-foreground/45 group-hover:text-foreground/85 transition-colors duration-200 flex-shrink-0" />
+        <Icon
+          className={`text-[15px] text-foreground/45 transition-colors duration-200 flex-shrink-0 ${
+            hoverColor ? "group-hover:text-[var(--skill-hover)]" : "group-hover:text-foreground/85"
+          }`}
+        />
       ) : null}
       <span className="text-[13px] text-foreground/70 group-hover:text-foreground/95 transition-colors duration-200 whitespace-nowrap">
         {name}
