@@ -4,6 +4,7 @@ import {
   SiJavascript,
   SiPython,
   SiLangchain,
+  SiPytorch,
   SiNodedotjs,
   SiFastapi,
   SiPostgresql,
@@ -13,6 +14,8 @@ import {
   SiNextdotjs,
   SiReact,
   SiTailwindcss,
+  SiDocker,
+  SiAmazonwebservices,
 } from "react-icons/si";
 import { Search, Network, Database, Brain } from "lucide-react";
 import type { CSSProperties, ComponentType } from "react";
@@ -32,9 +35,10 @@ const ICONS: Record<string, SkillIcon> = {
 
   // AI / LLM Engineering
   "LangChain": SiLangchain,
+  "PyTorch": SiPytorch,
   "RAG (Retrieval Augmented Generation)": Search,
   "MCP (Model Context Protocol)": Network,
-  "Vector Databases (Pinecone)": Database,
+  "Vector Databases (Pinecone, FAISS)": Database,
   "Multi-LLM Integration (OpenAI, Anthropic, Gemini, Groq)": Brain,
 
   // Backend & Databases
@@ -44,6 +48,8 @@ const ICONS: Record<string, SkillIcon> = {
   "MongoDB": SiMongodb,
   "Neo4j": SiNeo4J,
   "Prisma": SiPrisma,
+  "Docker": SiDocker,
+  "AWS": SiAmazonwebservices,
 
   // Frontend
   "Next.js": SiNextdotjs,
@@ -55,6 +61,8 @@ const ICONS: Record<string, SkillIcon> = {
 // Icons set (same asset TechStack.tsx uses).
 const IMAGE_ICONS: Record<string, string> = {
   "LangGraph": "/icons/langgraph.png",
+  "Langfuse": "/icons/langfuse.png",
+  "LangSmith": "/icons/langsmith.png",
   "DeepEval": "/icons/deepeval.svg",
 };
 

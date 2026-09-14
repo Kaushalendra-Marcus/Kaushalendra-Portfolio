@@ -10,16 +10,19 @@ export const skills: Skill[] = [
     items: [
       "LangChain",
       "LangGraph",
+      "Langfuse",
+      "LangSmith",
       "DeepEval",
       "RAG (Retrieval Augmented Generation)",
       "MCP (Model Context Protocol)",
-      "Vector Databases (Pinecone)",
+      "Vector Databases (Pinecone, FAISS)",
+      "PyTorch",
       "Multi-LLM Integration (OpenAI, Anthropic, Gemini, Groq)",
     ],
   },
   {
     category: "Backend & Databases",
-    items: ["Node.js", "FastAPI", "PostgreSQL", "MongoDB", "Neo4j", "Prisma"],
+    items: ["Node.js", "FastAPI", "PostgreSQL", "MongoDB", "Neo4j", "Prisma", "Docker", "AWS"],
   },
   {
     category: "Frontend",
@@ -27,18 +30,10 @@ export const skills: Skill[] = [
   },
 ];
 
-// Deliberately NOT a repeat of the categorized list above - this is the
-// secondary infra/tooling layer (observability, local inference, vector
-// search, deployment) that supports the AI/LLM work without diluting it
-// with generalist items already implied by "full-stack."
+// Secondary infra/tooling layer (local inference).
+// Keeps every tech listed exactly once — items already covered in
+// `skills` above are NOT repeated here.
 export const techStack = [
-  "Langfuse",
-  "LangSmith",
-  "DeepEval",
-  "FAISS",
   "Hugging Face",
   "Ollama",
-  "Docker",
-  "AWS",
-  "Redis",
 ];
