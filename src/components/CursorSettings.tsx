@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MousePointer2, Sparkles, Circle, Ban, Check } from "lucide-react";
+import { MousePointer2, Sparkles, Circle, Ghost, Ban, Check } from "lucide-react";
 import {
   CURSOR_COLOR_EVENT,
   CURSOR_COLOR_KEY,
@@ -19,6 +19,7 @@ const OPTIONS: Array<{
 }> = [
   { value: "trail", label: "Trail", hint: "Dot + fading trail", Icon: Sparkles },
   { value: "ring", label: "Ring", hint: "Dot + trailing ring", Icon: Circle },
+  { value: "ghost", label: "Ghost", hint: "Bouncy little companion", Icon: Ghost },
   { value: "off", label: "Off", hint: "System cursor", Icon: Ban },
 ];
 
@@ -43,7 +44,7 @@ export default function CursorSettings() {
   useEffect(() => {
     try {
       const v = window.localStorage.getItem(CURSOR_MODE_KEY);
-      if (v === "ring" || v === "off") setMode(v);
+      if (v === "ring" || v === "ghost" || v === "off") setMode(v);
       const c = window.localStorage.getItem(CURSOR_COLOR_KEY);
       if (c && /^#[0-9a-fA-F]{6}$/.test(c)) setColor(c);
     } catch {

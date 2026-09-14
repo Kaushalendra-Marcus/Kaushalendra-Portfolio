@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 //   inside it, making the dots always-white and invisible on light mode.
 // - Native cursor stays hidden via body.has-custom-cursor (see globals.css),
 //   except over text fields where the I-beam caret takes over.
-export type CursorMode = "trail" | "ring" | "off";
+export type CursorMode = "trail" | "ring" | "ghost" | "off";
 export const CURSOR_MODE_KEY = "cursor-mode";
 export const CURSOR_MODE_EVENT = "cursor-mode-change";
 export const CURSOR_COLOR_KEY = "cursor-color";
@@ -25,7 +25,7 @@ function readMode(): CursorMode {
   if (typeof window === "undefined") return "trail";
   try {
     const v = window.localStorage.getItem(CURSOR_MODE_KEY);
-    if (v === "ring" || v === "off") return v;
+    if (v === "ring" || v === "ghost" || v === "off") return v;
   } catch {
     // Private browsing etc. — fall back to the default trail.
   }
@@ -48,12 +48,15 @@ export default function CustomCursor() {
   const [color, setColor] = useState<string>(readColor);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const ghostRef = useRef<SVGSVGElement>(null);
+  const ghostGlowRef = useRef<HTMLDivElement>(null);
+  const ghostEyesRef = useRef<SVGGElement>(null);
   const trailRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
     const onMode = (e: Event) => {
       const next = (e as CustomEvent<CursorMode>).detail;
-      setMode(next === "ring" || next === "off" ? next : "trail");
+      setMode(next === "ring" || next === "ghost" || next === "off" ? next : "trail");
     };
     window.addEventListener(CURSOR_MODE_EVENT, onMode);
     const onColor = (e: Event) => {
@@ -77,6 +80,110 @@ export default function CustomCursor() {
 
     const dot = dotRef.current;
     const ring = ringRef.current;
+    const ghost = ghostRef.current;
+    const ghostGlow = ghostGlowRef.current;
+    const ghostEyes = ghostEyesRef.current;
+
+    // Ghost mode toggles visibility (not opacity): an opacity < 1 creates a
+    // stacking context that would trap the ghost's difference blend.
+    if (mode === "ghost") {
+      if (!ghost || !ghostGlow) return;
+      const ghostNodes = [ghostGlow, ghost];
+      const showGhost = (v: boolean) =>
+        ghostNodes.forEach((n) => {
+          n.style.visibility = v ? "visible" : "hidden";
+        });
+
+      document.body.classList.add("has-custom-cursor");
+
+      let mx = -100;
+      let my = -100;
+      let x = -100;
+      let y = -100;
+      let vx = 0;
+      let vy = 0;
+      let tilt = 0;
+      let ex = 0;
+      let ey = 0;
+      let gs = 1;
+      let gsTarget = 1;
+      let t = 0;
+      let shown = false;
+      let raf = 0;
+
+      const clamp = (v: number, min: number, max: number) =>
+        Math.min(max, Math.max(min, v));
+
+      const onMove = (e: MouseEvent) => {
+        mx = e.clientX;
+        my = e.clientY;
+
+        const el = e.target as HTMLElement | null;
+        const textField = !!el?.closest?.("input, textarea, select");
+        const interactive =
+          !!el?.closest?.(
+            "a, button, [role='button'], label, [data-cursor='hover']"
+          ) && !textField;
+
+        // Ghost perks up over interactive elements.
+        gsTarget = interactive ? 1.25 : 1;
+
+        if (textField) {
+          if (shown) {
+            shown = false;
+            showGhost(false);
+          }
+          return;
+        }
+        if (!shown) {
+          shown = true;
+          showGhost(true);
+        }
+      };
+
+      const onLeave = () => {
+        if (shown) {
+          shown = false;
+          showGhost(false);
+        }
+      };
+
+      const loop = () => {
+        // Underdamped spring — the wobble is the personality.
+        vx = (vx + (mx - x) * 0.16) * 0.7;
+        vy = (vy + (my - y) * 0.16) * 0.7;
+        x += vx;
+        y += vy;
+        t += 0.06;
+
+        tilt += (clamp(vx * 1.2, -16, 16) - tilt) * 0.2;
+        ex += (clamp(vx * 0.5, -2.4, 2.4) - ex) * 0.25;
+        ey += (clamp(vy * 0.5, -1.8, 1.8) - ey) * 0.25;
+        gs += (gsTarget - gs) * 0.2;
+
+        const bob = Math.sin(t) * 2;
+        const transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) translate(-50%, -54%) rotate(${tilt.toFixed(2)}deg) scale(${gs.toFixed(3)}) translateY(${bob.toFixed(2)}px)`;
+        ghost.style.transform = transform;
+        ghostGlow.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) translate(-50%, -54%) scale(${gs.toFixed(3)})`;
+        ghostEyes?.setAttribute(
+          "transform",
+          `translate(${ex.toFixed(2)} ${ey.toFixed(2)})`
+        );
+        raf = requestAnimationFrame(loop);
+      };
+
+      window.addEventListener("mousemove", onMove, { passive: true });
+      document.documentElement.addEventListener("mouseleave", onLeave);
+      raf = requestAnimationFrame(loop);
+
+      return () => {
+        cancelAnimationFrame(raf);
+        window.removeEventListener("mousemove", onMove);
+        document.documentElement.removeEventListener("mouseleave", onLeave);
+        document.body.classList.remove("has-custom-cursor");
+      };
+    }
+
     const trail = trailRefs.current.filter(
       (n): n is HTMLDivElement => n !== null
     );
@@ -185,6 +292,39 @@ export default function CustomCursor() {
   }, [mode]);
 
   if (mode === "off") return null;
+
+  if (mode === "ghost") {
+    // Blend lives on the svg root so body + face composite normally first,
+    // then invert against the page together: dark eyes read as cutouts in
+    // both themes. Glow stays a plain sibling — a filtered/blended ancestor
+    // would trap the difference blend (same light-mode bug as before).
+    return (
+      <>
+        <div
+          ref={ghostGlowRef}
+          aria-hidden
+          style={{ width: 64, height: 64, backgroundColor: color, visibility: "hidden" }}
+          className="pointer-events-none fixed left-0 top-0 z-[9999] rounded-full opacity-20 blur-lg will-change-transform"
+        />
+        <svg
+          ref={ghostRef}
+          aria-hidden
+          viewBox="0 0 32 42"
+          style={{ width: 30, height: 39, visibility: "hidden", color }}
+          className="pointer-events-none fixed left-0 top-0 z-[10000] mix-blend-difference will-change-transform"
+        >
+          <path
+            d="M16 2C9.4 2 4.5 8 4.5 16.5V33l3.8-2.8 3.9 3.2 3.8-3.2 3.9 3.2 3.8-3.2 3.8 2.8V16.5C27.5 8 22.6 2 16 2Z"
+            fill="currentColor"
+          />
+          <g ref={ghostEyesRef}>
+            <ellipse cx="11.8" cy="16" rx="2.1" ry="3" fill="#000" />
+            <ellipse cx="20.2" cy="16" rx="2.1" ry="3" fill="#000" />
+          </g>
+        </svg>
+      </>
+    );
+  }
 
   return (
     <>
