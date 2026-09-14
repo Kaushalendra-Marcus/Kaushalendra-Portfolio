@@ -221,6 +221,27 @@ main {
   }
 }
 
+/* ─── Tap / click ripple (mouse + touch) ───────────────────── */
+/* Spawned by CustomCursor on pointerdown. Each ripple carries its own
+   z-index instead of the container — a positioned ancestor with z-index
+   would trap the difference blend and break light mode. */
+.cursor-ripple {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  translate: -50% -50%;
+  z-index: 10000;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  animation: cursor-ripple 0.6s ease-out forwards;
+}
+@keyframes cursor-ripple {
+  from { transform: scale(0.3); opacity: 0.9; }
+  to   { transform: scale(2.4); opacity: 0; }
+}
+
 /* ─── Selection ──────────────────────────────────────────── */
 ::selection { background: rgba(34,211,238,0.25); color: var(--foreground); }
 

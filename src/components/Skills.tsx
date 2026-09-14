@@ -112,16 +112,18 @@ function SkillBadge({ name }: { name: string }) {
           alt=""
           width={15}
           height={15}
-          className="object-contain opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-200 flex-shrink-0"
+          className="object-contain opacity-45 group-hover:opacity-100 group-active:opacity-100 group-hover:scale-110 group-active:scale-110 transition-all duration-200 flex-shrink-0"
         />
       ) : Icon ? (
         <Icon
           className={`text-[15px] text-foreground/45 transition-colors duration-200 flex-shrink-0 ${
-            hoverColor ? "group-hover:text-[var(--skill-hover)]" : "group-hover:text-foreground/85"
+            hoverColor
+              ? "group-hover:text-[var(--skill-hover)] group-active:text-[var(--skill-hover)]"
+              : "group-hover:text-foreground/85 group-active:text-foreground/85"
           }`}
         />
       ) : null}
-      <span className="text-[13px] text-foreground/70 group-hover:text-foreground/95 transition-colors duration-200 whitespace-nowrap">
+      <span className="text-[13px] text-foreground/70 group-hover:text-foreground/95 group-active:text-foreground/95 transition-colors duration-200 whitespace-nowrap">
         {name}
       </span>
     </div>

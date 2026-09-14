@@ -52,6 +52,7 @@ export default function CustomCursor() {
   const ghostGlowRef = useRef<HTMLDivElement>(null);
   const ghostEyesRef = useRef<SVGGElement>(null);
   const trailRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const rippleWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onMode = (e: Event) => {
@@ -291,6 +292,32 @@ export default function CustomCursor() {
     };
   }, [mode]);
 
+  // Tap / click ripple — the touch-device story for the cursor: a finger
+  // covers a follower, but a ripple blooming under the tap still gives
+  // feedback. Also fires for mouse clicks. Skipped when cursor is off.
+  useEffect(() => {
+    if (mode === "off") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const wrap = rippleWrapRef.current;
+    if (!wrap) return;
+
+    const onDown = (e: PointerEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (t?.closest?.("input, textarea, select")) return;
+      if (wrap.childElementCount > 8) wrap.firstElementChild?.remove();
+      const s = document.createElement("div");
+      s.className = "cursor-ripple";
+      s.style.left = `${e.clientX}px`;
+      s.style.top = `${e.clientY}px`;
+      s.style.borderColor = color;
+      wrap.appendChild(s);
+      s.addEventListener("animationend", () => s.remove());
+    };
+
+    window.addEventListener("pointerdown", onDown, { passive: true });
+    return () => window.removeEventListener("pointerdown", onDown);
+  }, [mode, color]);
+
   if (mode === "off") return null;
 
   if (mode === "ghost") {
@@ -300,6 +327,11 @@ export default function CustomCursor() {
     // would trap the difference blend (same light-mode bug as before).
     return (
       <>
+        <div
+          ref={rippleWrapRef}
+          aria-hidden
+          className="pointer-events-none fixed inset-0"
+        />
         <div
           ref={ghostGlowRef}
           aria-hidden
@@ -328,6 +360,11 @@ export default function CustomCursor() {
 
   return (
     <>
+      <div
+        ref={rippleWrapRef}
+        aria-hidden
+        className="pointer-events-none fixed inset-0"
+      />
       {/* Lead dot */}
       <div
         ref={dotRef}
