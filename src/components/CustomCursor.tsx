@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 // Custom cursor with switchable styles (see CursorSettings.tsx).
 // - Zero React re-renders per frame: one rAF loop, direct DOM transforms.
-// - Desktop only (fine pointers), skipped for reduced-motion users.
+// - Mouse + touch: on touch screens the follower hovers above the finger
+//   while touching (a finger covers the exact touch point), then hides.
+//   Skipped for reduced-motion users.
 // - Nodes render as fixed siblings (no wrapper): a positioned ancestor with
 //   a z-index would create a stacking context that traps mix-blend-difference
 //   inside it, making the dots always-white and invisible on light mode.
@@ -31,6 +33,10 @@ function readMode(): CursorMode {
   }
   return "trail";
 }
+
+// Touch lift: fingers cover the exact touch point, so on touch devices the
+// follower hovers this far above the finger to stay visible.
+const TOUCH_LIFT = 70;
 
 function readColor(): string {
   if (typeof window === "undefined") return DEFAULT_CURSOR_COLOR;
@@ -76,7 +82,8 @@ export default function CustomCursor() {
       document.body.classList.remove("has-custom-cursor");
       return;
     }
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    // Note: no coarse-pointer bail-out — touch devices drive the follower
+    // through touchstart/touchmove below (lifted above the finger).
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const dot = dotRef.current;
@@ -149,6 +156,30 @@ export default function CustomCursor() {
         }
       };
 
+      // Touch: park the ghost above the finger while touching, hide shortly
+      // after release. Passive so scrolling stays smooth.
+      let touchTimer: ReturnType<typeof setTimeout> | undefined;
+      const onTouch = (e: TouchEvent) => {
+        const touch = e.touches[0];
+        if (!touch) return;
+        mx = touch.clientX;
+        my = touch.clientY - TOUCH_LIFT;
+        if (touchTimer) clearTimeout(touchTimer);
+        if (!shown) {
+          shown = true;
+          showGhost(true);
+        }
+      };
+      const onTouchEnd = () => {
+        if (touchTimer) clearTimeout(touchTimer);
+        touchTimer = setTimeout(() => {
+          if (shown) {
+            shown = false;
+            showGhost(false);
+          }
+        }, 600);
+      };
+
       const loop = () => {
         // Underdamped spring — the wobble is the personality.
         vx = (vx + (mx - x) * 0.16) * 0.7;
@@ -175,12 +206,21 @@ export default function CustomCursor() {
 
       window.addEventListener("mousemove", onMove, { passive: true });
       document.documentElement.addEventListener("mouseleave", onLeave);
+      window.addEventListener("touchstart", onTouch, { passive: true });
+      window.addEventListener("touchmove", onTouch, { passive: true });
+      window.addEventListener("touchend", onTouchEnd);
+      window.addEventListener("touchcancel", onTouchEnd);
       raf = requestAnimationFrame(loop);
 
       return () => {
         cancelAnimationFrame(raf);
         window.removeEventListener("mousemove", onMove);
         document.documentElement.removeEventListener("mouseleave", onLeave);
+        window.removeEventListener("touchstart", onTouch);
+        window.removeEventListener("touchmove", onTouch);
+        window.removeEventListener("touchend", onTouchEnd);
+        window.removeEventListener("touchcancel", onTouchEnd);
+        if (touchTimer) clearTimeout(touchTimer);
         document.body.classList.remove("has-custom-cursor");
       };
     }
@@ -248,6 +288,30 @@ export default function CustomCursor() {
       }
     };
 
+    // Touch: park the follower above the finger while touching, hide shortly
+    // after release. Passive so scrolling stays smooth.
+    let touchTimer: ReturnType<typeof setTimeout> | undefined;
+    const onTouch = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (!touch) return;
+      mx = touch.clientX;
+      my = touch.clientY - TOUCH_LIFT;
+      if (touchTimer) clearTimeout(touchTimer);
+      if (!shown) {
+        shown = true;
+        show(true);
+      }
+    };
+    const onTouchEnd = () => {
+      if (touchTimer) clearTimeout(touchTimer);
+      touchTimer = setTimeout(() => {
+        if (shown) {
+          shown = false;
+          show(false);
+        }
+      }, 600);
+    };
+
     const loop = () => {
       if (mode === "trail") {
         // Dot eases toward the pointer; each trail node chases the one ahead
@@ -282,19 +346,27 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", onMove, { passive: true });
     document.documentElement.addEventListener("mouseleave", onLeave);
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+    window.addEventListener("touchcancel", onTouchEnd);
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
       document.documentElement.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
+      if (touchTimer) clearTimeout(touchTimer);
       document.body.classList.remove("has-custom-cursor");
     };
   }, [mode]);
 
-  // Tap / click ripple — the touch-device story for the cursor: a finger
-  // covers a follower, but a ripple blooming under the tap still gives
-  // feedback. Also fires for mouse clicks. Skipped when cursor is off.
+  // Tap / click ripple — extra press feedback in the cursor color.
+  // Fires for mouse clicks and taps. Skipped when cursor is off.
   useEffect(() => {
     if (mode === "off") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
