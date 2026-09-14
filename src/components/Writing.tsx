@@ -39,7 +39,7 @@ export default function Writing() {
           href="https://medium.com/@Kaushalendra-marcus"
           target="_blank"
           rel="me noopener noreferrer"
-          className="text-[11px] text-foreground/40 hover:text-foreground/70 transition-colors font-mono link-underline"
+          className="text-[11px] text-foreground/55 hover:text-foreground/85 dark:text-foreground/40 dark:hover:text-foreground/70 transition-colors font-mono link-underline"
         >
           All articles
         </a>
@@ -57,30 +57,31 @@ export default function Writing() {
           >
             {/* Thumbnail */}
             <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden
-              bg-foreground/[0.03] border border-foreground/[0.06]
-              group-hover:border-foreground/[0.12] transition-colors duration-300 mb-3 flex-shrink-0">
+              bg-foreground/[0.03] border border-foreground/[0.10] dark:border-foreground/[0.06]
+              shadow-sm dark:shadow-none
+              group-hover:border-foreground/[0.18] dark:group-hover:border-foreground/[0.12] transition-colors duration-300 mb-3 flex-shrink-0">
               <Image
                 src={article.thumbnail}
                 alt={article.title}
                 fill
                 sizes="(max-width: 640px) 100vw, 33vw"
-                className="object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+                className="object-cover dark:opacity-85 dark:group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
               />
             </div>
 
             {/* Text */}
             <div className="flex-1 flex flex-col">
-              <p className="text-sm font-medium text-foreground/65 group-hover:text-foreground/95
+              <p className="text-sm font-medium text-foreground/90 group-hover:text-foreground dark:text-foreground/65 dark:group-hover:text-foreground/95
                 transition-colors duration-200 leading-snug mb-1.5 line-clamp-2">
                 {article.title}
               </p>
-              <p className="text-xs text-foreground/45 leading-relaxed line-clamp-2 flex-1 mb-3">
+              <p className="text-xs text-foreground/60 dark:text-foreground/45 leading-relaxed line-clamp-2 flex-1 mb-3">
                 {article.description}
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] text-foreground/40 font-mono">{article.date}</span>
-                <span className="text-foreground/15 text-[10px]">·</span>
-                <span className="text-[10px] text-foreground/40 font-mono">{article.readTime} read</span>
+                <span className="text-[10px] text-foreground/50 dark:text-foreground/40 font-mono">{article.date}</span>
+                <span className="text-foreground/25 dark:text-foreground/15 text-[10px]">·</span>
+                <span className="text-[10px] text-foreground/50 dark:text-foreground/40 font-mono">{article.readTime} read</span>
               </div>
             </div>
           </a>
