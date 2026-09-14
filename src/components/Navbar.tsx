@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import CursorSettings from "./CursorSettings";
 
 const NAV_LINKS = [
   { label: "Projects",      href: "/projects" },
@@ -110,6 +111,8 @@ export default function Navbar() {
           </button>
 
           <ThemeToggle />
+
+          <CursorSettings />
 
           {/* Mobile hamburger */}
           <button
