@@ -192,15 +192,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        {/* Blocking (not next/script) on purpose: must run before first
-            paint so returning visitors who chose light mode never see a
-            flash of dark, and vice versa. Defaults to dark when there's
-            no stored preference yet, matching the site's original look. */}
+        {/* Dark is the default: SSR HTML already ships with .dark above, so
+            first paint is dark even before JS runs. This blocking script only
+            steps in for returning visitors who explicitly chose light mode —
+            it removes .dark before paint so they never see a flash of dark. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'){document.documentElement.classList.remove('dark');}else{document.documentElement.classList.add('dark');}}catch(e){}})();`,
           }}
         />
         <Script

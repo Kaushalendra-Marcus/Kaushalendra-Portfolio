@@ -6,6 +6,7 @@
 
 :root {
   /* ─── Light theme (default) ─────────────────────────────── */
+  color-scheme: light;
   --background: #faf9f7;
   --foreground: #18181b;
 
@@ -36,6 +37,7 @@
 
 .dark {
   /* ─── Dark theme (original look — unchanged) ────────────── */
+  color-scheme: dark;
   --background: #080808;
   --foreground: #e8e8e8;
 
