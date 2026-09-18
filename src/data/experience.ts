@@ -3,7 +3,7 @@ import { Experience } from "@/types";
 export const experiences: Experience[] = [
   {
     company: "EpicWise",
-    role: "AI Founding Engineer Intern",
+    role: "AI Founding Engineer",
     website: "https://epicwise.io",
     period: "May 2026 - Present",
     logo: "/companieslogo/epicwise.png",
