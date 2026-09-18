@@ -18,7 +18,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "FaxLab",
-    role: "Frontend Developer Intern",
+    role: "Backend Developer Intern",
     website: "https://www.faxlab.in/",
     period: "Feb 2026 - Mar 2026",
     logo: "/companieslogo/faxlab.png",
