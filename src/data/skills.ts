@@ -13,6 +13,7 @@ export const skills: Skill[] = [
       "Langfuse",
       "LangSmith",
       "DeepEval",
+      "Jev (TypeSafe AI — System One decision model)",
       "RAG (Retrieval Augmented Generation)",
       "MCP (Model Context Protocol)",
       "Vector Databases (Pinecone, FAISS)",

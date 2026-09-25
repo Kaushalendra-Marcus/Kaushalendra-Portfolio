@@ -58,20 +58,19 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
       {/* Role line */}
       <div className={`mb-5 ${revealed ? "h-c" : "opacity-0"}`}>
         <p className="text-xs sm:text-sm text-foreground/45 font-mono">
-          Full Stack AI Engineer &nbsp;—&nbsp; Agents, RAG &amp; LLM Systems
+          AI Engineer &nbsp;—&nbsp; Agents, Retrieval &amp; Evals
         </p>
       </div>
 
       {/* Bio */}
       <div className={`mb-8 max-w-lg ${revealed ? "h-d" : "opacity-0"}`}>
         <p className="text-sm sm:text-[15px] text-foreground/55 leading-[1.8]">
-          I build the backend and retrieval infrastructure behind LLM
-          products — hybrid vector/graph retrieval, multi-agent
-          orchestration with LangGraph, LLM evaluation with DeepEval,
-          and the MCP layer that connects
-          it to real tools. Currently building EpicWise&apos;s core context
-          engine; also behind Evident, an open-source extraction and
-          trust layer, and Buildify Labs, an agentic analytics platform.
+          I build Agentic AI and Generative AI products that survive
+          production — RAG over hybrid vector/graph retrieval,
+          multi-agent orchestration, and evals that catch what demos
+          hide. Founding AI engineer at EpicWise, building the core
+          context engine; also behind Evident, an open-source extraction
+          and trust layer, and Buildify Labs, an agentic analytics platform.
         </p>
       </div>
 

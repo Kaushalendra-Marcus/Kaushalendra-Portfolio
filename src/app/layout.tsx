@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Full Stack AI Engineer building agentic AI systems, RAG pipelines, and LLM evals with LangChain, LangGraph, DeepEval, and MCP — plus the Next.js frontends on top.",
+    "AI Engineer building Agentic AI and Generative AI products that survive production — RAG over hybrid retrieval, multi-agent orchestration with LangGraph, and evals with DeepEval — plus the Next.js frontends on top.",
 
   keywords: [
     "Kaushalendra Singh",
@@ -51,6 +51,10 @@ export const metadata: Metadata = {
     "LangChain",
     "LangGraph",
     "DeepEval",
+    "Jev",
+    "TypeSafe AI",
+    "Generative AI",
+    "GenAI",
     "LLM Evaluation",
     "RAG",
     "MCP",
@@ -73,9 +77,9 @@ export const metadata: Metadata = {
   publisher: "Kaushalendra Singh",
 
   openGraph: {
-    title: "Kaushalendra Singh — Full Stack AI Engineer | Agentic AI & LLM Systems",
+    title: "Kaushalendra Singh — AI Engineer | Agents, Retrieval & Evals",
     description:
-      "Full Stack AI Engineer building agentic AI systems, RAG pipelines, and LLM evals with LangChain, LangGraph, DeepEval, and MCP — plus the Next.js frontends on top.",
+      "AI Engineer building Agentic AI and Generative AI products that survive production — RAG over hybrid retrieval, multi-agent orchestration with LangGraph, and evals with DeepEval — plus the Next.js frontends on top.",
     url: "https://kaushalendra.me/",
     siteName: "Kaushalendra Singh",
     images: [
@@ -92,9 +96,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Kaushalendra Singh — Full Stack AI Engineer | Agentic AI & LLM Systems",
+    title: "Kaushalendra Singh — AI Engineer | Agents, Retrieval & Evals",
     description:
-      "Full Stack AI Engineer building agentic AI systems, RAG pipelines, and LLM evals. LangChain, LangGraph, DeepEval, MCP.",
+      "AI Engineer building Agentic AI and Generative AI products that survive production: RAG over hybrid retrieval, multi-agent orchestration, evals. LangGraph, DeepEval, MCP.",
     creator: "@kaushalxcode",
     images: ["/kaushalendra-singh.png"],
   },
@@ -151,9 +155,11 @@ const jsonLd = {
       knowsAbout: [
         "Agentic AI",
         "AI Agents",
+        "Generative AI",
         "LangChain",
         "LangGraph",
         "DeepEval",
+        "Jev (TypeSafe AI)",
         "LLM Evaluation",
         "RAG Systems",
         "LLM Pipelines",
