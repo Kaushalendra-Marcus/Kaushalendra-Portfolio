@@ -91,11 +91,28 @@ const IMAGE_ICONS: Record<string, string> = {
   "Langfuse": "/icons/langfuse.png",
   "LangSmith": "/icons/langsmith.png",
   "DeepEval": "/icons/deepeval.svg",
+  "Jev (TypeSafe AI — System One decision model)": "/icons/jev.svg",
 };
+
+// Per-icon render size. Default is 15×15 — the Jev mark is a wide
+// wireframe (190×140), so it gets a slightly wider box to stay legible.
+const IMAGE_ICON_SIZES: Record<string, { w: number; h: number }> = {
+  "Jev (TypeSafe AI — System One decision model)": { w: 24, h: 18 },
+};
+
+// White artwork (like the Jev mark) is invisible on light-theme badges,
+// so it renders inverted there — same muted → full-opacity behavior as
+// every other icon. Colored PNGs are left untouched.
+const IMAGE_ICON_INVERT_ON_LIGHT = new Set([
+  "Jev (TypeSafe AI — System One decision model)",
+]);
+
+const DEFAULT_IMAGE_ICON_SIZE = { w: 15, h: 15 };
 
 function SkillBadge({ name }: { name: string }) {
   const Icon = ICONS[name];
   const imageSrc = IMAGE_ICONS[name];
+  const imageSize = imageSrc ? (IMAGE_ICON_SIZES[name] ?? DEFAULT_IMAGE_ICON_SIZE) : null;
   const hoverColor = ICON_COLORS[name];
 
   return (
@@ -106,13 +123,15 @@ function SkillBadge({ name }: { name: string }) {
         transition-all duration-200 cursor-default"
       style={hoverColor ? ({ "--skill-hover": hoverColor } as CSSProperties) : undefined}
     >
-      {imageSrc ? (
+      {imageSrc && imageSize ? (
         <Image
           src={imageSrc}
           alt=""
-          width={15}
-          height={15}
-          className="object-contain opacity-45 group-hover:opacity-100 group-active:opacity-100 group-hover:scale-110 group-active:scale-110 transition-all duration-200 flex-shrink-0"
+          width={imageSize.w}
+          height={imageSize.h}
+          className={`object-contain opacity-45 group-hover:opacity-100 group-active:opacity-100 group-hover:scale-110 group-active:scale-110 transition-all duration-200 flex-shrink-0 ${
+            IMAGE_ICON_INVERT_ON_LIGHT.has(name) ? "jev-mark" : ""
+          }`}
         />
       ) : Icon ? (
         <Icon

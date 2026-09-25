@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FaLinkedin, FaEnvelope, FaGithub, FaFilePdf } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
+import LocalTime from "./LocalTime";
 
 export default function Hero({ revealed = true }: { revealed?: boolean }) {
   return (
@@ -121,6 +122,11 @@ export default function Hero({ revealed = true }: { revealed?: boolean }) {
           Schedule a call
         </a>
       </div>
+
+      {/* Local time — one clean line for remote-first teams */}
+      <p className="mt-5 text-[11px] font-mono text-foreground/40">
+        India · <LocalTime /> (UTC+5:30)
+      </p>
     </section>
   );
 }

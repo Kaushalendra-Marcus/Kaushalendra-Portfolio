@@ -244,6 +244,12 @@ main {
   to   { transform: scale(2.4); opacity: 0; }
 }
 
+/* ─── Jev skill mark: white artwork needs inverting on light theme ─── */
+/* (plain CSS, not Tailwind arbitrary values — parens in filter functions
+   don't survive class-name parsing reliably) */
+.jev-mark { filter: brightness(0); }
+:where(.dark) .jev-mark { filter: none; }
+
 /* ─── Selection ──────────────────────────────────────────── */
 ::selection { background: rgba(34,211,238,0.25); color: var(--foreground); }
 
