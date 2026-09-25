@@ -87,6 +87,42 @@ export const projects: Project[] = [
     image: "/projects/evident.png",
   },
   {
+    id: "lipsync-face-tracker",
+    title: "FaceTrack Annotator",
+    subtitle: "Keyframe Face Tracking for Lip-Sync Dubbing",
+
+    description:
+      "Keyframe-based speaker tracking annotation tool for lip-sync dubbing - draw, move & resize face boxes with forward-fill (no interpolation), mark absent segments, and export per-frame pickle + H.264 preview with audio. React + Flask.",
+
+    detailedDescription: [
+      "The problem: lip-sync dubbing needs a per-frame face bounding box for every speaker, including segments where the speaker is off-screen - scrubbing in a video editor doesn't produce model-ready data. Built a keyframe annotation tool where you draw a box once and only re-edit when it drifts.",
+
+      "Implemented forward-fill with no interpolation: each edit is a keyframe held exactly until the next one, stored in source-video pixel coordinates - so exported tracks are deterministic and match the source frame count one-to-one.",
+
+      "Added absent-segment handling so off-screen frames export as [] instead of stale boxes, plus multi-speaker tracks with undo/redo and a keyboard-first workflow (B draw, arrows step, N absent, D delete keyframe, E export).",
+
+      "Built a dark editor UI - canvas overlay for draw/move/resize, filmstrip timeline with per-speaker lanes and playhead, transport/player bar, and numeric bbox controls - backed by a Flask API for metadata, video serving, and export.",
+
+      "Export pipeline writes {name}_bbox.pkl (one [x1, y1, x2, y2] or [] entry per source frame) and renders a matching {name}_bbox_preview.mp4 (H.264 + AAC, box + frame number) from the exact same expanded per-frame list, with silent mp4v fallback when FFmpeg is missing.",
+
+      "Shipped with real deliverables: dual-speaker Hindi-dub tracks (1740 entries each) plus a combined preview, with Loom walkthroughs and the full submission linked in the README.",
+    ],
+
+    technologies: [
+      "React",
+      "Flask",
+      "OpenCV",
+      "Python",
+      "NumPy",
+      "FFmpeg",
+    ],
+
+    github: "https://github.com/Kaushalendra-Marcus/lipsync-face-tracker",
+    live: "",
+    gradient: "from-rose-600 to-orange-600",
+    image: "/projects/lipsync-face-tracker.",
+  },
+  {
     id: "repograph-ai",
     title: "RepoGraph AI",
     subtitle: "VS Code Extension",
