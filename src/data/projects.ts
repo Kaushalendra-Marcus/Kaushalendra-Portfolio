@@ -151,6 +151,48 @@ export const projects: Project[] = [
     image: "/projects/lipsync-face-tracker.png",
   },
   {
+    id: "invoiceguard-ai",
+    title: "InvoiceGuard AI",
+    subtitle: "AI Invoice ↔ Purchase Order Reconciliation",
+
+    description:
+      "Invoice validation engine that recognizes the same product across different wording, then checks every quantity and price with deterministic Decimal rules - routing anything unsafe to human review instead of an auto-verdict.",
+
+    detailedDescription: [
+      "The core problem: businesses compare supplier invoices against Purchase Orders before paying, and two failure modes defeat naive tooling. String comparison fails because the same product is described differently, and pure semantic matching identifies the product but then looks past the money - happily waving through extra billed units.",
+
+      "Built a hybrid matching ladder - SKU → exact → fuzzy (RapidFuzz, 85/100 threshold) → semantic (local BGE-small embeddings via fastembed/ONNX, cosine ≥ 0.72) - with contradiction checks: a SKU match with a contradictory description, or a 1 Meter vs 2 Meter spec conflict, demotes the match to human review. Embeddings run in-process, so there is no external AI API, no per-request cost, and no data leaves the host.",
+
+      "Kept the money path deterministic: pure Python Decimal (ROUND_HALF_UP) validates quantities, unit prices, line totals, and stated subtotals with configurable tolerances - no float ever touches currency, and a similarity score can never excuse a wrong number.",
+
+      "Designed the decision rules so weak evidence stays honest: MATCHED when strong evidence passes all numeric checks, DISCREPANCY_FOUND when a reliable match exposes a numeric problem, NEEDS_REVIEW on ambiguous matches, incompatible units/currency, or missing data - and NEEDS_REVIEW always wins. Values are never invented, money is never computed on an incompatible basis, and MATCHED is a finding, not a payment authorization.",
+
+      "Enforced two server-side protection layers for a free public API: 10 analyses/day per anonymous session (atomic reserve → commit/release, IST-day rollover, failed attempts never consume allowance) plus per-IP caps of 8/minute and 100 lifetime - so rotating session IDs can't bypass the limits.",
+
+      "Exposed it beyond the browser with an MCP server wrapping the API, so coding assistants can run invoice reviews as tool calls - the same limits apply identically to agents and browsers.",
+
+      "Built a dependency-free vanilla HTML/CSS/JS frontend with in-browser file previews and a one-click branded PDF discrepancy report that carries the original values and the arithmetic behind every finding - never a bare mismatch score.",
+
+      "Covered the core engine with a pytest suite over matching, financial rules, usage limiting, rate limiting, and the API; extraction failures surface as explicit MISSING_FINANCIAL_DATA states instead of guessed values.",
+    ],
+
+    technologies: [
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "Pydantic v2",
+      "RapidFuzz",
+      "fastembed (BGE-small, ONNX)",
+      "MCP",
+      "Pytest",
+    ],
+
+    github: "https://github.com/Kaushalendra-Marcus/InvoiceGuard-AI",
+    live: "https://invoiceguard-ai-tech.vercel.app",
+    gradient: "from-fuchsia-600 to-pink-600",
+    image: "/projects/invoiceguard-ai.png",
+  },
+  {
     id: "ai-context-engine",
     title: "AI Context Engine",
     subtitle: "Context-Aware Backend Intelligence System",
