@@ -112,7 +112,7 @@ export const projects: Project[] = [
     github: "https://github.com/Kaushalendra-Marcus/RepoGraph-AI",
     live: "https://repograph.kaushalendra.me",
     gradient: "from-violet-600 to-indigo-600",
-    image: "/projects/repograph-ai.svg",
+    image: "/projects/repograph-ai.png",
   },
    {
     id: "lipsync-face-tracker",
