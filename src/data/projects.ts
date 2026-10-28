@@ -44,6 +44,33 @@ export const projects: Project[] = [
     gradient: "from-blue-600 to-cyan-600",
     image: "/projects/buildify-labs.png",
   },
+    {
+    id: "repograph-ai",
+    title: "RepoGraph AI",
+    subtitle: "VS Code Extension",
+    description:
+      "Free VS Code extension that maps any codebase into an interactive dependency graph with AI-powered summaries and codebase Q&A - built so nothing leaves your machine and no single model provider is required.",
+    detailedDescription: [
+      "The problem: understanding an unfamiliar codebase is slow, and most AI code tools either send your code to a third-party backend or lock you into one model provider. Built a VS Code extension that scans the workspace locally and maps every file relationship into an interactive force-directed dependency graph instead.",
+      "Integrated 5 AI providers — Groq, Ollama, Gemini, Anthropic, and OpenAI — with support for custom model names, so the choice of model, including fully local via Ollama, stays with the user.",
+      "Implemented a multi-turn Q&A agent with full graph, summary, and file context, so follow-up questions build on prior answers instead of starting over each time.",
+      "Designed smart filtering to auto-skip node_modules, dist, build outputs, and generated code across 20+ languages, so the graph reflects actual source, not build noise.",
+      "Built with privacy as an architectural constraint, not a feature: no backend, no account required, API keys stored in VS Code's SecretStorage via the OS keychain - the code never leaves the machine.",
+    ],
+    technologies: [
+      "TypeScript",
+      "VS Code API",
+      "Groq",
+      "Ollama",
+      "Gemini",
+      "Anthropic",
+      "OpenAI",
+    ],
+    github: "https://github.com/Kaushalendra-Marcus/RepoGraph-AI",
+    live: "https://repograph.kaushalendra.me",
+    gradient: "from-violet-600 to-indigo-600",
+    image: "/projects/repograph-ai.png",
+  },
   {
     id: "evident",
     title: "Evident",
@@ -87,33 +114,6 @@ export const projects: Project[] = [
     image: "/projects/evident.png",
   },
  
-  {
-    id: "repograph-ai",
-    title: "RepoGraph AI",
-    subtitle: "VS Code Extension",
-    description:
-      "Free VS Code extension that maps any codebase into an interactive dependency graph with AI-powered summaries and codebase Q&A - built so nothing leaves your machine and no single model provider is required.",
-    detailedDescription: [
-      "The problem: understanding an unfamiliar codebase is slow, and most AI code tools either send your code to a third-party backend or lock you into one model provider. Built a VS Code extension that scans the workspace locally and maps every file relationship into an interactive force-directed dependency graph instead.",
-      "Integrated 5 AI providers — Groq, Ollama, Gemini, Anthropic, and OpenAI — with support for custom model names, so the choice of model, including fully local via Ollama, stays with the user.",
-      "Implemented a multi-turn Q&A agent with full graph, summary, and file context, so follow-up questions build on prior answers instead of starting over each time.",
-      "Designed smart filtering to auto-skip node_modules, dist, build outputs, and generated code across 20+ languages, so the graph reflects actual source, not build noise.",
-      "Built with privacy as an architectural constraint, not a feature: no backend, no account required, API keys stored in VS Code's SecretStorage via the OS keychain - the code never leaves the machine.",
-    ],
-    technologies: [
-      "TypeScript",
-      "VS Code API",
-      "Groq",
-      "Ollama",
-      "Gemini",
-      "Anthropic",
-      "OpenAI",
-    ],
-    github: "https://github.com/Kaushalendra-Marcus/RepoGraph-AI",
-    live: "https://repograph.kaushalendra.me",
-    gradient: "from-violet-600 to-indigo-600",
-    image: "/projects/repograph-ai.png",
-  },
    {
     id: "lipsync-face-tracker",
     title: "FaceTrack Annotator",
