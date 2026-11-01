@@ -6,7 +6,6 @@ export const openSourceContributions = [
     role: "Selected Contributor · XERJ Corpus Hub",
     website: "https://hub.xerj.org/contributors/Kaushalendra-Marcus",
     logo: "/contributionorg/xerj_hub_logo.png",
-    logoSize: 40, // px - bigger than the default 24 so the XERJ logo reads clearly
     period: "Oct 2026",
     technologies: ["TypeScript", "JavaScript"],
     summary:

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { FaChevronDown } from "react-icons/fa6";
 import { experiences } from "@/data/experience";
@@ -8,6 +9,7 @@ import { openSourceContributions } from "@/data/openSourceContributions";
 
 function EntryRow({
   logo,
+  logoSize = 48,
   title,
   subtitle,
   href,
@@ -19,6 +21,8 @@ function EntryRow({
   index,
 }: {
   logo?: string;
+  /** Logo box size in px (default 48). Larger logos get less inner padding. */
+  logoSize?: number;
   title: string;
   subtitle: string;
   href: string;
@@ -30,6 +34,8 @@ function EntryRow({
   index: number;
 }) {
   const [open, setOpen] = useState(false);
+  // Details/tags line up under the title, so indent = logo box + gap (16px).
+  const indent = logoSize + 16;
 
   // Only auto-open on hover for devices that truly support it (mouse /
   // trackpad). Touch devices simulate a "mouseenter" on the first tap,
@@ -50,18 +56,26 @@ function EntryRow({
       onMouseLeave={() => canHover && setOpen(false)}
       onClick={() => setOpen((o) => !o)}
       className="group py-6 px-4 -mx-4 rounded-xl border-b border-dashed border-foreground/[0.12] last:border-b-0 cursor-pointer transition-colors duration-300 hover:bg-foreground/[0.03] hover:border-foreground/[0.18]"
-      style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.08}s both` }}
+      style={
+        {
+          animation: `fadeInUp 0.5s ease-out ${index * 0.08}s both`,
+          "--indent": `${indent}px`,
+        } as CSSProperties
+      }
     >
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
         {/* Left: logo + title/subtitle */}
         <div className="flex items-start gap-4 min-w-0">
-          <span className="w-12 h-12 rounded-xl overflow-hidden bg-foreground/[0.08] border border-foreground/[0.12] group-hover:border-foreground/[0.22] transition-colors duration-300 flex-shrink-0 flex items-center justify-center p-2.5">
+          <span
+            className="rounded-xl overflow-hidden bg-foreground/[0.08] border border-foreground/[0.12] group-hover:border-foreground/[0.22] transition-colors duration-300 flex-shrink-0 flex items-center justify-center"
+            style={{ width: logoSize, height: logoSize, padding: logoSize > 48 ? 6 : 10 }}
+          >
             {logo ? (
               <Image
                 src={logo}
                 alt=""
-                width={32}
-                height={32}
+                width={logoSize}
+                height={logoSize}
                 className="object-contain w-full h-full"
               />
             ) : (
@@ -84,7 +98,7 @@ function EntryRow({
 
         {/* Right: period/meta + expand toggle. Full-width indented row on
             mobile (date left, chevron right); right-aligned inline on sm+ */}
-        <div className="flex items-center sm:items-start justify-between sm:justify-end gap-3 pl-16 sm:pl-0 flex-shrink-0">
+        <div className="flex items-center sm:items-start justify-between sm:justify-end gap-3 pl-[var(--indent)] sm:pl-0 flex-shrink-0">
           {(period || meta) && (
             <div className="text-left sm:text-right">
               {period && (
@@ -116,7 +130,7 @@ function EntryRow({
           marginTop: open ? "0.9rem" : "0px",
         }}
       >
-        <ul className="space-y-2 pb-1 pl-16">
+        <ul className="space-y-2 pb-1 pl-[var(--indent)]">
           {summary && (
             <li className="text-sm text-foreground/70 leading-relaxed mb-1 pl-3 relative
               before:absolute before:left-0 before:top-[9px]
@@ -137,7 +151,7 @@ function EntryRow({
         </ul>
 
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-x-3 gap-y-1 pl-16 mt-3">
+          <div className="flex flex-wrap gap-x-3 gap-y-1 pl-[var(--indent)] mt-3">
             {tags.map((tag) => (
               <span key={tag} className="text-[10px] text-foreground/55 font-mono">
                 {tag}
@@ -179,6 +193,7 @@ export default function Experience() {
           <EntryRow
             key={contribution.project}
             logo={contribution.logo}
+            logoSize={contribution.logoSize}
             title={contribution.project}
             subtitle={contribution.role}
             href={contribution.website}

@@ -13,13 +13,15 @@ function ContributionItem({
 }) {
   const [open, setOpen] = useState(false);
   const logoSize = contribution.logoSize ?? 24;
+  // Large logos stack above the name instead of sitting beside it.
+  const stacked = logoSize > 48;
 
   return (
     <div style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both` }}>
       <div className="flex flex-col sm:flex-row sm:gap-8">
         {/* Left meta */}
         <div className="flex-shrink-0 sm:w-44 mb-3 sm:mb-0 sm:pt-0.5">
-          <div className="flex items-center gap-2">
+          <div className={stacked ? "flex flex-col items-start gap-2.5" : "flex items-center gap-2"}>
             {contribution.logo && (
               <span
                 className="rounded-md overflow-hidden bg-white/[0.06] border border-white/[0.08] flex-shrink-0 flex items-center justify-center"
@@ -45,7 +47,7 @@ function ContributionItem({
           </div>
           <p
             className="text-[11px] text-white/40 font-mono mt-1.5"
-            style={{ paddingLeft: contribution.logo ? logoSize + 8 : 0 }}
+            style={{ paddingLeft: contribution.logo && !stacked ? logoSize + 8 : 0 }}
           >
             {contribution.role}
           </p>

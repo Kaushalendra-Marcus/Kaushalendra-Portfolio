@@ -8,6 +8,7 @@ export interface Project {
   github: string;
   live: string;
   productHunt?: string;
+  marketplace?: string;
   gradient?: string;
   status?: string;
   image?: string;

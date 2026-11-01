@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import type { KeyboardEvent } from "react";
 import Image from "next/image";
 import { FaGithub, FaArrowUpRightFromSquare, FaProductHunt } from "react-icons/fa6";
+import { VscVscode } from "react-icons/vsc";
 import { Project } from "@/types";
 
 interface ProjectCardProps {
@@ -58,6 +59,20 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
             scrim reads correctly in both themes. */}
         <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 flex gap-1.5
           sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200">
+          {project.marketplace && (
+            <a
+              href={project.marketplace}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.title} on the VS Code Marketplace`}
+              onClick={(e) => e.stopPropagation()}
+              className="p-2 sm:p-1.5 bg-black/70 backdrop-blur-sm rounded-lg
+                text-[#3aa0ff] hover:text-[#6bb8ff] transition-colors border border-white/[0.12]
+                outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+            >
+              <VscVscode className="text-sm sm:text-xs" />
+            </a>
+          )}
           {project.productHunt && (
             <a
               href={project.productHunt}

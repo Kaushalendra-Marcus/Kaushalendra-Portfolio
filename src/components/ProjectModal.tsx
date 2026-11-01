@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Project } from "@/types";
 import { useEffect } from "react";
 import { FaGithub, FaExternalLinkAlt, FaTimes, FaProductHunt } from "react-icons/fa";
+import { VscVscode } from "react-icons/vsc";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -108,6 +109,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </h2>
             </div>
             <div className="flex flex-wrap justify-end gap-2 flex-shrink-0 pt-0.5">
+              {project.marketplace && (
+                <a
+                  href={project.marketplace}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#3aa0ff]/10 hover:bg-[#3aa0ff]/20
+                    border border-[#3aa0ff]/30 hover:border-[#3aa0ff]/50 rounded-xl text-xs text-[#3aa0ff]
+                    transition-all duration-200"
+                >
+                  <VscVscode className="text-xs" />
+                  <span>Marketplace</span>
+                </a>
+              )}
               {project.productHunt && (
                 <a
                   href={project.productHunt}

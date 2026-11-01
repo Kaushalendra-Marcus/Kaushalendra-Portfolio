@@ -15,8 +15,8 @@ import {
   SiReact,
   SiTailwindcss,
   SiDocker,
-  SiAmazonwebservices,
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa";
 import { Search, Network, Database, Brain } from "lucide-react";
 import type { CSSProperties, ComponentType } from "react";
 import { skills } from "@/data/skills";
@@ -49,7 +49,7 @@ const ICONS: Record<string, SkillIcon> = {
   "Neo4j": SiNeo4J,
   "Prisma": SiPrisma,
   "Docker": SiDocker,
-  "AWS": SiAmazonwebservices,
+  "AWS": FaAws,
 
   // Frontend
   "Next.js": SiNextdotjs,
