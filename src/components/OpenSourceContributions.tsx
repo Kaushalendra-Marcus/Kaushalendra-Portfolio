@@ -12,6 +12,7 @@ function ContributionItem({
   index: number;
 }) {
   const [open, setOpen] = useState(false);
+  const logoSize = contribution.logoSize ?? 24;
 
   return (
     <div style={{ animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both` }}>
@@ -20,12 +21,15 @@ function ContributionItem({
         <div className="flex-shrink-0 sm:w-44 mb-3 sm:mb-0 sm:pt-0.5">
           <div className="flex items-center gap-2">
             {contribution.logo && (
-              <span className="w-6 h-6 rounded-md overflow-hidden bg-white/[0.06] border border-white/[0.08] flex-shrink-0 flex items-center justify-center">
+              <span
+                className="rounded-md overflow-hidden bg-white/[0.06] border border-white/[0.08] flex-shrink-0 flex items-center justify-center"
+                style={{ width: logoSize, height: logoSize }}
+              >
                 <Image
                   src={contribution.logo}
                   alt=""
-                  width={24}
-                  height={24}
+                  width={logoSize}
+                  height={logoSize}
                   className="object-contain w-full h-full"
                 />
               </span>
@@ -39,7 +43,10 @@ function ContributionItem({
               {contribution.project}
             </a>
           </div>
-          <p className="text-[11px] text-white/40 font-mono mt-1.5 pl-8">
+          <p
+            className="text-[11px] text-white/40 font-mono mt-1.5"
+            style={{ paddingLeft: contribution.logo ? logoSize + 8 : 0 }}
+          >
             {contribution.role}
           </p>
         </div>

@@ -7,6 +7,7 @@ export interface Project {
   technologies: string[];
   github: string;
   live: string;
+  productHunt?: string;
   gradient?: string;
   status?: string;
   image?: string;

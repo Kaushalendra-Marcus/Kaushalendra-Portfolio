@@ -68,6 +68,8 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/Kaushalendra-Marcus/RepoGraph-AI",
     live: "https://repograph.kaushalendra.me",
+    productHunt: "https://www.producthunt.com/products/repograph-ai",
+    status: "Live on Product Hunt",
     gradient: "from-violet-600 to-indigo-600",
     image: "/projects/repograph-ai.png",
   },

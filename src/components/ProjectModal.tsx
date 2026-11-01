@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Project } from "@/types";
 import { useEffect } from "react";
-import { FaGithub, FaExternalLinkAlt, FaTimes } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaTimes, FaProductHunt } from "react-icons/fa";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -107,7 +107,20 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {project.title}
               </h2>
             </div>
-            <div className="flex gap-2 flex-shrink-0 pt-0.5">
+            <div className="flex flex-wrap justify-end gap-2 flex-shrink-0 pt-0.5">
+              {project.productHunt && (
+                <a
+                  href={project.productHunt}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#ff6154]/10 hover:bg-[#ff6154]/20
+                    border border-[#ff6154]/30 hover:border-[#ff6154]/50 rounded-xl text-xs text-[#ff6154]
+                    transition-all duration-200"
+                >
+                  <FaProductHunt className="text-xs" />
+                  <span>Product Hunt</span>
+                </a>
+              )}
               {project.github && (
                 <a
                   href={project.github}
