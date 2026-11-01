@@ -19,10 +19,10 @@ import {
   SiHuggingface,
   SiOllama,
   SiDocker,
-  SiAmazonwebservices,
   SiRedis,
   SiVercel,
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
 import type { CSSProperties, ComponentType } from "react";
 import { techStack } from "@/data/skills";
 
@@ -49,7 +49,7 @@ const ICONS: Record<string, TechIcon> = {
   "Hugging Face": SiHuggingface,
   "Ollama": SiOllama,
   "Docker": SiDocker,
-  "AWS": SiAmazonwebservices,
+  "AWS": FaAws,
   "Redis": SiRedis,
   "Vercel": SiVercel,
 };

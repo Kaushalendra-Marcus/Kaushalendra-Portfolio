@@ -12,7 +12,7 @@ function ContributionItem({
   index: number;
 }) {
   const [open, setOpen] = useState(false);
-  const logoSize = contribution.logoSize ?? 24;
+  const logoSize = 24;
   // Large logos stack above the name instead of sitting beside it.
   const stacked = logoSize > 48;
 

@@ -193,7 +193,6 @@ export default function Experience() {
           <EntryRow
             key={contribution.project}
             logo={contribution.logo}
-            logoSize={contribution.logoSize}
             title={contribution.project}
             subtitle={contribution.role}
             href={contribution.website}
